@@ -1,0 +1,32 @@
+_prefs: 
+  mapid: ''
+  saveCenter: true
+_properties: {}
+attribution: ''
+bounds: 
+  - -180
+  - -85.0511
+  - 180
+  - 85.0511
+center: 
+  - -74.8183
+  - 40.1348
+  - 14
+description: ''
+format: "png8:m=h"
+interactivity_layer: ''
+layers: null
+maxzoom: 15
+minzoom: 0
+name: MQ Carto Style
+source: "tmsource:///home/pnorman/mq-carto-style-vector/mq-carto-stylesource.tm2source"
+styles: 
+  - base.mss
+  - polygonal.mss
+  - linear.mss
+  - point_label.mss
+  - linear_label.mss
+  - point_label2.mss
+  - linear_label2.mss
+  - point_label3.mss
+template: ''
