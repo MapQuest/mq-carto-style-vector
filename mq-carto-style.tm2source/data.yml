@@ -1,0 +1,560 @@
+_prefs: 
+  disabled: 
+    - boundingbox
+  inspector: false
+  mapid: ''
+  rev: ''
+  saveCenter: true
+attribution: ''
+center: 
+  - -74.8875
+  - 40.1336
+  - 14
+description: ''
+Layer: 
+  - id: vector_point_labels3
+    Datasource: 
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: |-
+        (SELECT placement_id, label_id, min_zoom, max_zoom, the_geom, class, unnest(text_elements) AS name, display_class, feature_area, floor(random()*4) AS dir from (SELECT pl.*,(unnest(pr.labels)).*
+        FROM vector_point_label_placements pl INNER JOIN vector_point_label_properties pr ON pl.label_id = pr.label_id) x ORDER BY display_class ASC) AS data
+      type: postgis
+      user: ''
+    description: ''
+    fields: 
+      class: Number
+      dir: Number
+      display_class: Number
+      feature_area: Number
+      label_id: Number
+      max_zoom: Number
+      min_zoom: Number
+      name: String
+      placement_id: Number
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: boundingbox
+    Datasource: 
+      file: /home/pnorman/mq-carto-style-vector/10m-900913-bounding-box.shp
+      type: shape
+    description: ''
+    fields: 
+      Id: Number
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: vector_polygonal_geometry_6
+    Datasource: 
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: vector_polygonal_geometry_6
+      type: postgis
+      user: ''
+    description: ''
+    fields: 
+      id: Number
+      area: Number
+      name: String
+      rclass: Number
+      zoom_level: Number
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: vector_polygonal_geometry_8
+    Datasource: 
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: vector_polygonal_geometry_8
+      type: postgis
+      user: ''
+    description: ''
+    fields: 
+      id: Number
+      area: Number
+      name: String
+      rclass: Number
+      zoom_level: Number
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: vector_polygonal_geometry_10
+    Datasource: 
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: vector_polygonal_geometry_10
+      type: postgis
+      user: ''
+    description: ''
+    fields: 
+      id: Number
+      area: Number
+      name: String
+      rclass: Number
+      zoom_level: Number
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: vector_polygonal_geometry_12
+    Datasource: 
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: vector_polygonal_geometry_12
+      type: postgis
+      user: ''
+    description: ''
+    fields: 
+      id: Number
+      area: Number
+      name: String
+      rclass: Number
+      zoom_level: Number
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: vector_polygonal_geometry_16
+    Datasource: 
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: vector_polygonal_geometry_16
+      type: postgis
+      user: ''
+    description: ''
+    fields: 
+      id: Number
+      area: Number
+      name: String
+      rclass: Number
+      zoom_level: Number
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: vector_linear_county_8
+    Datasource: 
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: (SELECT * FROM vector_linear_geometry_8 WHERE rclass = 15) AS data
+      type: postgis
+      user: ''
+    description: ''
+    fields: 
+      id: Number
+      admin_level: Number
+      brunnel: Number
+      oneway: Boolean
+      ramp: Boolean
+      rclass: Number
+      restriction: Boolean
+      toll: Boolean
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: vector_linear_county_10
+    Datasource: 
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: (SELECT * FROM vector_linear_geometry_12 WHERE rclass = 15) AS data
+      type: postgis
+      user: ''
+    description: ''
+    fields: 
+      id: Number
+      admin_level: Number
+      brunnel: Number
+      oneway: Boolean
+      ramp: Boolean
+      rclass: Number
+      restriction: Boolean
+      toll: Boolean
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: vector_linear_county_12
+    Datasource: 
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: (SELECT * FROM vector_linear_geometry_16 WHERE rclass = 15) AS data
+      type: postgis
+      user: ''
+    description: ''
+    fields: 
+      id: Number
+      admin_level: Number
+      brunnel: Number
+      oneway: Boolean
+      ramp: Boolean
+      rclass: Number
+      restriction: Boolean
+      toll: Boolean
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: vector_linear_county_16
+    Datasource: 
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: (SELECT * FROM vector_linear_geometry_16 WHERE rclass = 15) AS data
+      type: postgis
+      user: ''
+    description: ''
+    fields: 
+      id: Number
+      admin_level: Number
+      brunnel: Number
+      oneway: Boolean
+      ramp: Boolean
+      rclass: Number
+      restriction: Boolean
+      toll: Boolean
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: vector_linear_geometry_6
+    Datasource: 
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: vector_linear_geometry_6
+      type: postgis
+      user: ''
+    description: ''
+    fields: 
+      id: Number
+      admin_level: Number
+      brunnel: Number
+      oneway: Boolean
+      ramp: Boolean
+      rclass: Number
+      restriction: Boolean
+      toll: Boolean
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: vector_linear_geometry_8
+    Datasource: 
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: (SELECT * FROM vector_linear_geometry_8 WHERE rclass != 15) AS data
+      type: postgis
+      user: ''
+    description: ''
+    fields: 
+      id: Number
+      admin_level: Number
+      brunnel: Number
+      oneway: Boolean
+      ramp: Boolean
+      rclass: Number
+      restriction: Boolean
+      toll: Boolean
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: vector_linear_geometry_10
+    Datasource: 
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: (SELECT * FROM vector_linear_geometry_10 WHERE rclass != 15) AS data
+      type: postgis
+      user: ''
+    description: ''
+    fields: 
+      id: Number
+      admin_level: Number
+      brunnel: Number
+      oneway: Boolean
+      ramp: Boolean
+      rclass: Number
+      restriction: Boolean
+      toll: Boolean
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: vector_linear_geometry_12
+    Datasource: 
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: (SELECT * FROM vector_linear_geometry_12 WHERE rclass != 15) AS data
+      type: postgis
+      user: ''
+    description: ''
+    fields: 
+      id: Number
+      admin_level: Number
+      brunnel: Number
+      oneway: Boolean
+      ramp: Boolean
+      rclass: Number
+      restriction: Boolean
+      toll: Boolean
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: vector_linear_geometry_16
+    Datasource: 
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: (SELECT * FROM vector_linear_geometry_16 WHERE rclass != 15) AS data
+      type: postgis
+      user: ''
+    description: ''
+    fields: 
+      id: Number
+      admin_level: Number
+      brunnel: Number
+      oneway: Boolean
+      ramp: Boolean
+      rclass: Number
+      restriction: Boolean
+      toll: Boolean
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: vector_point_labels
+    Datasource: 
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: |-
+        (SELECT placement_id, label_id, min_zoom, max_zoom, the_geom, class, name,
+        length(name) AS name_len, display_class, feature_area, dir FROM (SELECT
+        placement_id, label_id, min_zoom, max_zoom, the_geom, class,
+        unnest(text_elements) AS name, display_class, feature_area,
+        floor(random()*4) AS dir from (SELECT pl.*,(unnest(pr.labels)).* FROM
+        vector_point_label_placements pl INNER JOIN vector_point_label_properties
+        pr ON pl.label_id = pr.label_id) x ORDER BY display_class ASC) AS data0)
+        AS data
+      type: postgis
+      user: ''
+    description: ''
+    fields: 
+      class: Number
+      dir: Number
+      display_class: Number
+      feature_area: Number
+      label_id: Number
+      max_zoom: Number
+      min_zoom: Number
+      name: String
+      name_len: Number
+      placement_id: Number
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: vector_linear_geometry_overlay
+    Datasource: 
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: (SELECT * FROM vector_linear_geometry_12 WHERE rclass != 15) AS data
+      type: postgis
+      user: ''
+    description: ''
+    fields: 
+      id: Number
+      admin_level: Number
+      brunnel: Number
+      oneway: Boolean
+      ramp: Boolean
+      rclass: Number
+      restriction: Boolean
+      toll: Boolean
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: vector_linear_labels
+    Datasource: 
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: vector_linear_labels
+      type: postgis
+      user: ''
+    description: ''
+    fields: 
+      id: Number
+      name: String
+      path_priority: Number
+      rclass: Number
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: vector_point_labels2
+    Datasource: 
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: |-
+        (SELECT placement_id, label_id, min_zoom, max_zoom, the_geom, class, unnest(text_elements) AS name, display_class, feature_area, floor(random()*4) AS dir from (SELECT pl.*,(unnest(pr.labels)).*
+        FROM vector_point_label_placements pl INNER JOIN vector_point_label_properties pr ON pl.label_id = pr.label_id) x ORDER BY display_class ASC) AS data
+      type: postgis
+      user: ''
+    description: ''
+    fields: 
+      class: Number
+      dir: Number
+      display_class: Number
+      feature_area: Number
+      label_id: Number
+      max_zoom: Number
+      min_zoom: Number
+      name: String
+      placement_id: Number
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: vector_linear_labels2
+    Datasource: 
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: vector_linear_labels
+      type: postgis
+      user: ''
+    description: ''
+    fields: 
+      id: Number
+      name: String
+      path_priority: Number
+      rclass: Number
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+maxzoom: 15
+minzoom: 0
+name: MQ Carto Vector
