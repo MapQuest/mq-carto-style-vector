@@ -2,7 +2,7 @@
 
 This is a MapQuest style written in CartoCSS, making use of vector tiles
 
-![screenshot](https://raw.github.com/MapQuest/mq-carto-style-vector/mq-carto.png)
+![screenshot](https://raw.githubusercontent.com/MapQuest/mq-carto-style-vector/master/mq-carto.png)
 
 ## Using
 
