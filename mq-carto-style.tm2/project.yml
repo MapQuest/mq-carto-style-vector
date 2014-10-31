@@ -19,7 +19,7 @@ layers: null
 maxzoom: 15
 minzoom: 0
 name: MQ Carto Style
-source: "tmsource:///home/pnorman/mq-carto-style-vector/mq-carto-stylesource.tm2source"
+source: "tmsource:///home/pnorman/mq-carto-style-vector/mq-carto-style.tm2source"
 styles: 
   - base.mss
   - polygonal.mss

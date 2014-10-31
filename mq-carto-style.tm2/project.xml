@@ -9,7 +9,7 @@
   <Parameter name="maxzoom">15</Parameter>
   <Parameter name="minzoom">0</Parameter>
   <Parameter name="name"><![CDATA[MQ Carto Style]]></Parameter>
-  <Parameter name="source"><![CDATA[tmsource:///home/pnorman/mq-carto-style-vector/mq-carto-stylesource.tm2source]]></Parameter>
+  <Parameter name="source"><![CDATA[tmsource:///home/pnorman/mq-carto-style-vector/mq-carto-style.tm2source]]></Parameter>
 </Parameters>
 
 
