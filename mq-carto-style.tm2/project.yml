@@ -9,14 +9,14 @@ bounds:
   - 180
   - 85.0511
 center: 
-  - -74.8183
-  - 40.1348
-  - 14
+  - -75.2797
+  - 40.1098
+  - 15
 description: ''
 format: "png8:m=h"
 interactivity_layer: ''
 layers: null
-maxzoom: 15
+maxzoom: 19
 minzoom: 0
 name: MQ Carto Style
 source: "tmsource:///home/pnorman/mq-carto-style-vector/mq-carto-style.tm2source"

@@ -4,31 +4,22 @@
 /* -----                                                         ----- */
 /* ------------------------------------------------------------------- */
 
-#vector_linear_county_8 {
-  [zoom=9] {
-    /*::casing {line-color:#ded5d4;line-width:3.0;line-cap:round;line-join:miter;}*/
-    ::fill {line-color:#b09698;line-width:0.5;line-dasharray:2,2,4,2;line-cap:butt;line-join:round;}
+#vector_linear_county {
+  ::casing[zoom >= 10] {
+    line-color: #ded5d4;
+    line-width: 3.0;
+    line-cap: round;
+    line-join: miter;
   }
-}
-
-#vector_linear_county_10 {
-  [zoom>=10][zoom<=11] {
-    ::casing {line-color:#ded5d4;line-width:3.0;line-cap:round;line-join:miter;}
-    ::fill {line-color:#968082;line-width:0.5;line-dasharray:2,2,4,2;line-cap:butt;line-join:round;}
-  }
-}
-
-#vector_linear_county_12 {
-  [zoom>=12][zoom<=15] {
-    ::casing {line-color:#ded5d4;line-width:3.0;line-cap:round;line-join:miter;}
-    ::fill {line-color:#968082;line-width:0.5;line-dasharray:2,2,4,2;line-cap:butt;line-join:round;}
-  }
-}
-
-#vector_linear_county_16 {
-  [zoom>=16][zoom<=18] {
-    ::casing {line-color:#ded5d4;line-width:3.0;line-cap:round;line-join:miter;}
-    ::fill {line-color:#968082;line-width:0.5;line-dasharray:2,2,4,2;line-cap:butt;line-join:round;}
+  ::fill[zoom >= 9] {
+    line-color: #b09698;
+    line-width: 0.5;
+    line-dasharray: 2,2,4,2;
+    line-cap: butt;
+    line-join: round;
+    [zoom >= 10] {
+      line-color: #968082;
+    }
   }
 }
 
@@ -92,7 +83,7 @@
 /* -----                                                         ----- */
 /* ------------------------------------------------------------------- */
 
-#vector_linear_geometry_6 {
+#vector_linear_geometry {
   ::major_road[rclass=1] {
     [zoom>=6][zoom<=7] {
       [zoom=6] {line-color:#ebcd96;}
@@ -107,9 +98,7 @@
       line-cap:round;line-join:round;
     }
   }
-}
 
-#vector_linear_geometry_8 {
   ::major_road2-3[rclass>=2][rclass<=3] {
     [zoom>=8][zoom<=9] {
       [zoom=8] {line-color:#fae661;}
@@ -144,9 +133,7 @@
       line-cap:round;line-join:round;
     }
   }
-}
 
-#vector_linear_geometry_10 {
   ::ferry_hwy[rclass=13] {
     [zoom>=10][zoom<=11] {
       marker-type:ellipse;
@@ -185,9 +172,7 @@
       line-cap:round;line-join:round;
     }
   }
-}
 
-#vector_linear_geometry_12 {
   ::ferry_hwy[rclass=13] {
     [zoom>=12][zoom<=15] {
       marker-type:ellipse;
@@ -344,9 +329,7 @@
       line-cap:round;line-join:round;
     }
   }
-}
 
-#vector_linear_geometry_16 {
   ::ferry_hwy[rclass=13] {
     [zoom>=16][zoom<=18] {
       marker-type:ellipse;
@@ -530,7 +513,7 @@
       }
     }
   }
-}
+
 
 
 /* ------------------------------------------------------------------- */
@@ -539,7 +522,7 @@
 /* -----                                                         ----- */
 /* ------------------------------------------------------------------- */
 
-#vector_linear_geometry_6 {
+
   ::major_road[rclass=1] {
     [zoom=6] {line-width:0.4;}
     [zoom=7] {line-width:0.75;}
@@ -548,9 +531,7 @@
     [zoom=6] {line-width:.5;}
     [zoom=7] {line-width:.75;}
   }
-}
 
-#vector_linear_geometry_8 {
   ::major_road2-3[rclass>=2][rclass<=3][ramp!=true] {
     [zoom=8] {line-width:0.75;}
     [zoom=9] {line-width:1;}
@@ -566,9 +547,7 @@
     [zoom=8] {line-width:1.5;}
     [zoom=9] {line-width:2;}
   }
-}
 
-#vector_linear_geometry_10 {
   ::surface_ramp[rclass!=0][ramp=true] {
     [zoom>=10][zoom<=11] {line-width:0.5;}
   }
@@ -587,9 +566,7 @@
     [zoom=10] {line-width:2;}
     [zoom=11] {line-width:3;}
   }
-}
 
-#vector_linear_geometry_12 {
   ::river[rclass=11] {
     [zoom>=14][zoom<=15] {line-width:1.0;}
   }
@@ -681,9 +658,7 @@
       [zoom=15] {line-width:1;}
     }
   }
-}
 
-#vector_linear_geometry_16 {
   ::river[rclass=11] {
     [zoom>=16][zoom<=18] {line-width:3;}
   }
