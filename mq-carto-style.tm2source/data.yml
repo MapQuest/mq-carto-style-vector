@@ -1,8 +1,10 @@
 _prefs: 
   disabled: 
+    - vector_point_labels3
+    - vector_linear_labels2
+    - vector_point_labels2
     - vector_linear_labels
     - vector_linear_geometry_overlay
-    - vector_point_labels
     - boundingbox
   inspector: false
   mapid: ''
@@ -10,9 +12,9 @@ _prefs:
   saveCenter: true
 attribution: ''
 center: 
-  - -76.3206
-  - 40.2048
-  - 11
+  - -76.2068
+  - 40.0212
+  - 14
 description: ''
 Layer: 
   - id: boundingbox
@@ -89,7 +91,7 @@ Layer:
       password: ''
       port: ''
       table: |-
-        (SELECT the_geom,id,rclass,name,area/NULLIF(!pixel_width!*!pixel_height!,0) AS area_pixels FROM
+        (SELECT the_geom,id,rclass,area/NULLIF(!pixel_width!*!pixel_height!,0) AS area_pixels FROM
           (SELECT * FROM vector_polygonal_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8
           UNION ALL
           SELECT * FROM vector_polygonal_geometry_8 WHERE z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
@@ -107,7 +109,6 @@ Layer:
     fields: 
       id: Number
       area_pixels: Area in pixels. Pixels measured at the vector tile scale, not the final rendered scale
-      name: Name of the feature
       rclass: Number
     properties: 
       "buffer-size": 8
@@ -317,7 +318,7 @@ Layer:
       max_size: 512
       password: ''
       port: ''
-      table: |-
+      table: |
         (SELECT 
             placement_id, label_id, min_zoom, max_zoom, the_geom, class, name,
             length(name) AS name_len, display_class, feature_area 
@@ -330,6 +331,8 @@ Layer:
                 pl.*, (unnest(pr.labels)).* 
               FROM vector_point_label_placements pl 
               INNER JOIN vector_point_label_properties pr ON pl.label_id = pr.label_id) x
+              WHERE z(!scale_denominator!) >= min_zoom 
+                AND (z(!scale_denominator!) < max_zoom+1 OR max_zoom IS NULL OR max_zoom = 18)
             ORDER BY display_class ASC) 
           AS data0)
         AS data

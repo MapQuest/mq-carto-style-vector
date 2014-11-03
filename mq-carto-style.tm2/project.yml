@@ -9,9 +9,9 @@ bounds:
   - 180
   - 85.0511
 center: 
-  - -75.4156
-  - 40.628
-  - 10
+  - -76.1957
+  - 40.6067
+  - 9
 description: ''
 format: "png8:m=h"
 interactivity_layer: ''
@@ -24,7 +24,8 @@ styles:
   - base.mss
   - polygonal.mss
   - linear.mss
-  - point_label.mss
+  - place_label.mss
+  - highway_label.mss
   - linear_label.mss
   - point_label2.mss
   - linear_label2.mss
