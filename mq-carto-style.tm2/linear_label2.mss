@@ -4,7 +4,7 @@
 #vector_linear_labels::admin_boundary_labels {
   [zoom>=10][zoom<=18] {
     text-name:"''";
-    text-face-name:"Open Sans Bold";
+    text-face-name: @bold-fonts;
     text-placement:line;
     text-halo-radius:2;
     text-min-padding:20;

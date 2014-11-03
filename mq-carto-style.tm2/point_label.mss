@@ -37,7 +37,7 @@
     /* national capital markers with labels */
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
-      shield-face-name:"Open Sans Regular";
+      shield-face-name: @book-fonts;
       shield-fill:#000000;
       shield-halo-radius:1;
       shield-text-transform:uppercase;
@@ -59,7 +59,7 @@
     /* national capital point labels only */
     [zoom>=14][zoom<=18] {
       text-name:"[name]";
-      text-face-name:"Open Sans Semibold";
+      text-face-name: @semibold-fonts;
       text-fill:#000000;
       text-halo-radius:1;
       text-wrap-width:20;
@@ -74,7 +74,7 @@
     /* state capital point markers with labels */
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
-      shield-face-name:"Open Sans Regular";
+      shield-face-name: @book-fonts;
       shield-fill:#000000;
       shield-halo-radius:1;
       shield-file:url("markers/capital2.svg");
@@ -95,7 +95,7 @@
     /* state capital point labels only */
     [zoom>=14][zoom<=18] {
       text-name:"[name]";
-      text-face-name:"Open Sans Semibold";
+      text-face-name: @semibold-fonts;
       text-fill:#000000;
       text-halo-radius:1;
       text-wrap-width:20;
@@ -110,7 +110,7 @@
     /* city point markers with labels */
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
-      shield-face-name:"Open Sans Regular";
+      shield-face-name: @book-fonts;
       shield-fill:#000000;
       shield-halo-radius:1;
       shield-file:url("markers/city1.svg");
@@ -132,7 +132,7 @@
     /* city point labels only */
     [zoom>=14][zoom<=18] {
       text-name:"[name]";
-      text-face-name:"Open Sans Regular";
+      text-face-name: @book-fonts;
       text-fill:#000000;
       text-halo-radius:1;
       text-wrap-width:20;
@@ -145,7 +145,7 @@
   /*-----country labels——*/
   ::country_labels[class=1030][zoom>=4][zoom<=9] {
     text-name:"[name]";
-    text-face-name:"Open Sans Bold";
+    text-face-name: @bold-fonts;
     text-fill:#9e887e;
     text-halo-radius:2;
     text-wrap-width:20;
@@ -180,7 +180,7 @@
   /*-----county labels——*/
   ::county_labels[class=1038][zoom=9] {
     text-name:"[name]";
-    text-face-name:"Open Sans Semibold";
+    text-face-name: @semibold-fonts;
     text-fill:#9e6c58;
     text-halo-radius:2;
     text-wrap-width:20;
@@ -193,7 +193,7 @@
   /*-----state labels——*/
   ::state_labels[class=1031][zoom>=5][zoom<=9] {
     text-name:"[name]";
-    text-face-name:"Open Sans Semibold";
+    text-face-name: @semibold-fonts;
     text-fill:#b3a098;
     text-halo-radius:2;
     text-wrap-width:20;
@@ -211,7 +211,7 @@
     /* national capital markers with labels */
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
-      shield-face-name:"Open Sans Regular";
+      shield-face-name: @book-fonts;
       shield-fill:#000000;
       shield-halo-radius:1;
       shield-text-transform:uppercase;
@@ -243,7 +243,7 @@
     /* national capital point labels only */
     [zoom>=14][zoom<=18] {
       text-name:"[name]";
-      text-face-name:"Open Sans Regular";
+      text-face-name: @book-fonts;
       text-fill:#000000;
       text-halo-radius:1;
       text-wrap-width:20;
@@ -257,7 +257,7 @@
     /* state capital point markers with labels */
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
-      shield-face-name:"Open Sans Regular";
+      shield-face-name: @book-fonts;
       shield-fill:#000000;
       shield-halo-radius:1;
       shield-file:url("markers/capital2.svg");
@@ -288,7 +288,7 @@
     /* state capital point labels only */
     [zoom>=14][zoom<=18] {
       text-name:"[name]";
-      text-face-name:"Open Sans Regular";
+      text-face-name: @book-fonts;
       text-fill:#000000;
       text-halo-radius:1;
       text-wrap-width:20;
@@ -302,7 +302,7 @@
     /* city point markers with labels */
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
-      shield-face-name:"Open Sans Regular";
+      shield-face-name: @book-fonts;
       shield-fill:#000000;
       shield-file:url("markers/city1.svg");
       shield-halo-radius:1;
@@ -336,7 +336,7 @@
     /* city point labels only */
     [zoom>=14][zoom<=18] {
       text-name:"[name]";
-      text-face-name:"Open Sans Regular";
+      text-face-name: @book-fonts;
       text-fill:#000000;
       text-halo-radius:1;
       text-wrap-width:20;
@@ -351,7 +351,7 @@
     /* national capital markers with labels */
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
-      shield-face-name:"Open Sans Regular";
+      shield-face-name: @book-fonts;
       shield-fill:#000000;
       shield-halo-radius:1;
       shield-text-transform:uppercase;
@@ -379,7 +379,7 @@
     /* national capital point labels only */
     [zoom>=14][zoom<=18] {
       text-name:"[name]";
-      text-face-name:"Open Sans Regular";
+      text-face-name: @book-fonts;
       text-fill:#000000;
       text-halo-radius:1;
       text-wrap-width:20;
@@ -394,7 +394,7 @@
     /* state capital point markers with labels */
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
-      shield-face-name:"Open Sans Regular";
+      shield-face-name: @book-fonts;
       shield-fill:#000000;
       shield-halo-radius:1;
       shield-file:url("markers/capital2.svg");
@@ -421,7 +421,7 @@
     /* state capital point labels only */
     [zoom>=14][zoom<=18] {
       text-name:"[name]";
-      text-face-name:"Open Sans Regular";
+      text-face-name: @book-fonts;
       text-fill:#000000;
       text-halo-radius:1;
       text-wrap-width:20;
@@ -437,7 +437,7 @@
 #vector_point_labels::hwy_shield[class>=1][class<=591][zoom>=6][zoom<=18] {
   [class>=1][class<=2] {
     shield-name:"[name]";
-    shield-face-name:"Open Sans Bold";
+    shield-face-name: @bold-fonts;
     shield-fill:#000000;
     shield-size:11;
     shield-text-dy:1;
@@ -455,20 +455,20 @@
 
     /* US shields */
     [class=1] {
-      shield-face-name:"Open Sans Bold";
+      shield-face-name: @bold-fonts;
       shield-fill:#ffffff;
       [name_len<=2] {shield-file:url("markers/rsInterstate.svg");}
       [name_len>=3] {shield-file:url("markers/rsInterstateW.svg");}
     }
     [class=2] {
-      shield-face-name:"Open Sans Bold";
+      shield-face-name: @bold-fonts;
       [name_len<=2] {shield-file:url("markers/rsUS.svg");}
       [name_len>=3] {shield-file:url("markers/rsUSW.svg");}
     }
   }
   [class>=3][class<=591][zoom>=7][zoom<=18] {
     shield-name:"[name]";
-    shield-face-name:"Open Sans Bold";
+    shield-face-name: @bold-fonts;
     shield-fill:#000000;
     shield-size:11;
     shield-file:url("markers/poi.svg");
@@ -718,7 +718,7 @@
     [zoom>=7][zoom<=13] {
       [zoom>=7][display_class=3] {
         shield-name:"[name]";
-        shield-face-name:"Open Sans Regular";
+        shield-face-name: @book-fonts;
         shield-fill:#666666;
         shield-min-distance:25;
         shield-file:url("markers/city3.svg");
@@ -731,7 +731,7 @@
       }
       [zoom=8][display_class<=4] {
         shield-name:"[name]";
-        shield-face-name:"Open Sans Regular";
+        shield-face-name: @book-fonts;
         shield-fill:#666666;
         shield-min-distance:25;
         shield-file:url("markers/city3.svg");
@@ -745,7 +745,7 @@
       [zoom>=9][zoom<=13] {
         shield-name:"[name]";
         shield-avoid-edges:true;
-        shield-face-name:"Open Sans Regular";
+        shield-face-name: @book-fonts;
         shield-fill:#333333;
         shield-min-distance:25;
         shield-file:url("markers/city3.svg");
@@ -777,7 +777,7 @@
     /* city point labels only */
     [zoom>=14][zoom<=18] {
       text-name:"[name]";
-      text-face-name:"Open Sans Regular";
+      text-face-name: @book-fonts;
       text-fill:#000000;
       text-halo-radius:1;
       text-wrap-width:20;
@@ -793,7 +793,7 @@
   ::shield[class=1040] {[zoom>=13][zoom<=14] {marker-file:url("markers/exitPt.svg");marker-ignore-placement:true;}}
   ::number {
     shield-name:"[name]";
-    shield-face-name:"Open Sans Bold";
+    shield-face-name: @bold-fonts;
     shield-fill:#ffffff;
     shield-min-distance:15;
     shield-size:11;

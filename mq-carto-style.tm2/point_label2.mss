@@ -10,7 +10,7 @@
     }
     ::text[zoom>=10][zoom<=18] {
       text-name:"''";
-      text-face-name:"Open Sans Regular";
+      text-face-name: @book-fonts;
       text-fill:#666666;
       text-size:11;
       text-dy:-15;
@@ -29,7 +29,7 @@
   }
   ::neighborhood[class=1025][zoom>=13][zoom<=18] {
     text-name:"[name]";
-    text-face-name:"Open Sans Regular";
+    text-face-name: @book-fonts;
     text-size:11;
     [zoom>=15][zoom<=18] {text-size:13}
     text-fill:#826255;
@@ -42,7 +42,7 @@
   }
   ::national_park[class=1061][zoom>=7][zoom<=18] {
     text-name:"''";
-    text-face-name:"Open Sans Italic";
+    text-face-name: @oblique-fonts;
     [zoom=7][display_class=0] {text-name:"[name]";text-size:11;}
     [zoom=8][display_class>=0][display_class<=1] {text-name:"[name]";text-size:11;}
     [zoom=9][display_class>=0][display_class<=2] {text-name:"[name]";text-size:11;}
@@ -67,7 +67,7 @@
   }
   ::national_forest[class=1055][zoom>=7][zoom<=18] {
     text-name:"[name]";
-    text-face-name:"Open Sans Italic";
+    text-face-name: @oblique-fonts;
     [zoom=7][display_class>=0][display_class<=1] {text-name:"[name]";text-size:11;}
     [zoom=8][display_class>=0][display_class<=2] {text-name:"[name]";text-size:11;}
     [zoom=9][display_class>=0][display_class<=3] {text-name:"[name]";text-size:11;}
@@ -92,7 +92,7 @@
   }
   ::water[class=1050],[class=1051],[class=1052],[class=1054] {
     text-name:"''";
-    text-face-name:"Open Sans Italic";
+    text-face-name: @oblique-fonts;
     [class=1050] {
       [zoom>=4][zoom<=5][display_class<=1] {text-name:"[name]"}
       [zoom>=6][zoom<=7][display_class<=2] {text-name:"[name]"}
@@ -149,7 +149,7 @@
   }
   ::POI1[class=1057],[class=1056],[class=1062],[class=1085],[class=1075],[class=1097] {
     text-name:"''";
-    text-face-name:"Open Sans Italic";
+    text-face-name: @oblique-fonts;
     text-wrap-width:50;
     text-min-distance:10;
     [zoom>=7][zoom<=8] {}
@@ -210,7 +210,7 @@
     ::icon {marker-file:url("markers/golf.svg");}
     ::text[zoom>=15][zoom<=18] {
       text-name:"[name]";
-      text-face-name:"Open Sans Regular";
+      text-face-name: @book-fonts;
       text-fill:#006837;
       text-size:11;
       text-dy:-15;
@@ -224,7 +224,7 @@
     ::icon {marker-file:url("markers/hospital.svg");}
     ::text[zoom>=16][zoom<=18] {
       text-name:"[name]";
-      text-face-name:"Open Sans Regular";
+      text-face-name: @book-fonts;
       text-fill:#666666;
       text-size:11;
       text-dy:-15;
@@ -238,7 +238,7 @@
     ::icon {marker-file:url("markers/parking.svg");}
     ::text[zoom>=16][zoom<=18] {
       text-name:"[name]";
-      text-face-name:"Open Sans Regular";
+      text-face-name: @book-fonts;
       text-fill:#666666;
       text-size:11;
       text-dy:-15;
@@ -251,7 +251,7 @@
 
   ::POI2[class=1071],[class=1079],[class=1080],[class=1081] {
     text-name:"''";
-    text-face-name: "Open Sans Regular";
+    text-face-name: @book-fonts;
     text-fill:#666666;
     text-min-distance:10;
     text-halo-radius:2;
@@ -290,7 +290,7 @@
     [class=1097],[class=1098],[class=1099],[class=1102],[class=1104],[class=1100],[class=1101] {
     [zoom>=16][zoom<=18] {
       text-name:"[name]";
-      text-face-name:"Open Sans Regular";
+      text-face-name: @book-fonts;
       text-fill:#666666;
       text-min-distance:10;
       text-halo-radius:2;

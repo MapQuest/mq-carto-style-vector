@@ -1,3 +1,8 @@
+@book-fonts: "Open Sans Regular";
+@semibold-fonts: "Open Sans Semibold";
+@bold-fonts: "Open Sans Bold";
+@oblique-fonts: "Open Sans Italic";
+
 @water: #b9c6d1;
 @background_2-6: #f0f5df;
 @background_7-8: #f4f5df;
