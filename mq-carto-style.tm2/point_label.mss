@@ -753,23 +753,6 @@
         shield-unlock-image:true;
         shield-horizontal-alignment:right;
         shield-text-dy:-5;shield-text-dx:3;
-/*        [dir=0] {
-          shield-horizontal-alignment:right;
-          shield-text-dy:-5;shield-text-dx:3;
-        }
-        [dir=1] {
-          shield-horizontal-alignment:right;
-          shield-text-dy:5;shield-text-dx:3;
-        }
-        [dir=2] {
-          shield-horizontal-alignment:left;
-          shield-text-dy:-5;shield-text-dx:-3;
-        }
-        [dir=3] {
-          shield-horizontal-alignment:left;
-          shield-text-dy:4;shield-text-dx:-4;
-        }
-*/
         [zoom>=9][zoom<=12] {shield-halo-fill:@background_9-12;}
         [zoom=13] {shield-halo-fill:@background_13-15;}
         [display_class=3] {

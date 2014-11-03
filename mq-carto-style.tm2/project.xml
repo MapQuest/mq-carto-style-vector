@@ -4,7 +4,7 @@
 
 <Parameters>
   <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
-  <Parameter name="center">-80.0244,33.9251,5</Parameter>
+  <Parameter name="center">-75.6161,40.4705,10</Parameter>
   <Parameter name="format">png8:m=h</Parameter>
   <Parameter name="maxzoom">19</Parameter>
   <Parameter name="minzoom">0</Parameter>

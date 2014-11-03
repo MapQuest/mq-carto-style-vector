@@ -318,20 +318,26 @@ Layer:
       password: ''
       port: ''
       table: |-
-        (SELECT placement_id, label_id, min_zoom, max_zoom, the_geom, class, name,
-        length(name) AS name_len, display_class, feature_area, dir FROM (SELECT
-        placement_id, label_id, min_zoom, max_zoom, the_geom, class,
-        unnest(text_elements) AS name, display_class, feature_area,
-        floor(random()*4) AS dir from (SELECT pl.*,(unnest(pr.labels)).* FROM
-        vector_point_label_placements pl INNER JOIN vector_point_label_properties
-        pr ON pl.label_id = pr.label_id) x ORDER BY display_class ASC) AS data0)
+        (SELECT 
+            placement_id, label_id, min_zoom, max_zoom, the_geom, class, name,
+            length(name) AS name_len, display_class, feature_area 
+          FROM 
+          (SELECT
+              placement_id, label_id, min_zoom, max_zoom, the_geom, class,
+              unnest(text_elements) AS name, display_class, feature_area
+            FROM 
+            (SELECT 
+                pl.*, (unnest(pr.labels)).* 
+              FROM vector_point_label_placements pl 
+              INNER JOIN vector_point_label_properties pr ON pl.label_id = pr.label_id) x
+            ORDER BY display_class ASC) 
+          AS data0)
         AS data
       type: postgis
       user: ''
     description: ''
     fields: 
       class: Number
-      dir: Number
       display_class: Number
       feature_area: Number
       label_id: Number
