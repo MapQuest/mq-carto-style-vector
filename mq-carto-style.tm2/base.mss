@@ -1,3 +1,4 @@
+@water: #b9c6d1;
 @background_2-6: #f0f5df;
 @background_7-8: #f4f5df;
 @background_9-12: #f5f4e1;

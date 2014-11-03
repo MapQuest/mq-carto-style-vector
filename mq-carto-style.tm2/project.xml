@@ -4,7 +4,7 @@
 
 <Parameters>
   <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
-  <Parameter name="center">-75.2797,40.1098,15</Parameter>
+  <Parameter name="center">-80.0244,33.9251,5</Parameter>
   <Parameter name="format">png8:m=h</Parameter>
   <Parameter name="maxzoom">19</Parameter>
   <Parameter name="minzoom">0</Parameter>
@@ -42,6 +42,28 @@
 <Layer name="boundingbox"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     <StyleName>boundingbox</StyleName>  </Layer>
+
+<Style name="natearth_ocean_10m" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <PolygonSymbolizer fill="#b9c6d1" />
+  </Rule>
+</Style>
+<Layer name="natearth_ocean_10m"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+    <StyleName>natearth_ocean_10m</StyleName>  </Layer>
+
+<Style name="natearth_lakes_10m" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <PolygonSymbolizer fill="#b9c6d1" />
+  </Rule>
+</Style>
+<Layer name="natearth_lakes_10m"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+    <StyleName>natearth_lakes_10m</StyleName>  </Layer>
 
 <Style name="vector_polygonal_geometry-national_monument" filter-mode="first">
   <Rule>
@@ -389,6 +411,141 @@
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     <StyleName>vector_linear_county-casing</StyleName>
     <StyleName>vector_linear_county-fill</StyleName>  </Layer>
+
+<Style name="natearth_state_borders_10m-fill" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>6500000</MaxScaleDenominator>
+    <MinScaleDenominator>1500</MinScaleDenominator>
+    <LineSymbolizer stroke-width="1" stroke="#9e9a78" stroke-dasharray="5, 5, 10, 5" stroke-linecap="butt" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>6500000</MinScaleDenominator>
+    <LineSymbolizer stroke-width="0.75" stroke="#9e9a78" stroke-dasharray="5, 5, 10, 5" stroke-linecap="butt" stroke-linejoin="round" />
+  </Rule>
+</Style>
+<Style name="natearth_state_borders_10m-casing" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>6500000</MaxScaleDenominator>
+    <MinScaleDenominator>1500</MinScaleDenominator>
+    <LineSymbolizer stroke-width="4" stroke="#cccfb6" stroke-linecap="round" stroke-linejoin="miter" stroke-opacity="0.5" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>6500000</MinScaleDenominator>
+    <LineSymbolizer stroke-width="3" stroke="#d1d4b4" stroke-linecap="round" stroke-linejoin="miter" stroke-opacity="0.5" />
+  </Rule>
+</Style>
+<Style name="natearth_state_borders_10m" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([iso] = 'CAN')</Filter>
+    <LineSymbolizer stroke-width="0.75" stroke="#b8b38c" stroke-linecap="round" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
+    <Filter>([iso] = 'CAN')</Filter>
+    <LineSymbolizer stroke-width="0.5" stroke="#b8b38c" stroke-linecap="round" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([iso] = 'USA')</Filter>
+    <LineSymbolizer stroke-width="0.75" stroke="#b8b38c" stroke-linecap="round" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
+    <Filter>([iso] = 'USA')</Filter>
+    <LineSymbolizer stroke-width="0.5" stroke="#b8b38c" stroke-linecap="round" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([iso] = 'AUS')</Filter>
+    <LineSymbolizer stroke-width="0.75" stroke="#b8b38c" stroke-linecap="round" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
+    <Filter>([iso] = 'AUS')</Filter>
+    <LineSymbolizer stroke-width="0.5" stroke="#b8b38c" stroke-linecap="round" stroke-linejoin="round" />
+  </Rule>
+</Style>
+<Layer name="natearth_state_borders_10m"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+    <StyleName>natearth_state_borders_10m</StyleName>
+    <StyleName>natearth_state_borders_10m-casing</StyleName>
+    <StyleName>natearth_state_borders_10m-fill</StyleName>  </Layer>
+
+<Style name="natearth_country_borders_10m-fill" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>6500000</MaxScaleDenominator>
+    <MinScaleDenominator>1500</MinScaleDenominator>
+    <LineSymbolizer stroke-width="1" stroke="#94a688" stroke-dasharray="6, 6, 12, 6" stroke-linecap="butt" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>6500000</MinScaleDenominator>
+    <LineSymbolizer stroke-width="1" stroke="#94a688" stroke-dasharray="6, 6, 12, 6" stroke-linecap="butt" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <LineSymbolizer stroke-width="1" stroke="#94a688" stroke-dasharray="4, 4, 10, 4" stroke-linecap="butt" stroke-linejoin="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
+    <LineSymbolizer stroke-width="0.5" stroke="#728069" stroke-dasharray="4, 4, 8, 4" stroke-linecap="butt" stroke-linejoin="round" />
+  </Rule>
+</Style>
+<Style name="natearth_country_borders_10m-casing" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>6500000</MaxScaleDenominator>
+    <MinScaleDenominator>1500</MinScaleDenominator>
+    <LineSymbolizer stroke-width="7" stroke="#c2ccc0" stroke-linecap="round" stroke-linejoin="miter" stroke-opacity="0.5" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>6500000</MinScaleDenominator>
+    <LineSymbolizer stroke-width="5" stroke="#bed4ba" stroke-linecap="round" stroke-linejoin="miter" stroke-opacity="0.5" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <LineSymbolizer stroke-width="4" stroke="#c6d9c3" stroke-linecap="round" stroke-linejoin="miter" stroke-opacity="0.5" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
+    <LineSymbolizer stroke-width="3" stroke="#bcd1b8" stroke-linecap="round" stroke-linejoin="miter" stroke-opacity="0.5" />
+  </Rule>
+</Style>
+<Layer name="natearth_country_borders_10m"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+    <StyleName>natearth_country_borders_10m-casing</StyleName>
+    <StyleName>natearth_country_borders_10m-fill</StyleName>  </Layer>
+
+<Style name="natearth_roads-freeway" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([type] = 'Major Highway')</Filter>
+    <LineSymbolizer stroke-width="0.5" stroke="#a5b3c7" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
+    <Filter>([type] = 'Major Highway')</Filter>
+    <LineSymbolizer stroke-width="0.4" stroke="#bbc5d4" />
+  </Rule>
+</Style>
+<Layer name="natearth_roads"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+    <StyleName>natearth_roads-freeway</StyleName>  </Layer>
 
 <Style name="vector_linear_geometry-major_road1_fill/oneway" filter-mode="first">
   <Rule>

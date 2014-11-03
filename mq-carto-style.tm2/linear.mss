@@ -23,7 +23,7 @@
   }
 }
 
-/*
+
 #natearth_state_borders_10m {
   [zoom=4] {
     [iso='USA'],[iso='CAN'],[iso='AUS'] {
@@ -63,20 +63,20 @@
     ::fill {line-width:1;line-color:#94a688;line-dasharray:6,6,12,6;line-cap:butt;line-join:round;}
   }
 }
-*/
+
 /* ------------------------------------------------------------------- */
 /* -----                                                         ----- */
 /* -----                SMALL SCALE HIGHWAY SPECS                ----- */
 /* -----                                                         ----- */
 /* ------------------------------------------------------------------- */
-/*
+
 #natearth_roads {
   ::freeway[type='Major Highway'] {
     [zoom=4] {line-width:0.4;line-color:#bbc5d4;}
     [zoom=5] {line-width:0.5;line-color:#a5b3c7;}
   }
 }
-*/
+
 /* ------------------------------------------------------------------- */
 /* -----                                                         ----- */
 /* -----                      LINEAR COLORS                      ----- */
@@ -186,7 +186,11 @@
     }
   }
   ::river[rclass=11] {
-    [zoom>=14][zoom<=15] {line-color:#b9c6d1;line-cap:round;line-join:round;}
+    [zoom>=14][zoom<=15] {
+      line-color: @water;
+      line-cap:round;
+      line-join:round;
+    }
   }
   ::railroad[rclass=14] {
     [zoom>=13][zoom<=15] {
@@ -342,7 +346,10 @@
     }
   }
   ::river[rclass=11] {
-    [zoom>=16][zoom<=18] {line-color:#b9c6d1;line-cap:round;line-join:round;}
+    [zoom>=16][zoom<=18] {
+      line-color: @water;
+      line-cap:round;
+      line-join:round;}
   }
   ::stairs[rclass=9] {
     [zoom>=16][zoom<=18] {line-color:#f4d18e;line-cap:round;line-join:round;}
@@ -513,7 +520,7 @@
       }
     }
   }
-
+}
 
 
 /* ------------------------------------------------------------------- */
@@ -522,7 +529,7 @@
 /* -----                                                         ----- */
 /* ------------------------------------------------------------------- */
 
-
+#vector_linear_geometry {
   ::major_road[rclass=1] {
     [zoom=6] {line-width:0.4;}
     [zoom=7] {line-width:0.75;}

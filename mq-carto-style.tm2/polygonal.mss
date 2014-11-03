@@ -1,7 +1,7 @@
-/*
-#natearth_ocean_10m [zoom>=4][zoom<=5]{polygon-fill:#b9c6d1;}
-#natearth_lakes_10m [zoom>=4][zoom<=5]{polygon-fill:#b9c6d1;}
-*/
+#natearth_ocean_10m[zoom >= 4][zoom < 6],
+#natearth_lakes_10m[zoom >= 4][zoom < 6] {
+  polygon-fill: @water;
+}
 
 #vector_polygonal_geometry {
   ::beach[rclass = 4][zoom >= 6] {
