@@ -4,7 +4,7 @@
 
 <Parameters>
   <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
-  <Parameter name="center">-76.4497,40.4809,10</Parameter>
+  <Parameter name="center">-77.205,40.1846,10</Parameter>
   <Parameter name="format">png8:m=h</Parameter>
   <Parameter name="maxzoom">19</Parameter>
   <Parameter name="minzoom">0</Parameter>
@@ -14719,28 +14719,28 @@
     <StyleName>vector_point_labels-booth_and_gate/tollbooth</StyleName>
     <StyleName>vector_point_labels-booth_and_gate/gate</StyleName>  </Layer>
 
-<Style name="vector_linear_geometry_overlay" filter-mode="first">
+<Style name="highway_overlay" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
     <MinScaleDenominator>5000</MinScaleDenominator>
     <Filter>([rclass] = 0) and ([ramp] != true)</Filter>
-    <ShieldSymbolizer file="markers/transparent-15.png" spacing="10" opacity="0" face-name="Open Sans Bold" placement="line" />
+    <ShieldSymbolizer file="markers/transparent-15.png" spacing="10" face-name="Open Sans Bold" placement="line" opacity="0" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>5000</MaxScaleDenominator>
+    <Filter>([rclass] = 0) and ([ramp] != true)</Filter>
+    <ShieldSymbolizer file="markers/transparent-25.png" spacing="15" face-name="Open Sans Bold" placement="line" opacity="0" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
     <Filter>([rclass] = 0) and ([ramp] != true)</Filter>
-    <ShieldSymbolizer file="markers/transparent-10.png" spacing="5" opacity="0" face-name="Open Sans Bold" placement="line" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>5000</MaxScaleDenominator>
-    <Filter>([rclass] = 0) and ([ramp] != true)</Filter>
-    <ShieldSymbolizer file="markers/transparent-25.png" spacing="15" opacity="0" face-name="Open Sans Bold" placement="line" />
+    <ShieldSymbolizer face-name="Open Sans Bold" placement="line" opacity="0" file="markers/transparent-10.png" spacing="5" />
   </Rule>
 </Style>
-<Layer name="vector_linear_geometry_overlay"
+<Layer name="highway_overlay"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
-    <StyleName>vector_linear_geometry_overlay</StyleName>  </Layer>
+    <StyleName>highway_overlay</StyleName>  </Layer>
 
 <Style name="vector_linear_labels-surface_features/river" filter-mode="first">
   <Rule>
@@ -18905,10 +18905,6 @@
     <StyleName>vector_point_labels2-point/enclosed_traffic_area/text</StyleName>
     <StyleName>vector_point_labels2-point/POI2</StyleName>
     <StyleName>vector_point_labels2-point/POI3</StyleName>  </Layer>
-
-<Layer name="vector_linear_labels2"
-  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
-      </Layer>
 
 <Style name="vector_point_labels3-building" filter-mode="first">
   <Rule>

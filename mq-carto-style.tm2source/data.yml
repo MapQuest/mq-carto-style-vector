@@ -1,10 +1,8 @@
 _prefs: 
   disabled: 
     - vector_point_labels3
-    - vector_linear_labels2
     - vector_point_labels2
     - vector_linear_labels
-    - vector_linear_geometry_overlay
     - boundingbox
   inspector: false
   mapid: ''
@@ -12,9 +10,9 @@ _prefs:
   saveCenter: true
 attribution: ''
 center: 
-  - -76.2724
-  - 40.0622
-  - 13
+  - -76.4333
+  - 40.0435
+  - 12
 description: ''
 Layer: 
   - id: boundingbox
@@ -29,7 +27,7 @@ Layer:
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
   - id: natearth_ocean_10m
     Datasource: 
-      dbname: ''
+      dbname: MnPADB
       extent: -180, -85.05112877980659, 180, 85.05112877980659
       geometry_field: the_geom
       geometry_table: ''
@@ -51,7 +49,7 @@ Layer:
     srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
   - id: natearth_lakes_10m
     Datasource: 
-      dbname: ''
+      dbname: MnPADB
       extent: -180, -85.05112877980659, 180, 85.05112877980659
       geometry_field: the_geom
       geometry_table: ''
@@ -81,7 +79,7 @@ Layer:
     srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
   - id: vector_polygonal_geometry
     Datasource: 
-      dbname: ''
+      dbname: MnPADB
       extent: -20037508,-20037508,20037508,20037508
       geometry_field: the_geom
       geometry_table: ''
@@ -91,7 +89,7 @@ Layer:
       password: ''
       port: ''
       table: |-
-        (SELECT the_geom,id,rclass,area/NULLIF(!pixel_width!*!pixel_height!,0) AS area_pixels FROM
+        (SELECT the_geom,id,rclass,area/NULLIF(!pixel_width!::float*!pixel_height!::float,0) AS area_pixels FROM
           (SELECT * FROM vector_polygonal_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8
           UNION ALL
           SELECT * FROM vector_polygonal_geometry_8 WHERE z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
@@ -115,7 +113,7 @@ Layer:
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
   - id: vector_linear_county
     Datasource: 
-      dbname: ''
+      dbname: MnPADB
       extent: -20037508,-20037508,20037508,20037508
       geometry_field: the_geom
       geometry_table: ''
@@ -150,7 +148,7 @@ Layer:
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
   - id: natearth_state_borders_10m
     Datasource: 
-      dbname: ''
+      dbname: MnPADB
       extent: -180, -85.05112877980659, 180, 85.05112877980659
       geometry_field: the_geom
       geometry_table: ''
@@ -188,7 +186,7 @@ Layer:
     srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
   - id: natearth_country_borders_10m
     Datasource: 
-      dbname: ''
+      dbname: MnPADB
       extent: -180, -85.05112877980659, 180, 85.05112877980659
       geometry_field: the_geom
       geometry_table: ''
@@ -223,7 +221,7 @@ Layer:
     srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
   - id: natearth_roads
     Datasource: 
-      dbname: ''
+      dbname: MnPADB
       extent: -180, -85.05112877980659, 180, 85.05112877980659
       geometry_field: the_geom
       geometry_table: ''
@@ -272,7 +270,7 @@ Layer:
     srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
   - id: vector_linear_geometry
     Datasource: 
-      dbname: ''
+      dbname: MnPADB
       extent: -20037508,-20037508,20037508,20037508
       geometry_field: the_geom
       geometry_table: ''
@@ -312,7 +310,7 @@ Layer:
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
   - id: vector_point_labels
     Datasource: 
-      dbname: ''
+      dbname: MnPADB
       extent: -20037508,-20037508,20037508,20037508
       geometry_field: the_geom
       geometry_table: ''
@@ -355,9 +353,9 @@ Layer:
     properties: 
       "buffer-size": 64
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
-  - id: vector_linear_geometry_overlay
+  - id: highway_overlay
     Datasource: 
-      dbname: ''
+      dbname: MnPADB
       extent: -20037508,-20037508,20037508,20037508
       geometry_field: the_geom
       geometry_table: ''
@@ -366,10 +364,22 @@ Layer:
       max_size: 512
       password: ''
       port: ''
-      table: (SELECT * FROM vector_linear_geometry_12 WHERE rclass != 15) AS data
+      table: |-
+        (SELECT * FROM 
+         (SELECT * FROM vector_linear_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8 -- rclass=15 does not appear here
+          UNION ALL
+          SELECT * FROM vector_linear_geometry_8 WHERE z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
+          UNION ALL
+          SELECT * FROM vector_linear_geometry_10 WHERE z(!scale_denominator!) >= 10 AND z(!scale_denominator!) < 12
+          UNION ALL
+          SELECT * FROM vector_linear_geometry_12 WHERE z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
+          UNION ALL
+          SELECT * FROM vector_linear_geometry_16 WHERE z(!scale_denominator!) >= 16) AS r
+         WHERE rclass = 0
+        ) AS highway_overlay
       type: postgis
       user: ''
-    description: ''
+    description: Highway geometries, for the purpose of excluding other labels
     fields: 
       id: Number
       admin_level: Number
@@ -380,7 +390,7 @@ Layer:
       restriction: Boolean
       toll: Boolean
     properties: 
-      "buffer-size": 8
+      "buffer-size": 16
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
   - id: vector_linear_labels
     Datasource: 
@@ -393,7 +403,12 @@ Layer:
       max_size: 512
       password: ''
       port: ''
-      table: vector_linear_labels
+      table: |-
+        (SELECT * FROM vector_linear_labels 
+          WHERE (rclass IN (1, 2, 3, 12, 16) AND z(!scale_denominator!) >= 10) -- major roads
+            OR (rclass IN (4, 5, 6, 14, 11) AND z(!scale_denominator!) >= 14) -- minor roads, rivers, ferries, railways
+          ORDER BY path_priority DESC, rclass DESC
+        ) AS vector_linear_labels
       type: postgis
       user: ''
     description: ''
@@ -407,7 +422,7 @@ Layer:
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
   - id: vector_point_labels2
     Datasource: 
-      dbname: ''
+      dbname: MnPADB
       extent: -20037508,-20037508,20037508,20037508
       geometry_field: the_geom
       geometry_table: ''
@@ -450,32 +465,9 @@ Layer:
     properties: 
       "buffer-size": 64
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
-  - id: vector_linear_labels2
-    Datasource: 
-      dbname: ''
-      extent: -20037508,-20037508,20037508,20037508
-      geometry_field: the_geom
-      geometry_table: ''
-      host: ''
-      key_field: ''
-      max_size: 512
-      password: ''
-      port: ''
-      table: vector_linear_labels
-      type: postgis
-      user: ''
-    description: ''
-    fields: 
-      id: Number
-      name: String
-      path_priority: Number
-      rclass: Number
-    properties: 
-      "buffer-size": 64
-    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
   - id: vector_point_labels3
     Datasource: 
-      dbname: ''
+      dbname: MnPADB
       extent: -20037508,-20037508,20037508,20037508
       geometry_field: the_geom
       geometry_table: ''

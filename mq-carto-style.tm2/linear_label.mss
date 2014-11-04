@@ -50,12 +50,20 @@
 }
 
 /* this layer prevents surface street text from crossing over highways */
-#vector_linear_geometry_overlay [zoom>=11][rclass=0][ramp!=true] {
+#highway_overlay [zoom>=11][rclass=0][ramp!=true] {
   shield-face-name: @bold-fonts;
-  shield-placement:line;
-  [zoom>=11][zoom<=13] {shield-file:url("markers/transparent-10.png");shield-spacing:5;shield-opacity:0;}
-  [zoom>=14][zoom<=16] {shield-file:url("markers/transparent-15.png");shield-spacing:10;shield-opacity:0;}
-  [zoom>=17] {shield-file:url("markers/transparent-25.png");shield-spacing:15;shield-opacity:0;}
+  shield-placement: line;
+  shield-opacity:0;
+  shield-file:url("markers/transparent-10.png");
+  shield-spacing:5;
+  [zoom >= 14][zoom < 17] {
+    shield-file:url("markers/transparent-15.png");
+    shield-spacing:10;
+  }
+  [zoom >= 17] {
+    shield-file:url("markers/transparent-25.png");
+    shield-spacing:15;
+  }
 }
 
 #vector_linear_labels::surface_features {
