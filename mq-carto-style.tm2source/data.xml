@@ -194,16 +194,19 @@ SELECT * FROM vector_linear_geometry_16 WHERE rclass = 15 AND z(!scale_denominat
        <Parameter name="max_size"><![CDATA[512]]></Parameter>
        <Parameter name="password"><![CDATA[]]></Parameter>
        <Parameter name="port"><![CDATA[]]></Parameter>
-       <Parameter name="table"><![CDATA[(SELECT * FROM vector_linear_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8 -- rclass=15 does not appear here
-UNION ALL
-SELECT * FROM vector_linear_geometry_8 WHERE rclass != 15 AND z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
-UNION ALL
-SELECT * FROM vector_linear_geometry_10 WHERE rclass != 15 AND z(!scale_denominator!) >= 10 AND z(!scale_denominator!) < 12
-UNION ALL
-SELECT * FROM vector_linear_geometry_12 WHERE rclass != 15 AND z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
-UNION ALL
-SELECT * FROM vector_linear_geometry_16 WHERE rclass != 15 AND z(!scale_denominator!) >= 16
-) AS vector_linear_geometry]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT the_geom, id, rclass, ramp, toll, restriction, oneway, brunnel, admin_level
+  FROM
+  (SELECT * FROM vector_linear_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8 -- rclass=15 does not appear here
+  UNION ALL
+  SELECT * FROM vector_linear_geometry_8 WHERE rclass != 15 AND z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
+  UNION ALL
+  SELECT * FROM vector_linear_geometry_10 WHERE rclass != 15 AND z(!scale_denominator!) >= 10 AND z(!scale_denominator!) < 12
+  UNION ALL
+  SELECT * FROM vector_linear_geometry_12 WHERE rclass != 15 AND z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
+  UNION ALL
+  SELECT * FROM vector_linear_geometry_16 WHERE rclass != 15 AND z(!scale_denominator!) >= 16) AS r
+ORDER BY rclass DESC
+ ) AS vector_linear_geometry]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[]]></Parameter>
     </Datasource>

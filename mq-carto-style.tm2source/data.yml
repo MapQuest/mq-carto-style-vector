@@ -282,16 +282,19 @@ Layer:
       password: ''
       port: ''
       table: |-
-        (SELECT * FROM vector_linear_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8 -- rclass=15 does not appear here
-        UNION ALL
-        SELECT * FROM vector_linear_geometry_8 WHERE rclass != 15 AND z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
-        UNION ALL
-        SELECT * FROM vector_linear_geometry_10 WHERE rclass != 15 AND z(!scale_denominator!) >= 10 AND z(!scale_denominator!) < 12
-        UNION ALL
-        SELECT * FROM vector_linear_geometry_12 WHERE rclass != 15 AND z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
-        UNION ALL
-        SELECT * FROM vector_linear_geometry_16 WHERE rclass != 15 AND z(!scale_denominator!) >= 16
-        ) AS vector_linear_geometry
+        (SELECT the_geom, id, rclass, ramp, toll, restriction, oneway, brunnel, admin_level
+          FROM
+          (SELECT * FROM vector_linear_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8 -- rclass=15 does not appear here
+          UNION ALL
+          SELECT * FROM vector_linear_geometry_8 WHERE rclass != 15 AND z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
+          UNION ALL
+          SELECT * FROM vector_linear_geometry_10 WHERE rclass != 15 AND z(!scale_denominator!) >= 10 AND z(!scale_denominator!) < 12
+          UNION ALL
+          SELECT * FROM vector_linear_geometry_12 WHERE rclass != 15 AND z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
+          UNION ALL
+          SELECT * FROM vector_linear_geometry_16 WHERE rclass != 15 AND z(!scale_denominator!) >= 16) AS r
+        ORDER BY rclass DESC
+         ) AS vector_linear_geometry
       type: postgis
       user: ''
     description: ''
