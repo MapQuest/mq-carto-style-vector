@@ -3,7 +3,7 @@
 <Map srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
 
 <Parameters>
-  <Parameter name="center">-76.2407,40.0391,13</Parameter>
+  <Parameter name="center">-76.2728,40.0505,13</Parameter>
   <Parameter name="format">pbf</Parameter>
   <Parameter name="json"><![CDATA[{"vector_layers":[{"id":"boundingbox","description":"","fields":{"Id":"Number"}},{"id":"natearth_ocean_10m","description":"Low-zoom Natural Earth sourced oceans","fields":{"gid":"Number","scalerank":"Number","featurecla":"String"}},{"id":"natearth_lakes_10m","description":"","fields":{"gid":"Number","featurecla":"String","scalerank":"Number","name":"String","name_abb":"String","name_alt":"String","note":"String","delta":"String","dam_name":"String","year":"Number","admin":"String"}},{"id":"vector_polygonal_geometry","description":"","fields":{"id":"Number","rclass":"Number","area_pixels":"Area in pixels. Pixels measured at the vector tile scale, not the final rendered scale"}},{"id":"vector_linear_county","description":"","fields":{"id":"Number","rclass":"Number","ramp":"Boolean","toll":"Boolean","restriction":"Boolean","oneway":"Boolean","brunnel":"Number","admin_level":"Number"}},{"id":"natearth_state_borders_10m","description":"","fields":{"gid":"Number","scalerank":"Number","featurecla":"String","name":"String","adm0_a3":"String","adm0_name":"String","shape_leng":"Number","mapcolor13":"Number","mapcolor9":"Number","sov_a3":"String","name_l":"String","name_r":"String","name_alt_l":"String","name_alt_r":"String","name_loc_l":"String","name_loc_r":"String","name_len_l":"Number","name_len_r":"Number","note":"String"}},{"id":"natearth_country_borders_10m","description":"","fields":{"gid":"Number","fid_ne_10m":"Number","scalerank":"Number","featurecla":"String","note_":"String","name":"String","comment":"String","adm0_usa":"Number","adm0_left":"String","adm0_right":"String","adm0_a3_l":"String","adm0_a3_r":"String","sov_a3_l":"String","sov_a3_r":"String","type":"String","labelrank":"Number"}},{"id":"natearth_roads","description":"","fields":{"gid":"Number","scalerank":"Number","featurecla":"String","type":"String","sov_a3":"String","note":"String","edited":"String","name":"String","namealt":"String","namealtt":"String","routeraw":"String","question":"Number","length_km":"Number","toll":"Number","ne_part":"String","label":"String","label2":"String","local":"String","localtype":"String","localalt":"String","labelrank":"Number","ignore":"Number","add":"Number","rwdb_rd_id":"Number","orig_fid":"Number","prefix":"String","uident":"Number","continent":"String","expressway":"Number","level":"String"}},{"id":"vector_linear_geometry","description":"","fields":{"id":"Number","rclass":"Number","ramp":"Boolean","toll":"Boolean","restriction":"Boolean","oneway":"Boolean","brunnel":"Number","admin_level":"Number"}},{"id":"vector_point_labels","description":"","fields":{"placement_id":"Number","label_id":"Number","min_zoom":"Number","max_zoom":"Number","class":"Number","name":"String","name_len":"Number","display_class":"Number","feature_area":"Number"}},{"id":"vector_linear_geometry_overlay","description":"","fields":{"id":"Number","rclass":"Number","ramp":"Boolean","toll":"Boolean","restriction":"Boolean","oneway":"Boolean","brunnel":"Number","admin_level":"Number"}},{"id":"vector_linear_labels","description":"","fields":{"id":"Number","rclass":"Number","path_priority":"Number","name":"String"}},{"id":"vector_point_labels2","description":"","fields":{"placement_id":"Number","label_id":"Number","min_zoom":"Number","max_zoom":"Number","class":"Number","name":"String","name_len":"Number","display_class":"Number","feature_area":"Number"}},{"id":"vector_linear_labels2","description":"","fields":{"id":"Number","rclass":"Number","path_priority":"Number","name":"String"}},{"id":"vector_point_labels3","description":"","fields":{"placement_id":"Number","label_id":"Number","min_zoom":"Number","max_zoom":"Number","class":"Number","name":"String","name_len":"Number","display_class":"Number","feature_area":"Number"}}]}]]></Parameter>
   <Parameter name="maxzoom">15</Parameter>
@@ -225,22 +225,21 @@ SELECT * FROM vector_linear_geometry_16 WHERE rclass != 15 AND z(!scale_denomina
        <Parameter name="port"><![CDATA[]]></Parameter>
        <Parameter name="table"><![CDATA[(SELECT 
     placement_id, label_id, min_zoom, max_zoom, the_geom, class, name,
-    length(name) AS name_len, display_class, feature_area 
-  FROM 
+    length(name) AS name_len, display_class, feature_area
+  FROM
   (SELECT
       placement_id, label_id, min_zoom, max_zoom, the_geom, class,
       unnest(text_elements) AS name, display_class, feature_area
-    FROM 
-    (SELECT 
+    FROM
+    (SELECT
         pl.*, (unnest(pr.labels)).* 
-      FROM vector_point_label_placements pl 
+      FROM vector_point_label_placements pl
       INNER JOIN vector_point_label_properties pr ON pl.label_id = pr.label_id) x
-      WHERE z(!scale_denominator!) >= min_zoom 
-        AND (z(!scale_denominator!) < max_zoom+1 OR max_zoom IS NULL OR max_zoom = 18)
-    ORDER BY display_class ASC) 
-  AS data0)
-AS data
-]]></Parameter>
+    WHERE class IN (1000, 1010, 1020, 1030, 1031, 1038) OR class BETWEEN 1 AND 591
+      AND z(!scale_denominator!) >= min_zoom
+      AND (z(!scale_denominator!) < max_zoom+1 OR max_zoom IS NULL OR max_zoom = 18)
+    ORDER BY display_class ASC, feature_area DESC, min_zoom DESC) AS data0
+) AS data]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[]]></Parameter>
     </Datasource>
@@ -267,7 +266,7 @@ AS data
   </Layer>
 
 <Layer name="vector_linear_labels"
-  buffer-size="8"
+  buffer-size="64"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     
     <Datasource>
@@ -323,7 +322,7 @@ AS data]]></Parameter>
   </Layer>
 
 <Layer name="vector_linear_labels2"
-  buffer-size="8"
+  buffer-size="64"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     
     <Datasource>

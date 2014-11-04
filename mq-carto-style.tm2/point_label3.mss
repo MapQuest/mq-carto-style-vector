@@ -1,5 +1,5 @@
 #vector_point_labels3 {
-  ::cemetery[class=1072][zoom>=14][zoom<=18] {
+  ::cemetery[class=1072][zoom>=14] {
     text-name:"[name]";
     text-face-name: @oblique-fonts;
     text-fill:#629243;
@@ -10,9 +10,9 @@
     text-wrap-width:20;
     text-size:11;
     [zoom=15] {text-size:13}
-    [zoom>=16][zoom<=18] {text-size:14}
+    [zoom>=16] {text-size:14}
   }
-  ::building[class=1065][zoom>=16][zoom<=18] {
+  ::building[class=1065][zoom>=16] {
     text-name:"[name]";
     text-face-name: @oblique-fonts;
     text-fill:#666666;

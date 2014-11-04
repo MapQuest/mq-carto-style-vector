@@ -2,7 +2,7 @@
 // still need to confirm class for admin 0, admin 1 and admin 8 boundaries in vector linear labels table
 
 #vector_linear_labels::admin_boundary_labels {
-  [zoom>=10][zoom<=18] {
+  [zoom>=10] {
     text-name:"''";
     text-face-name: @bold-fonts;
     text-placement:line;
@@ -22,9 +22,9 @@
       text-name:"[name]";
       text-size:12;
       text-fill:#9e6c58;
-      [zoom>=13][zoom<=18] {text-size:13}
+      [zoom>=13] {text-size:13}
     }
-    [rclass=8][zoom>=11][zoom<=18] { // admin level 8
+    [rclass=8][zoom>=11] { // admin level 8
       text-name:"[name]";
       text-size:11;
       text-fill:#b3a098;

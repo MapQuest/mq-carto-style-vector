@@ -39,7 +39,7 @@
     ::casing {line-width:3;line-color:#d1d4b4;line-cap:round;line-join:miter;line-opacity:.5}
     ::fill {line-width:.75;line-color:#9e9a78;line-dasharray:5,5,10,5;line-cap:butt;line-join:round;}
   }
-  [zoom>=7][zoom<=18] {
+  [zoom>=7] {
     ::casing {line-width:4;line-color:#cccfb6;line-cap:round;line-join:miter;line-opacity:.5}
     ::fill {line-width:1;line-color:#9e9a78;line-dasharray:5,5,10,5;line-cap:butt;line-join:round;}
   }
@@ -58,7 +58,7 @@
     ::casing {line-width:5;line-color:#bed4ba;line-cap:round;line-join:miter;line-opacity:.5}
     ::fill {line-width:1;line-color:#94a688;line-dasharray:6,6,12,6;line-cap:butt;line-join:round;}
   }
-  [zoom>=7][zoom<=18] {
+  [zoom>=7] {
     ::casing {line-width:7;line-color:#c2ccc0;line-cap:round;line-join:miter;line-opacity:.5}
     ::fill {line-width:1;line-color:#94a688;line-dasharray:6,6,12,6;line-cap:butt;line-join:round;}
   }
@@ -335,7 +335,7 @@
   }
 
   ::ferry_hwy[rclass=13] {
-    [zoom>=16][zoom<=18] {
+    [zoom>=16] {
       marker-type:ellipse;
       marker-fill:#fff;
       marker-height:2;
@@ -346,19 +346,19 @@
     }
   }
   ::river[rclass=11] {
-    [zoom>=16][zoom<=18] {
+    [zoom>=16] {
       line-color: @water;
       line-cap:round;
       line-join:round;}
   }
   ::stairs[rclass=9] {
-    [zoom>=16][zoom<=18] {line-color:#f4d18e;line-cap:round;line-join:round;}
+    [zoom>=16] {line-color:#f4d18e;line-cap:round;line-join:round;}
   }
   ::cyclepath[rclass=10] {
-    [zoom>=16][zoom<=18] {line-color:#f4d18e;line-cap:round;line-join:round;}
+    [zoom>=16] {line-color:#f4d18e;line-cap:round;line-join:round;}
   }
   ::pedestrian[rclass=8] {
-    [zoom>=16][zoom<=18] {
+    [zoom>=16] {
       marker-type:ellipse;
       marker-fill:#cfa893;
       marker-height:2;
@@ -370,16 +370,16 @@
   }
   ::parking_aisle[rclass=7] {
     ::casing {
-      [zoom>=16][zoom<=18] {line-color:#cccccc;line-cap:round;line-join:round;}
+      [zoom>=16] {line-color:#cccccc;line-cap:round;line-join:round;}
     }
     ::fill {
-      [zoom>=16][zoom<=18] {line-color:#e5e5e5;line-cap:round;line-join:round;}
+      [zoom>=16] {line-color:#e5e5e5;line-cap:round;line-join:round;}
     }
   }
   ::railroad[rclass=14] {
-    ::casing[zoom>=16][zoom<=18] {line-color:#ccc7be;line-cap:round;line-join:round;}
-    ::fill[zoom>=16][zoom<=18] {
-      [zoom>=16][zoom<=18] {
+    ::casing[zoom>=16] {line-color:#ccc7be;line-cap:round;line-join:round;}
+    ::fill[zoom>=16] {
+      [zoom>=16] {
         line-color:#ffffff;line-cap:butt;line-join:round;
         [zoom=16] {line-dasharray:4,3}
         [zoom=17] {line-dasharray:5,4}
@@ -388,110 +388,110 @@
     }
   }
   ::service_road[rclass=6] {
-    ::casing[zoom>=16][zoom<=18] {
+    ::casing[zoom>=16] {
       line-color:#d6d6d6;line-cap:round;line-join:round;
       [restriction=true] {line-color:#c9c9c9}
     }
-    ::fill[zoom>=16][zoom<=18] {
+    ::fill[zoom>=16] {
       line-color:#ebebeb;line-cap:round;line-join:round;
       [restriction=true] {line-color:#ebebeb}
     }
-    ::oneway[zoom>=16][zoom<=18][oneway=true][ramp!=true][rclass=6] {
+    ::oneway[zoom>=16][oneway=true][ramp!=true][rclass=6] {
       [zoom=16] {line-pattern-file:url(markers/oneway_4-6_16.png);}
-      [zoom>=17][zoom<=18] {line-pattern-file:url(markers/oneway_4-6_17-18.png);}
+      [zoom>=17] {line-pattern-file:url(markers/oneway_4-6_17-18.png);}
       line-pattern-smooth:1;
     }
   }
   ::minor_road_casing[rclass=5][ramp!=true] {
-    [zoom>=16][zoom<=18] {
+    [zoom>=16] {
       line-color:#e6e6e6;line-cap:round;line-join:round;
       [restriction=true] {line-color:#c9c9c9}
     }
   }
   ::surface_ramp[rclass!=0][ramp=true] {
-    [zoom>=16][zoom<=18] {line-cap:round;line-join:round;}
-    ::casing[zoom>=16][zoom<=18] {
+    [zoom>=16] {line-cap:round;line-join:round;}
+    ::casing[zoom>=16] {
       [zoom=16] {line-color:#f2ce80;}
-      [zoom>=17][zoom<=18] {line-color:#f2d28d;}
+      [zoom>=17] {line-color:#f2d28d;}
       [restriction=true] {line-color:#c9c9c9}
     }
-    ::fill[zoom>=16][zoom<=18] {
+    ::fill[zoom>=16] {
       line-color:#f2ddb3;
       [restriction=true] {line-color:#ebebeb}
     }
   }
   ::major_road4_casing[rclass=4][ramp!=true] {
-    [zoom>=16][zoom<=18] {
+    [zoom>=16] {
       line-color:#dbdbdb;line-cap:round;line-join:round;}
       [restriction=true] {line-color:#969696}
   }
   ::major_road2-3_casing[rclass>=2][rclass<=3][ramp!=true] {
-    [zoom>=16][zoom<=18] {
+    [zoom>=16] {
       line-color:#e3dd86;line-cap:round;line-join:round;}
   }
   ::major_road1_casing[rclass=1][ramp!=true] {
-    [zoom>=16][zoom<=18] {
+    [zoom>=16] {
       line-color:#f2c97c;line-cap:round;line-join:round;}
   }
   ::minor_road_fill[rclass=5][ramp!=true] {
-    [zoom>=16][zoom<=18] {
+    [zoom>=16] {
       line-color:#ffffff;line-cap:round;line-join:round;
       [restriction=true] {line-color:#ebebeb}
     }
-    ::oneway[zoom>=16][zoom<=18][oneway=true][ramp!=true][rclass=5] {
+    ::oneway[zoom>=16][oneway=true][ramp!=true][rclass=5] {
       [zoom=16] {line-pattern-file:url(markers/oneway_4-6_16.png);}
-      [zoom>=17][zoom<=18] {line-pattern-file:url(markers/oneway_4-6_17-18.png);}
+      [zoom>=17] {line-pattern-file:url(markers/oneway_4-6_17-18.png);}
       line-pattern-smooth:1;
     }
   }
   ::major_road4_fill[rclass=4][ramp!=true] {
-    [zoom>=16][zoom<=18] {
+    [zoom>=16] {
       line-color:#ffffff;line-cap:round;line-join:round;
       [restriction=true] {line-color:#d2d2d2}
     }
-    ::oneway[zoom>=16][zoom<=18][oneway=true][ramp!=true][rclass=4] {
+    ::oneway[zoom>=16][oneway=true][ramp!=true][rclass=4] {
       [zoom=16] {line-pattern-file:url(markers/oneway_4-6_16.png);}
-      [zoom>=17][zoom<=18] {line-pattern-file:url(markers/oneway_4-6_17-18.png);}
+      [zoom>=17] {line-pattern-file:url(markers/oneway_4-6_17-18.png);}
       line-pattern-smooth:1;
     }
   }
   ::major_road2-3_fill[rclass>=2][rclass<=3][ramp!=true] {
-    [zoom>=16][zoom<=18] {
+    [zoom>=16] {
       line-color:#faf0b6;line-cap:round;line-join:round;}
-    ::oneway[zoom>=16][zoom<=18][oneway=true][ramp!=true][rclass>=2][rclass<=3] {
+    ::oneway[zoom>=16][oneway=true][ramp!=true][rclass>=2][rclass<=3] {
       [zoom=16] {line-pattern-file:url(markers/oneway_2-3_16.png);}
-      [zoom>=17][zoom<=18] {line-pattern-file:url(markers/oneway_2-3_17-18.png);}
+      [zoom>=17] {line-pattern-file:url(markers/oneway_2-3_17-18.png);}
       line-pattern-smooth:1;
     }
   }
   ::major_road1_fill[rclass=1][ramp!=true] {
-    [zoom>=16][zoom<=18] {
+    [zoom>=16] {
       line-color:#f5e5c6;line-cap:round;line-join:round;}
-    ::oneway[zoom>=16][zoom<=18][oneway=true][ramp!=true][rclass=1] {
+    ::oneway[zoom>=16][oneway=true][ramp!=true][rclass=1] {
       [zoom=16] {line-pattern-file:url(markers/oneway_1_16.png);}
-      [zoom>=17][zoom<=18] {line-pattern-file:url(markers/oneway_1_17-18.png);}
+      [zoom>=17] {line-pattern-file:url(markers/oneway_1_17-18.png);}
       line-pattern-smooth:1;
     }
   }
   ::freeway_ramp[rclass=0][ramp=true] {                      /* includes free and toll ramps */
-    [zoom>=16][zoom<=18] {line-cap:round;line-join:round;}
+    [zoom>=16] {line-cap:round;line-join:round;}
     ::casing {
-      [zoom>=16][zoom<=18] {
+      [zoom>=16] {
         [toll=false] {line-color:#b6c7e4;}
         [toll=true] {line-color:#99cca4;}
       }
     }
     ::fill {
-      [zoom>=16][zoom<=18] {
+      [zoom>=16] {
         [toll=false] {line-color:#cdd8ec;}
         [toll=true] {line-color:#add9b7;}
       }
     }
   }
   ::freeway[rclass=0][ramp!=true] {
-    [zoom>=16][zoom<=18] {
+    [zoom>=16] {
       ::casing {
-        [zoom>=16][zoom<=18] {
+        [zoom>=16] {
           [toll=false] {line-color:#95add8;}
           [toll=true] {line-color:#7fbd84;}
           [brunnel=2] {line-dasharray:8,8;line-cap:butt;}
@@ -499,7 +499,7 @@
         }
       }
       ::fill {
-        [zoom>=16][zoom<=18] {
+        [zoom>=16] {
           [toll=false] {line-color:#b6c7e4;}
           [toll=true] {line-color:#b1dbba;}
           [brunnel=2] {line-dasharray:8,8;line-cap:butt;}
@@ -511,7 +511,7 @@
           [toll=false] {line-color:#cadcfa;}
           [toll=true] {line-color:#c4e2ca;}
         }
-        [zoom>=17][zoom<=18] {
+        [zoom>=17] {
           [toll=false] {line-color:#d1dbed;}
           [toll=true] {line-color:#cfe8d4;}
         }
@@ -667,13 +667,13 @@
   }
 
   ::river[rclass=11] {
-    [zoom>=16][zoom<=18] {line-width:3;}
+    [zoom>=16] {line-width:3;}
   }
   ::stairs[rclass=9] {
-    [zoom>=16][zoom<=18] {line-width:1;}
+    [zoom>=16] {line-width:1;}
   }
   ::cyclepath[rclass=10] {
-    [zoom>=16][zoom<=18] {line-width:1;}
+    [zoom>=16] {line-width:1;}
   }
   ::railroad[rclass=14] {
     ::casing {
@@ -688,8 +688,8 @@
     }
   }
   ::parking_aisle[rclass=7] {
-    ::casing {[zoom>=16][zoom<=18] {line-width:5}}
-    ::fill {[zoom>=16][zoom<=18] {line-width:2}}
+    ::casing {[zoom>=16] {line-width:5}}
+    ::fill {[zoom>=16] {line-width:2}}
   }
   ::service_road[rclass=6] {
     ::casing {
@@ -782,7 +782,7 @@
     }
     ::centerline {
       [zoom=16] {line-width:2}
-      [zoom>=17][zoom<=18] {line-width:2}
+      [zoom>=17] {line-width:2}
     }
   }
 }

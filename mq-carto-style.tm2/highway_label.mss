@@ -1,4 +1,4 @@
-#vector_point_labels::hwy_shield[class>=1][class<=591][zoom>=6][zoom<=18] {
+#vector_point_labels::hwy_shield[class>=1][class<=591][zoom>=6] {
   [class>=1][class<=2] {
     shield-name:"[name]";
     shield-face-name: @bold-fonts;
@@ -30,7 +30,7 @@
       [name_len>=3] {shield-file:url("markers/rsUSW.svg");}
     }
   }
-  [class>=3][class<=591][zoom>=7][zoom<=18] {
+  [class>=3][class<=591][zoom>=7] {
     shield-name:"[name]";
     shield-face-name: @bold-fonts;
     shield-fill:#000000;
@@ -339,21 +339,21 @@
       }
     }
     /* city point labels only */
-    [zoom>=14][zoom<=18] {
+    [zoom>=14] {
       text-name:"[name]";
       text-face-name: @book-fonts;
       text-fill:#000000;
       text-halo-radius:1;
       text-wrap-width:20;
       [zoom>=13][zoom<=15] {text-halo-fill:@background_13-15}
-      [zoom>=16][zoom<=18] {text-halo-fill:@background_16-18}
+      [zoom>=16] {text-halo-fill:@background_16-18}
       [display_class=3] {text-size:@city_text_3_14}
       [display_class>3] {text-fill:#1a1a1a;text-size:@city_text_4_14;}
     }
   }  
 }
 
-#vector_point_labels::exit_shields[zoom>=15][zoom<=18][class=1040] {
+#vector_point_labels::exit_shields[zoom>=15][class=1040] {
   ::shield[class=1040] {[zoom>=13][zoom<=14] {marker-file:url("markers/exitPt.svg");marker-ignore-placement:true;}}
   ::number {
     shield-name:"[name]";
@@ -372,6 +372,6 @@
 }
 
 #vector_point_labels::booth_and_gate {
-  ::tollbooth[class=1041] {[zoom>=16][zoom<=18] {marker-file:url("markers/toll.svg");}}
-  ::gate[class=1042] {[zoom>=17][zoom<=18] {marker-file:url("markers/gate.svg");}}
+  ::tollbooth[class=1041] {[zoom>=16] {marker-file:url("markers/toll.svg");}}
+  ::gate[class=1042] {[zoom>=17] {marker-file:url("markers/gate.svg");}}
 }

@@ -31,7 +31,6 @@
 @city_text_2_45:11;
 
 #vector_point_labels::admin {
-
   /*----- city labels - display_class 0 ——*/
   ::national_capital_0[class=1000][display_class=0] {
     /* national capital markers with labels */
@@ -57,16 +56,16 @@
       [zoom>=12][zoom<=13] {shield-size:@city_text_0_1213}
     }
     /* national capital point labels only */
-    [zoom>=14][zoom<=18] {
+    [zoom>=14] {
       text-name:"[name]";
       text-face-name: @semibold-fonts;
       text-fill:#000000;
       text-halo-radius:1;
       text-wrap-width:20;
       text-character-spacing:2;
-      [display_class=0][zoom>=13][zoom<=18] {text-transform:uppercase;}
+      [display_class=0][zoom>=13] {text-transform:uppercase;}
       [zoom>=14][zoom<=15] {text-halo-fill:@background_13-15}
-      [zoom>=16][zoom<=18] {text-halo-fill:@background_16-18}
+      [zoom>=16] {text-halo-fill:@background_16-18}
       text-size:@city_text_0_14;
     }
   }
@@ -93,7 +92,7 @@
       [zoom>=12][zoom<=13] {shield-size:@city_text_0_1213}
     }
     /* state capital point labels only */
-    [zoom>=14][zoom<=18] {
+    [zoom>=14] {
       text-name:"[name]";
       text-face-name: @semibold-fonts;
       text-fill:#000000;
@@ -102,7 +101,7 @@
       text-character-spacing:2;
       text-transform:uppercase;
       [zoom>=14][zoom<=15] {text-halo-fill:@background_13-15;}
-      [zoom>=16][zoom<=18] {text-halo-fill:@background_16-18;}
+      [zoom>=16] {text-halo-fill:@background_16-18;}
       text-size:@city_text_0_14;
     }
   }
@@ -130,7 +129,7 @@
       [zoom=13] {shield-text-transform:uppercase;}
     }
     /* city point labels only */
-    [zoom>=14][zoom<=18] {
+    [zoom>=14] {
       text-name:"[name]";
       text-face-name: @book-fonts;
       text-fill:#000000;
@@ -138,7 +137,7 @@
       text-wrap-width:20;
       text-transform:uppercase;
       [zoom>=14][zoom<=15] {text-halo-fill:@background_13-15}
-      [zoom>=16][zoom<=18] {text-halo-fill:@background_16-18}
+      [zoom>=16] {text-halo-fill:@background_16-18}
       text-size:@city_text_0_14;
     }
   }
@@ -154,7 +153,7 @@
     [zoom>=7][zoom<=8] {text-halo-fill:@background_7-8}
     [zoom>=9][zoom<=12] {text-halo-fill:@background_9-12}
     [zoom>=13][zoom<=15] {text-halo-fill:@background_13-15}
-    [zoom>=16][zoom<=18] {text-halo-fill:@background_16-18}
+    [zoom>=16] {text-halo-fill:@background_16-18}
     [display_class=0] {
       [zoom>=4][zoom<=5] {text-size:15;}
       [zoom>=6][zoom<=7] {text-size:18;}
@@ -241,14 +240,14 @@
       }
     }
     /* national capital point labels only */
-    [zoom>=14][zoom<=18] {
+    [zoom>=14] {
       text-name:"[name]";
       text-face-name: @book-fonts;
       text-fill:#000000;
       text-halo-radius:1;
       text-wrap-width:20;
       [zoom>=14][zoom<=15] {text-halo-fill:@background_13-15}
-      [zoom>=16][zoom<=18] {text-halo-fill:@background_16-18}
+      [zoom>=16] {text-halo-fill:@background_16-18}
       [display_class=1] {text-size:@city_text_1_14}
       [display_class=2] {text-fill:#4d4d4d;text-size:@city_text_2_14}
     }
@@ -286,14 +285,14 @@
       }
     }
     /* state capital point labels only */
-    [zoom>=14][zoom<=18] {
+    [zoom>=14] {
       text-name:"[name]";
       text-face-name: @book-fonts;
       text-fill:#000000;
       text-halo-radius:1;
       text-wrap-width:20;
       [zoom>=14][zoom<=15] {text-halo-fill:@background_13-15;text-transform:uppercase;}
-      [zoom>=16][zoom<=18] {text-halo-fill:@background_16-18;text-transform:uppercase;}
+      [zoom>=16] {text-halo-fill:@background_16-18;text-transform:uppercase;}
       [display_class=1] {text-size:@city_text_1_14}
       [display_class=2] {text-fill:#4d4d4d;text-size:@city_text_2_14}
     }
@@ -334,14 +333,14 @@
       }
     }
     /* city point labels only */
-    [zoom>=14][zoom<=18] {
+    [zoom>=14] {
       text-name:"[name]";
       text-face-name: @book-fonts;
       text-fill:#000000;
       text-halo-radius:1;
       text-wrap-width:20;
       [zoom>=14][zoom<=15] {text-halo-fill:@background_13-15}
-      [zoom>=16][zoom<=18] {text-halo-fill:@background_16-18}
+      [zoom>=16] {text-halo-fill:@background_16-18}
       [display_class=1] {text-size:@city_text_1_14}
       [display_class=2] {text-fill:#1a1a1a;text-size:@city_text_2_14}
     }
@@ -377,14 +376,14 @@
       }
     }
     /* national capital point labels only */
-    [zoom>=14][zoom<=18] {
+    [zoom>=14] {
       text-name:"[name]";
       text-face-name: @book-fonts;
       text-fill:#000000;
       text-halo-radius:1;
       text-wrap-width:20;
       [zoom>=14][zoom<=15] {text-halo-fill:@background_13-15}
-      [zoom>=16][zoom<=18] {text-halo-fill:@background_16-18}
+      [zoom>=16] {text-halo-fill:@background_16-18}
       [display_class=3] {text-size:@city_text_3_14}
       [display_class>3] {text-fill:#666666;text-size:@city_text_4_14}
       [display_class>4] {text-fill:#808080;}
@@ -419,14 +418,14 @@
       }
     }
     /* state capital point labels only */
-    [zoom>=14][zoom<=18] {
+    [zoom>=14] {
       text-name:"[name]";
       text-face-name: @book-fonts;
       text-fill:#000000;
       text-halo-radius:1;
       text-wrap-width:20;
       [zoom>=14][zoom<=15] {text-halo-fill:@background_13-15;text-transform:uppercase;}
-      [zoom>=16][zoom<=18] {text-halo-fill:@background_16-18;text-transform:uppercase;}
+      [zoom>=16] {text-halo-fill:@background_16-18;text-transform:uppercase;}
       [display_class=3] {text-size:@city_text_3_14}
       [display_class>3] {text-fill:#1a1a1a;text-size:@city_text_4_14;}
       [display_class>4] {text-fill:#1a1a1a;}
