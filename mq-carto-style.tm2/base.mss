@@ -11,7 +11,9 @@
 @background_16-18: #f2eddf;
 
 /* buffer to avoid labels getting cut off at tile edge */
-Map {buffer-size:256;}
+Map {
+  buffer-size:256;
+}
 
 /* map background */
 #boundingbox {

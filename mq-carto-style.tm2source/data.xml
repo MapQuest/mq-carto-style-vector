@@ -3,9 +3,9 @@
 <Map srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
 
 <Parameters>
-  <Parameter name="center">-76.4333,40.0435,12</Parameter>
+  <Parameter name="center">-75.1774,39.9549,15</Parameter>
   <Parameter name="format">pbf</Parameter>
-  <Parameter name="json"><![CDATA[{"vector_layers":[{"id":"boundingbox","description":"","fields":{"Id":"Number"}},{"id":"natearth_ocean_10m","description":"Low-zoom Natural Earth sourced oceans","fields":{"gid":"Number","scalerank":"Number","featurecla":"String"}},{"id":"natearth_lakes_10m","description":"","fields":{"gid":"Number","featurecla":"String","scalerank":"Number","name":"String","name_abb":"String","name_alt":"String","note":"String","delta":"String","dam_name":"String","year":"Number","admin":"String"}},{"id":"vector_polygonal_geometry","description":"","fields":{"id":"Number","rclass":"Number","area_pixels":"Area in pixels. Pixels measured at the vector tile scale, not the final rendered scale"}},{"id":"vector_linear_county","description":"","fields":{"id":"Number","rclass":"Number","ramp":"Boolean","toll":"Boolean","restriction":"Boolean","oneway":"Boolean","brunnel":"Number","admin_level":"Number"}},{"id":"natearth_state_borders_10m","description":"","fields":{"gid":"Number","scalerank":"Number","featurecla":"String","name":"String","adm0_a3":"String","adm0_name":"String","shape_leng":"Number","mapcolor13":"Number","mapcolor9":"Number","sov_a3":"String","name_l":"String","name_r":"String","name_alt_l":"String","name_alt_r":"String","name_loc_l":"String","name_loc_r":"String","name_len_l":"Number","name_len_r":"Number","note":"String"}},{"id":"natearth_country_borders_10m","description":"","fields":{"gid":"Number","fid_ne_10m":"Number","scalerank":"Number","featurecla":"String","note_":"String","name":"String","comment":"String","adm0_usa":"Number","adm0_left":"String","adm0_right":"String","adm0_a3_l":"String","adm0_a3_r":"String","sov_a3_l":"String","sov_a3_r":"String","type":"String","labelrank":"Number"}},{"id":"natearth_roads","description":"","fields":{"gid":"Number","scalerank":"Number","featurecla":"String","type":"String","sov_a3":"String","note":"String","edited":"String","name":"String","namealt":"String","namealtt":"String","routeraw":"String","question":"Number","length_km":"Number","toll":"Number","ne_part":"String","label":"String","label2":"String","local":"String","localtype":"String","localalt":"String","labelrank":"Number","ignore":"Number","add":"Number","rwdb_rd_id":"Number","orig_fid":"Number","prefix":"String","uident":"Number","continent":"String","expressway":"Number","level":"String"}},{"id":"vector_linear_geometry","description":"","fields":{"id":"Number","rclass":"Number","ramp":"Boolean","toll":"Boolean","restriction":"Boolean","oneway":"Boolean","brunnel":"Number","admin_level":"Number"}},{"id":"vector_point_labels","description":"","fields":{"placement_id":"Number","label_id":"Number","min_zoom":"Number","max_zoom":"Number","class":"Number","name":"String","name_len":"Number","display_class":"Number","feature_area":"Number"}},{"id":"highway_overlay","description":"Highway geometries, for the purpose of excluding other labels","fields":{"id":"Number","rclass":"Number","ramp":"Boolean","toll":"Boolean","restriction":"Boolean","oneway":"Boolean","brunnel":"Number","admin_level":"Number"}},{"id":"vector_linear_labels","description":"","fields":{"id":"Number","rclass":"Number","path_priority":"Number","name":"String"}},{"id":"vector_point_labels2","description":"","fields":{"placement_id":"Number","label_id":"Number","min_zoom":"Number","max_zoom":"Number","class":"Number","name":"String","name_len":"Number","display_class":"Number","feature_area":"Number"}},{"id":"vector_point_labels3","description":"","fields":{"placement_id":"Number","label_id":"Number","min_zoom":"Number","max_zoom":"Number","class":"Number","name":"String","name_len":"Number","display_class":"Number","feature_area":"Number"}}]}]]></Parameter>
+  <Parameter name="json"><![CDATA[{"vector_layers":[{"id":"boundingbox","description":"","fields":{"Id":"Number"}},{"id":"natearth_ocean_10m","description":"Low-zoom Natural Earth sourced oceans","fields":{}},{"id":"natearth_lakes_10m","description":"","fields":{}},{"id":"vector_polygonal_geometry","description":"","fields":{"id":"Number","area_pixels":"Area in pixels. Pixels measured at the vector tile scale, not the final rendered scale"}},{"id":"vector_linear_county","description":"","fields":{"id":"Number","rclass":"Number","ramp":"Boolean","toll":"Boolean","restriction":"Boolean","oneway":"Boolean","brunnel":"Number","admin_level":"Number"}},{"id":"natearth_state_borders_10m","description":"","fields":{"gid":"Number","scalerank":"Number","featurecla":"String","name":"String","adm0_a3":"String","adm0_name":"String","shape_leng":"Number","mapcolor13":"Number","mapcolor9":"Number","sov_a3":"String","name_l":"String","name_r":"String","name_alt_l":"String","name_alt_r":"String","name_loc_l":"String","name_loc_r":"String","name_len_l":"Number","name_len_r":"Number","note":"String"}},{"id":"natearth_country_borders_10m","description":"","fields":{"gid":"Number","fid_ne_10m":"Number","scalerank":"Number","featurecla":"String","note_":"String","name":"String","comment":"String","adm0_usa":"Number","adm0_left":"String","adm0_right":"String","adm0_a3_l":"String","adm0_a3_r":"String","sov_a3_l":"String","sov_a3_r":"String","type":"String","labelrank":"Number"}},{"id":"natearth_roads","description":"","fields":{"gid":"Number","scalerank":"Number","featurecla":"String","type":"String","sov_a3":"String","note":"String","edited":"String","name":"String","namealt":"String","namealtt":"String","routeraw":"String","question":"Number","length_km":"Number","toll":"Number","ne_part":"String","label":"String","label2":"String","local":"String","localtype":"String","localalt":"String","labelrank":"Number","ignore":"Number","add":"Number","rwdb_rd_id":"Number","orig_fid":"Number","prefix":"String","uident":"Number","continent":"String","expressway":"Number","level":"String"}},{"id":"vector_linear_geometry","description":"","fields":{"rclass":"Number","ramp":"Boolean","toll":"Boolean","restriction":"Boolean","oneway":"Boolean","brunnel":"Number","admin_level":"Number"}},{"id":"vector_point_labels","description":"","fields":{"placement_id":"Number","label_id":"Number","min_zoom":"Number","max_zoom":"Number","class":"Number","name":"String","name_len":"Number","display_class":"Number","feature_area":"Number"}},{"id":"highway_overlay","description":"Highway geometries, for the purpose of excluding other labels","fields":{"id":"Number","rclass":"Number","ramp":"Boolean","toll":"Boolean","restriction":"Boolean","oneway":"Boolean","brunnel":"Number","admin_level":"Number"}},{"id":"vector_linear_labels","description":"","fields":{"id":"Number","rclass":"Number","path_priority":"Number","name":"String"}},{"id":"vector_point_labels2","description":"","fields":{"placement_id":"Number","label_id":"Number","min_zoom":"Number","max_zoom":"Number","class":"Number","name":"String","name_len":"Number","display_class":"Number","feature_area":"Number"}},{"id":"vector_point_labels3","description":"","fields":{"placement_id":"Number","label_id":"Number","min_zoom":"Number","max_zoom":"Number","class":"Number","name":"String","name_len":"Number","display_class":"Number","feature_area":"Number"}}]}]]></Parameter>
   <Parameter name="maxzoom">16</Parameter>
   <Parameter name="minzoom">0</Parameter>
   <Parameter name="name"><![CDATA[MQ Carto Vector]]></Parameter>
@@ -13,7 +13,7 @@
 
 
 <Layer name="boundingbox"
-  buffer-size="8"
+  buffer-size="2"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     
     <Datasource>
@@ -23,11 +23,11 @@
   </Layer>
 
 <Layer name="natearth_ocean_10m"
-  buffer-size="8"
+  buffer-size="2"
   srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
-       <Parameter name="dbname"><![CDATA[MnPADB]]></Parameter>
+       <Parameter name="dbname"><![CDATA[]]></Parameter>
        <Parameter name="extent"><![CDATA[-180, -85.05112877980659, 180, 85.05112877980659]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[the_geom]]></Parameter>
        <Parameter name="geometry_table"><![CDATA[]]></Parameter>
@@ -36,18 +36,18 @@
        <Parameter name="max_size"><![CDATA[512]]></Parameter>
        <Parameter name="password"><![CDATA[]]></Parameter>
        <Parameter name="port"><![CDATA[]]></Parameter>
-       <Parameter name="table"><![CDATA[natearth_ocean_10m]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT the_geom FROM natearth_ocean_10m) AS natearth_ocean_10m]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[]]></Parameter>
     </Datasource>
   </Layer>
 
 <Layer name="natearth_lakes_10m"
-  buffer-size="8"
+  buffer-size="2"
   srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
-       <Parameter name="dbname"><![CDATA[MnPADB]]></Parameter>
+       <Parameter name="dbname"><![CDATA[]]></Parameter>
        <Parameter name="extent"><![CDATA[-180, -85.05112877980659, 180, 85.05112877980659]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[the_geom]]></Parameter>
        <Parameter name="geometry_table"><![CDATA[]]></Parameter>
@@ -56,7 +56,7 @@
        <Parameter name="max_size"><![CDATA[512]]></Parameter>
        <Parameter name="password"><![CDATA[]]></Parameter>
        <Parameter name="port"><![CDATA[]]></Parameter>
-       <Parameter name="table"><![CDATA[natearth_lakes_10m]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT the_geom FROM natearth_lakes_10m) AS natearth_lakes_10m]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[]]></Parameter>
     </Datasource>
@@ -67,7 +67,7 @@
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     
     <Datasource>
-       <Parameter name="dbname"><![CDATA[MnPADB]]></Parameter>
+       <Parameter name="dbname"><![CDATA[]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[the_geom]]></Parameter>
        <Parameter name="geometry_table"><![CDATA[]]></Parameter>
@@ -76,7 +76,7 @@
        <Parameter name="max_size"><![CDATA[512]]></Parameter>
        <Parameter name="password"><![CDATA[]]></Parameter>
        <Parameter name="port"><![CDATA[]]></Parameter>
-       <Parameter name="table"><![CDATA[(SELECT the_geom,id,rclass,area/NULLIF(!pixel_width!::float*!pixel_height!::float,0) AS area_pixels FROM
+       <Parameter name="table"><![CDATA[(SELECT the_geom,id,rclass AS area_pixels FROM
   (SELECT * FROM vector_polygonal_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8
   UNION ALL
   SELECT * FROM vector_polygonal_geometry_8 WHERE z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
@@ -98,7 +98,7 @@
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     
     <Datasource>
-       <Parameter name="dbname"><![CDATA[MnPADB]]></Parameter>
+       <Parameter name="dbname"><![CDATA[]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[the_geom]]></Parameter>
        <Parameter name="geometry_table"><![CDATA[]]></Parameter>
@@ -125,7 +125,7 @@ SELECT * FROM vector_linear_geometry_16 WHERE rclass = 15 AND z(!scale_denominat
   srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
-       <Parameter name="dbname"><![CDATA[MnPADB]]></Parameter>
+       <Parameter name="dbname"><![CDATA[]]></Parameter>
        <Parameter name="extent"><![CDATA[-180, -85.05112877980659, 180, 85.05112877980659]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[the_geom]]></Parameter>
        <Parameter name="geometry_table"><![CDATA[]]></Parameter>
@@ -145,7 +145,7 @@ SELECT * FROM vector_linear_geometry_16 WHERE rclass = 15 AND z(!scale_denominat
   srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
-       <Parameter name="dbname"><![CDATA[MnPADB]]></Parameter>
+       <Parameter name="dbname"><![CDATA[]]></Parameter>
        <Parameter name="extent"><![CDATA[-180, -85.05112877980659, 180, 85.05112877980659]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[the_geom]]></Parameter>
        <Parameter name="geometry_table"><![CDATA[]]></Parameter>
@@ -165,7 +165,7 @@ SELECT * FROM vector_linear_geometry_16 WHERE rclass = 15 AND z(!scale_denominat
   srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
-       <Parameter name="dbname"><![CDATA[MnPADB]]></Parameter>
+       <Parameter name="dbname"><![CDATA[]]></Parameter>
        <Parameter name="extent"><![CDATA[-180, -85.05112877980659, 180, 85.05112877980659]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[the_geom]]></Parameter>
        <Parameter name="geometry_table"><![CDATA[]]></Parameter>
@@ -181,11 +181,11 @@ SELECT * FROM vector_linear_geometry_16 WHERE rclass = 15 AND z(!scale_denominat
   </Layer>
 
 <Layer name="vector_linear_geometry"
-  buffer-size="8"
+  buffer-size="16"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     
     <Datasource>
-       <Parameter name="dbname"><![CDATA[MnPADB]]></Parameter>
+       <Parameter name="dbname"><![CDATA[]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[the_geom]]></Parameter>
        <Parameter name="geometry_table"><![CDATA[]]></Parameter>
@@ -194,19 +194,23 @@ SELECT * FROM vector_linear_geometry_16 WHERE rclass = 15 AND z(!scale_denominat
        <Parameter name="max_size"><![CDATA[512]]></Parameter>
        <Parameter name="password"><![CDATA[]]></Parameter>
        <Parameter name="port"><![CDATA[]]></Parameter>
-       <Parameter name="table"><![CDATA[(SELECT the_geom, id, rclass, ramp, toll, restriction, oneway, brunnel, admin_level
-  FROM
-  (SELECT * FROM vector_linear_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8 -- rclass=15 does not appear here
-  UNION ALL
-  SELECT * FROM vector_linear_geometry_8 WHERE rclass != 15 AND z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
-  UNION ALL
-  SELECT * FROM vector_linear_geometry_10 WHERE rclass != 15 AND z(!scale_denominator!) >= 10 AND z(!scale_denominator!) < 12
-  UNION ALL
-  SELECT * FROM vector_linear_geometry_12 WHERE rclass != 15 AND z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
-  UNION ALL
-  SELECT * FROM vector_linear_geometry_16 WHERE rclass != 15 AND z(!scale_denominator!) >= 16) AS r
-ORDER BY rclass DESC
- ) AS vector_linear_geometry]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT the_geom, rclass, ramp, toll, restriction, oneway, brunnel, admin_level
+  FROM (
+    SELECT * FROM vector_linear_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8 -- rclass=15 does not appear here
+    UNION ALL
+    SELECT * FROM vector_linear_geometry_8 WHERE rclass IN (0, 1, 2) AND z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
+    UNION ALL
+    SELECT * FROM vector_linear_geometry_10 WHERE rclass IN (0, 1, 2, 3, 13) AND z(!scale_denominator!) >= 10 AND z(!scale_denominator!) < 12
+    UNION ALL
+    SELECT * FROM vector_linear_geometry_12 
+      WHERE (z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16) 
+        AND (rclass IN (0, 1, 2, 3, 4, 13) 
+          OR (rclass IN (6, 14) AND z(!scale_denominator!) >= 13)
+          OR (rclass = 11 AND z(!scale_denominator!) >= 14))
+    UNION ALL
+    SELECT * FROM vector_linear_geometry_16 WHERE rclass != 15 AND z(!scale_denominator!) >= 16) AS r
+  ORDER BY rclass DESC
+) AS vector_linear_geometry]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[]]></Parameter>
     </Datasource>
@@ -217,7 +221,7 @@ ORDER BY rclass DESC
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     
     <Datasource>
-       <Parameter name="dbname"><![CDATA[MnPADB]]></Parameter>
+       <Parameter name="dbname"><![CDATA[]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[the_geom]]></Parameter>
        <Parameter name="geometry_table"><![CDATA[]]></Parameter>
@@ -253,7 +257,7 @@ ORDER BY rclass DESC
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     
     <Datasource>
-       <Parameter name="dbname"><![CDATA[MnPADB]]></Parameter>
+       <Parameter name="dbname"><![CDATA[]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[the_geom]]></Parameter>
        <Parameter name="geometry_table"><![CDATA[]]></Parameter>
@@ -308,7 +312,7 @@ ORDER BY rclass DESC
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     
     <Datasource>
-       <Parameter name="dbname"><![CDATA[MnPADB]]></Parameter>
+       <Parameter name="dbname"><![CDATA[]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[the_geom]]></Parameter>
        <Parameter name="geometry_table"><![CDATA[]]></Parameter>
@@ -344,7 +348,7 @@ AS data]]></Parameter>
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     
     <Datasource>
-       <Parameter name="dbname"><![CDATA[MnPADB]]></Parameter>
+       <Parameter name="dbname"><![CDATA[]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[the_geom]]></Parameter>
        <Parameter name="geometry_table"><![CDATA[]]></Parameter>
