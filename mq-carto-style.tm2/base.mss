@@ -13,6 +13,7 @@
 /* buffer to avoid labels getting cut off at tile edge */
 Map {
   buffer-size:256;
+  font-directory: url("fonts/");
 }
 
 /* map background */
