@@ -399,7 +399,6 @@
     ::oneway[zoom>=16][oneway=true][ramp!=true][rclass=6] {
       [zoom=16] {line-pattern-file:url(markers/oneway_4-6_16.png);}
       [zoom>=17] {line-pattern-file:url(markers/oneway_4-6_17-18.png);}
-      line-pattern-smooth:1;
     }
   }
   ::minor_road_casing[rclass=5][ramp!=true] {
@@ -441,7 +440,6 @@
     ::oneway[zoom>=16][oneway=true][ramp!=true][rclass=5] {
       [zoom=16] {line-pattern-file:url(markers/oneway_4-6_16.png);}
       [zoom>=17] {line-pattern-file:url(markers/oneway_4-6_17-18.png);}
-      line-pattern-smooth:1;
     }
   }
   ::major_road4_fill[rclass=4][ramp!=true] {
@@ -452,7 +450,6 @@
     ::oneway[zoom>=16][oneway=true][ramp!=true][rclass=4] {
       [zoom=16] {line-pattern-file:url(markers/oneway_4-6_16.png);}
       [zoom>=17] {line-pattern-file:url(markers/oneway_4-6_17-18.png);}
-      line-pattern-smooth:1;
     }
   }
   ::major_road2-3_fill[rclass>=2][rclass<=3][ramp!=true] {
@@ -461,7 +458,6 @@
     ::oneway[zoom>=16][oneway=true][ramp!=true][rclass>=2][rclass<=3] {
       [zoom=16] {line-pattern-file:url(markers/oneway_2-3_16.png);}
       [zoom>=17] {line-pattern-file:url(markers/oneway_2-3_17-18.png);}
-      line-pattern-smooth:1;
     }
   }
   ::major_road1_fill[rclass=1][ramp!=true] {
@@ -470,7 +466,6 @@
     ::oneway[zoom>=16][oneway=true][ramp!=true][rclass=1] {
       [zoom=16] {line-pattern-file:url(markers/oneway_1_16.png);}
       [zoom>=17] {line-pattern-file:url(markers/oneway_1_17-18.png);}
-      line-pattern-smooth:1;
     }
   }
   ::freeway_ramp[rclass=0][ramp=true] {                      /* includes free and toll ramps */

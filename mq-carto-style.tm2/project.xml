@@ -4,7 +4,7 @@
 
 <Parameters>
   <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
-  <Parameter name="center">-75.1499,39.962,14</Parameter>
+  <Parameter name="center">-75.1509,39.9637,18</Parameter>
   <Parameter name="format">png8:m=h</Parameter>
   <Parameter name="maxzoom">19</Parameter>
   <Parameter name="minzoom">0</Parameter>
@@ -547,52 +547,52 @@
   <Rule>
     <MaxScaleDenominator>5000</MaxScaleDenominator>
     <Filter>([rclass] = 1) and ([ramp] != true) and ([oneway] = true)</Filter>
-    <LinePatternSymbolizer file="markers/oneway_1_17-18.png" smooth="1" />
+    <LinePatternSymbolizer file="markers/oneway_1_17-18.png" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
     <MinScaleDenominator>5000</MinScaleDenominator>
     <Filter>([rclass] = 1) and ([ramp] != true) and ([oneway] = true)</Filter>
-    <LinePatternSymbolizer file="markers/oneway_1_16.png" smooth="1" />
+    <LinePatternSymbolizer file="markers/oneway_1_16.png" />
   </Rule>
 </Style>
 <Style name="vector_linear_geometry-major_road2-3_fill/oneway" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>5000</MaxScaleDenominator>
     <Filter>([rclass] &gt;= 2) and ([rclass] &lt;= 3) and ([ramp] != true) and ([oneway] = true)</Filter>
-    <LinePatternSymbolizer file="markers/oneway_2-3_17-18.png" smooth="1" />
+    <LinePatternSymbolizer file="markers/oneway_2-3_17-18.png" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
     <MinScaleDenominator>5000</MinScaleDenominator>
     <Filter>([rclass] &gt;= 2) and ([rclass] &lt;= 3) and ([ramp] != true) and ([oneway] = true)</Filter>
-    <LinePatternSymbolizer file="markers/oneway_2-3_16.png" smooth="1" />
+    <LinePatternSymbolizer file="markers/oneway_2-3_16.png" />
   </Rule>
 </Style>
 <Style name="vector_linear_geometry-major_road4_fill/oneway" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>5000</MaxScaleDenominator>
     <Filter>([rclass] = 4) and ([ramp] != true) and ([oneway] = true)</Filter>
-    <LinePatternSymbolizer file="markers/oneway_4-6_17-18.png" smooth="1" />
+    <LinePatternSymbolizer file="markers/oneway_4-6_17-18.png" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
     <MinScaleDenominator>5000</MinScaleDenominator>
     <Filter>([rclass] = 4) and ([ramp] != true) and ([oneway] = true)</Filter>
-    <LinePatternSymbolizer file="markers/oneway_4-6_16.png" smooth="1" />
+    <LinePatternSymbolizer file="markers/oneway_4-6_16.png" />
   </Rule>
 </Style>
 <Style name="vector_linear_geometry-minor_road_fill/oneway" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>5000</MaxScaleDenominator>
     <Filter>([rclass] = 5) and ([ramp] != true) and ([oneway] = true)</Filter>
-    <LinePatternSymbolizer file="markers/oneway_4-6_17-18.png" smooth="1" />
+    <LinePatternSymbolizer file="markers/oneway_4-6_17-18.png" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
     <MinScaleDenominator>5000</MinScaleDenominator>
     <Filter>([rclass] = 5) and ([ramp] != true) and ([oneway] = true)</Filter>
-    <LinePatternSymbolizer file="markers/oneway_4-6_16.png" smooth="1" />
+    <LinePatternSymbolizer file="markers/oneway_4-6_16.png" />
   </Rule>
 </Style>
 <Style name="vector_linear_geometry-minor_road_fill" filter-mode="first">
@@ -695,13 +695,13 @@
   <Rule>
     <MaxScaleDenominator>5000</MaxScaleDenominator>
     <Filter>([rclass] = 6) and ([oneway] = true) and ([ramp] != true)</Filter>
-    <LinePatternSymbolizer file="markers/oneway_4-6_17-18.png" smooth="1" />
+    <LinePatternSymbolizer file="markers/oneway_4-6_17-18.png" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
     <MinScaleDenominator>5000</MinScaleDenominator>
     <Filter>([rclass] = 6) and ([oneway] = true) and ([ramp] != true)</Filter>
-    <LinePatternSymbolizer file="markers/oneway_4-6_16.png" smooth="1" />
+    <LinePatternSymbolizer file="markers/oneway_4-6_16.png" />
   </Rule>
 </Style>
 <Style name="vector_linear_geometry-railroad/fill" filter-mode="first">
