@@ -23,7 +23,7 @@ Layer:
     properties: 
       "buffer-size": 2
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
-  - id: natearth_ocean_10m
+  - id: lz_water
     Datasource: 
       dbname: ''
       extent: -180, -85.05112877980659, 180, 85.05112877980659
@@ -34,29 +34,10 @@ Layer:
       max_size: 512
       password: ''
       port: ''
-      table: (SELECT the_geom FROM natearth_ocean_10m) AS natearth_ocean_10m
+      table: (SELECT the_geom FROM natearth_ocean_10m UNION ALL SELECT the_geom FROM natearth_lakes_10m) AS lz_water
       type: postgis
       user: ''
-    description: Low-zoom Natural Earth sourced oceans
-    fields: {}
-    properties: 
-      "buffer-size": 2
-    srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
-  - id: natearth_lakes_10m
-    Datasource: 
-      dbname: ''
-      extent: -180, -85.05112877980659, 180, 85.05112877980659
-      geometry_field: the_geom
-      geometry_table: ''
-      host: ''
-      key_field: ''
-      max_size: 512
-      password: ''
-      port: ''
-      table: (SELECT the_geom FROM natearth_lakes_10m) AS natearth_lakes_10m
-      type: postgis
-      user: ''
-    description: ''
+    description: Low-zoom Natural Earth water
     fields: {}
     properties: 
       "buffer-size": 2

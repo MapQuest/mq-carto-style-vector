@@ -18,8 +18,7 @@ interactivity_layer: ''
 metatile: 1
 layers:
   - boundingbox
-  - natearth_ocean_10m
-  - natearth_lakes_10m
+  - lz_water
   - vector_polygonal_geometry
   - vector_linear_county
   - states
