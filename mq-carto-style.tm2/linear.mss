@@ -90,10 +90,13 @@
 /* -----                                                         ----- */
 /* ------------------------------------------------------------------- */
 
-#natearth_roads {
-  ::freeway[type='Major Highway'] {
-    [zoom=4] {line-width:0.4;line-color:#bbc5d4;}
-    [zoom=5] {line-width:0.5;line-color:#a5b3c7;}
+/* Only major roads */
+#natearth_roads[zoom >= 4][zoom < 6] {
+  line-width: 0.4;
+  line-color: #bbc5d4;
+  [zoom >= 5] {
+    line-width: 0.5;
+    line-color: #a5b3c7;
   }
 }
 
@@ -103,18 +106,18 @@
 /* -----                                                         ----- */
 /* ------------------------------------------------------------------- */
 
-#vector_linear_geometry {
-  ::major_road[rclass=1] {
-    [zoom>=6][zoom<=7] {
-      [zoom=6] {line-color:#ebcd96;}
-      [zoom=7] {line-color:#f5c469;}
-      line-cap:round;line-join:round;
-    }
-  }
+#trans_linear {
   ::freeway[rclass=0] {
     [zoom>=6][zoom<=7] {
       [toll=false] {line-color:#85a3de;}
       [toll=true] {line-color:#4fbd65;}
+      line-cap:round;line-join:round;
+    }
+  }
+  ::major_road[rclass=1] {
+    [zoom>=6][zoom<=7] {
+      [zoom=6] {line-color:#ebcd96;}
+      [zoom=7] {line-color:#f5c469;}
       line-cap:round;line-join:round;
     }
   }
@@ -544,7 +547,7 @@
 /* -----                                                         ----- */
 /* ------------------------------------------------------------------- */
 
-#vector_linear_geometry {
+#trans_linear {
   ::major_road[rclass=1] {
     [zoom=6] {line-width:0.4;}
     [zoom=7] {line-width:0.75;}

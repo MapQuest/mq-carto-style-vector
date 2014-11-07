@@ -4,7 +4,7 @@
 
 <Parameters>
   <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
-  <Parameter name="center">-81.2439,41.7037,8</Parameter>
+  <Parameter name="center">-78.2117,39.9813,7</Parameter>
   <Parameter name="format">png8:m=h</Parameter>
   <Parameter name="maxzoom">19</Parameter>
   <Parameter name="minzoom">0</Parameter>
@@ -414,52 +414,52 @@
 <Style name="states" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>6500000</MaxScaleDenominator>
-    <Filter>([adm0_a3] = 'CAN')</Filter>
+    <Filter>([adm0_a3] = 'AUS')</Filter>
     <LineSymbolizer stroke-width="4" stroke="#cccfb6" stroke-linecap="round" stroke-linejoin="miter" stroke-opacity="0.5" />
     <LineSymbolizer stroke-width="1" stroke="#9e9a78" stroke-dasharray="5, 5, 10, 5" stroke-linecap="butt" stroke-linejoin="round" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500000</MaxScaleDenominator>
     <MinScaleDenominator>6500000</MinScaleDenominator>
-    <Filter>([adm0_a3] = 'CAN')</Filter>
+    <Filter>([adm0_a3] = 'AUS')</Filter>
     <LineSymbolizer stroke-width="0.75" stroke="#9e9a78" stroke-dasharray="5, 5, 10, 5" stroke-linecap="butt" stroke-linejoin="round" />
     <LineSymbolizer stroke-width="3" stroke="#d1d4b4" stroke-linecap="round" stroke-linejoin="miter" stroke-opacity="0.5" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>25000000</MaxScaleDenominator>
     <MinScaleDenominator>12500000</MinScaleDenominator>
-    <Filter>([adm0_a3] = 'CAN')</Filter>
+    <Filter>([adm0_a3] = 'AUS')</Filter>
     <LineSymbolizer stroke-width="0.75" stroke="#b8b38c" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000000</MaxScaleDenominator>
     <MinScaleDenominator>25000000</MinScaleDenominator>
-    <Filter>([adm0_a3] = 'CAN')</Filter>
+    <Filter>([adm0_a3] = 'AUS')</Filter>
     <LineSymbolizer stroke-width="0.5" stroke="#b8b38c" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>6500000</MaxScaleDenominator>
-    <Filter>([adm0_a3] = 'AUS')</Filter>
+    <Filter>([adm0_a3] = 'CAN')</Filter>
     <LineSymbolizer stroke-width="4" stroke="#cccfb6" stroke-linecap="round" stroke-linejoin="miter" stroke-opacity="0.5" />
     <LineSymbolizer stroke-width="1" stroke="#9e9a78" stroke-dasharray="5, 5, 10, 5" stroke-linecap="butt" stroke-linejoin="round" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500000</MaxScaleDenominator>
     <MinScaleDenominator>6500000</MinScaleDenominator>
-    <Filter>([adm0_a3] = 'AUS')</Filter>
+    <Filter>([adm0_a3] = 'CAN')</Filter>
     <LineSymbolizer stroke-width="0.75" stroke="#9e9a78" stroke-dasharray="5, 5, 10, 5" stroke-linecap="butt" stroke-linejoin="round" />
     <LineSymbolizer stroke-width="3" stroke="#d1d4b4" stroke-linecap="round" stroke-linejoin="miter" stroke-opacity="0.5" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>25000000</MaxScaleDenominator>
     <MinScaleDenominator>12500000</MinScaleDenominator>
-    <Filter>([adm0_a3] = 'AUS')</Filter>
+    <Filter>([adm0_a3] = 'CAN')</Filter>
     <LineSymbolizer stroke-width="0.75" stroke="#b8b38c" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000000</MaxScaleDenominator>
     <MinScaleDenominator>25000000</MinScaleDenominator>
-    <Filter>([adm0_a3] = 'AUS')</Filter>
+    <Filter>([adm0_a3] = 'CAN')</Filter>
     <LineSymbolizer stroke-width="0.5" stroke="#b8b38c" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
   <Rule>
@@ -532,25 +532,23 @@
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     <StyleName>countries</StyleName>  </Layer>
 
-<Style name="natearth_roads-freeway" filter-mode="first">
+<Style name="natearth_roads" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>25000000</MaxScaleDenominator>
     <MinScaleDenominator>12500000</MinScaleDenominator>
-    <Filter>([type] = 'Major Highway')</Filter>
     <LineSymbolizer stroke-width="0.5" stroke="#a5b3c7" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000000</MaxScaleDenominator>
     <MinScaleDenominator>25000000</MinScaleDenominator>
-    <Filter>([type] = 'Major Highway')</Filter>
     <LineSymbolizer stroke-width="0.4" stroke="#bbc5d4" />
   </Rule>
 </Style>
 <Layer name="natearth_roads"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
-    <StyleName>natearth_roads-freeway</StyleName>  </Layer>
+    <StyleName>natearth_roads</StyleName>  </Layer>
 
-<Style name="vector_linear_geometry-major_road1_fill/oneway" filter-mode="first">
+<Style name="trans_linear-major_road1_fill/oneway" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>5000</MaxScaleDenominator>
     <Filter>([rclass] = 1) and ([ramp] != true) and ([oneway] = true)</Filter>
@@ -563,7 +561,7 @@
     <LinePatternSymbolizer file="markers/oneway_1_16.png" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-major_road2-3_fill/oneway" filter-mode="first">
+<Style name="trans_linear-major_road2-3_fill/oneway" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>5000</MaxScaleDenominator>
     <Filter>([rclass] &gt;= 2) and ([rclass] &lt;= 3) and ([ramp] != true) and ([oneway] = true)</Filter>
@@ -576,7 +574,7 @@
     <LinePatternSymbolizer file="markers/oneway_2-3_16.png" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-major_road4_fill/oneway" filter-mode="first">
+<Style name="trans_linear-major_road4_fill/oneway" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>5000</MaxScaleDenominator>
     <Filter>([rclass] = 4) and ([ramp] != true) and ([oneway] = true)</Filter>
@@ -589,7 +587,7 @@
     <LinePatternSymbolizer file="markers/oneway_4-6_16.png" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-minor_road_fill/oneway" filter-mode="first">
+<Style name="trans_linear-minor_road_fill/oneway" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>5000</MaxScaleDenominator>
     <Filter>([rclass] = 5) and ([ramp] != true) and ([oneway] = true)</Filter>
@@ -602,7 +600,7 @@
     <LinePatternSymbolizer file="markers/oneway_4-6_16.png" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-minor_road_fill" filter-mode="first">
+<Style name="trans_linear-minor_road_fill" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>2500</MaxScaleDenominator>
     <MinScaleDenominator>1500</MinScaleDenominator>
@@ -650,7 +648,7 @@
     <LineSymbolizer stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-minor_road_casing" filter-mode="first">
+<Style name="trans_linear-minor_road_casing" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>2500</MaxScaleDenominator>
     <MinScaleDenominator>1500</MinScaleDenominator>
@@ -698,7 +696,7 @@
     <LineSymbolizer stroke="#e6e6e6" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-service_road/oneway" filter-mode="first">
+<Style name="trans_linear-service_road/oneway" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>5000</MaxScaleDenominator>
     <Filter>([rclass] = 6) and ([oneway] = true) and ([ramp] != true)</Filter>
@@ -711,7 +709,7 @@
     <LinePatternSymbolizer file="markers/oneway_4-6_16.png" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-railroad/fill" filter-mode="first">
+<Style name="trans_linear-railroad/fill" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>2500</MaxScaleDenominator>
     <MinScaleDenominator>1500</MinScaleDenominator>
@@ -736,7 +734,7 @@
     <LineSymbolizer stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-railroad/casing" filter-mode="first">
+<Style name="trans_linear-railroad/casing" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>2500</MaxScaleDenominator>
     <MinScaleDenominator>1500</MinScaleDenominator>
@@ -761,42 +759,42 @@
     <LineSymbolizer stroke="#ccc7be" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-parking_aisle/fill" filter-mode="first">
+<Style name="trans_linear-parking_aisle/fill" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
     <Filter>([rclass] = 7)</Filter>
     <LineSymbolizer stroke-width="2" stroke="#e5e5e5" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-parking_aisle/casing" filter-mode="first">
+<Style name="trans_linear-parking_aisle/casing" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
     <Filter>([rclass] = 7)</Filter>
     <LineSymbolizer stroke-width="5" stroke="#cccccc" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-pedestrian" filter-mode="first">
+<Style name="trans_linear-pedestrian" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
     <Filter>([rclass] = 8)</Filter>
     <MarkersSymbolizer marker-type="ellipse" fill="#cfa893" height="2" width="4" placement="line" spacing="10" stroke-width="0" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-cyclepath" filter-mode="first">
+<Style name="trans_linear-cyclepath" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
     <Filter>([rclass] = 10)</Filter>
     <LineSymbolizer stroke-width="1" stroke="#f4d18e" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-stairs" filter-mode="first">
+<Style name="trans_linear-stairs" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
     <Filter>([rclass] = 9)</Filter>
     <LineSymbolizer stroke-width="1" stroke="#f4d18e" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-freeway/centerline" filter-mode="first">
+<Style name="trans_linear-freeway/centerline" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
     <MinScaleDenominator>25000</MinScaleDenominator>
@@ -1008,7 +1006,7 @@
     <LineSymbolizer stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-freeway/fill" filter-mode="first">
+<Style name="trans_linear-freeway/fill" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
@@ -1286,7 +1284,7 @@
     <LineSymbolizer stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-freeway/casing" filter-mode="first">
+<Style name="trans_linear-freeway/casing" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>2500</MaxScaleDenominator>
     <MinScaleDenominator>1500</MinScaleDenominator>
@@ -1462,7 +1460,7 @@
     <LineSymbolizer stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-freeway_ramp/fill" filter-mode="first">
+<Style name="trans_linear-freeway_ramp/fill" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>200000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
@@ -1582,7 +1580,7 @@
     <LineSymbolizer stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-freeway_ramp/casing" filter-mode="first">
+<Style name="trans_linear-freeway_ramp/casing" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>2500</MaxScaleDenominator>
     <MinScaleDenominator>1500</MinScaleDenominator>
@@ -1666,7 +1664,7 @@
     <LineSymbolizer stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-major_road1_fill" filter-mode="first">
+<Style name="trans_linear-major_road1_fill" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
@@ -1715,7 +1713,7 @@
     <LineSymbolizer stroke="#f5e5c6" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-major_road2-3_fill" filter-mode="first">
+<Style name="trans_linear-major_road2-3_fill" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
@@ -1764,7 +1762,7 @@
     <LineSymbolizer stroke="#faf0b6" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-major_road4_fill" filter-mode="first">
+<Style name="trans_linear-major_road4_fill" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
@@ -1860,7 +1858,7 @@
     <LineSymbolizer stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-major_road1_casing" filter-mode="first">
+<Style name="trans_linear-major_road1_casing" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>2500</MaxScaleDenominator>
     <MinScaleDenominator>1500</MinScaleDenominator>
@@ -1891,7 +1889,7 @@
     <LineSymbolizer stroke="#f2c97c" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-major_road2-3_casing" filter-mode="first">
+<Style name="trans_linear-major_road2-3_casing" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>2500</MaxScaleDenominator>
     <MinScaleDenominator>1500</MinScaleDenominator>
@@ -1922,7 +1920,7 @@
     <LineSymbolizer stroke="#e3dd86" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-major_road4_casing" filter-mode="first">
+<Style name="trans_linear-major_road4_casing" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
@@ -1987,7 +1985,7 @@
     <LineSymbolizer stroke="#dbdbdb" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-surface_ramp/fill" filter-mode="first">
+<Style name="trans_linear-surface_ramp/fill" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
     <MinScaleDenominator>25000</MinScaleDenominator>
@@ -2083,7 +2081,7 @@
     <LineSymbolizer stroke="#f2ddb3" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-surface_ramp/casing" filter-mode="first">
+<Style name="trans_linear-surface_ramp/casing" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>2500</MaxScaleDenominator>
     <MinScaleDenominator>1500</MinScaleDenominator>
@@ -2143,7 +2141,7 @@
     <LineSymbolizer stroke-width="4" stroke="#ebce96" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-minor_road/fill" filter-mode="first">
+<Style name="trans_linear-minor_road/fill" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
     <MinScaleDenominator>25000</MinScaleDenominator>
@@ -2187,7 +2185,7 @@
     <LineSymbolizer stroke="#dedacb" stroke-width="0.5" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-minor_road/casing" filter-mode="first">
+<Style name="trans_linear-minor_road/casing" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
@@ -2201,7 +2199,7 @@
     <LineSymbolizer stroke-width="3" stroke="#e6e6e6" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-service_road/fill" filter-mode="first">
+<Style name="trans_linear-service_road/fill" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
@@ -2285,7 +2283,7 @@
     <LineSymbolizer stroke="#ebebeb" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-service_road/casing" filter-mode="first">
+<Style name="trans_linear-service_road/casing" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>2500</MaxScaleDenominator>
     <MinScaleDenominator>1500</MinScaleDenominator>
@@ -2345,7 +2343,7 @@
     <LineSymbolizer stroke="#d6d6d6" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-railroad" filter-mode="first">
+<Style name="trans_linear-railroad" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
@@ -2365,7 +2363,7 @@
     <LineSymbolizer stroke="#ddd8ce" stroke-dasharray="3, 3" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.25" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-river" filter-mode="first">
+<Style name="trans_linear-river" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
@@ -2378,7 +2376,7 @@
     <LineSymbolizer stroke-width="3" stroke="#b9c6d1" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-surface_ramp" filter-mode="first">
+<Style name="trans_linear-surface_ramp" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>200000</MinScaleDenominator>
@@ -2391,7 +2389,7 @@
     <LineSymbolizer stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-ferry_hwy" filter-mode="first">
+<Style name="trans_linear-ferry_hwy" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
@@ -2416,7 +2414,7 @@
     <MarkersSymbolizer marker-type="ellipse" fill="#ffffff" height="2" width="4" placement="line" spacing="10" stroke-width="0" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-freeway_ramp" filter-mode="first">
+<Style name="trans_linear-freeway_ramp" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
     <MinScaleDenominator>200000</MinScaleDenominator>
@@ -2487,7 +2485,7 @@
     <LineSymbolizer stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-major_road1" filter-mode="first">
+<Style name="trans_linear-major_road1" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>1500000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
@@ -2531,7 +2529,7 @@
     <LineSymbolizer stroke="#ffcc80" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-major_road2-3" filter-mode="first">
+<Style name="trans_linear-major_road2-3" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
     <MinScaleDenominator>200000</MinScaleDenominator>
@@ -2581,7 +2579,21 @@
     <LineSymbolizer stroke="#fae661" stroke-linecap="round" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-freeway" filter-mode="first">
+<Style name="trans_linear-major_road" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>6500000</MaxScaleDenominator>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([rclass] = 1)</Filter>
+    <LineSymbolizer stroke="#f5c469" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>6500000</MinScaleDenominator>
+    <Filter>([rclass] = 1)</Filter>
+    <LineSymbolizer stroke="#ebcd96" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
+  </Rule>
+</Style>
+<Style name="trans_linear-freeway" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>1500000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
@@ -2727,62 +2739,48 @@
     <LineSymbolizer stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" />
   </Rule>
 </Style>
-<Style name="vector_linear_geometry-major_road" filter-mode="first">
-  <Rule>
-    <MaxScaleDenominator>6500000</MaxScaleDenominator>
-    <MinScaleDenominator>3000000</MinScaleDenominator>
-    <Filter>([rclass] = 1)</Filter>
-    <LineSymbolizer stroke="#f5c469" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>12500000</MaxScaleDenominator>
-    <MinScaleDenominator>6500000</MinScaleDenominator>
-    <Filter>([rclass] = 1)</Filter>
-    <LineSymbolizer stroke="#ebcd96" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" />
-  </Rule>
-</Style>
-<Layer name="vector_linear_geometry"
+<Layer name="trans_linear"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
-    <StyleName>vector_linear_geometry-major_road</StyleName>
-    <StyleName>vector_linear_geometry-freeway</StyleName>
-    <StyleName>vector_linear_geometry-major_road2-3</StyleName>
-    <StyleName>vector_linear_geometry-major_road1</StyleName>
-    <StyleName>vector_linear_geometry-freeway_ramp</StyleName>
-    <StyleName>vector_linear_geometry-ferry_hwy</StyleName>
-    <StyleName>vector_linear_geometry-surface_ramp</StyleName>
-    <StyleName>vector_linear_geometry-river</StyleName>
-    <StyleName>vector_linear_geometry-railroad</StyleName>
-    <StyleName>vector_linear_geometry-service_road/casing</StyleName>
-    <StyleName>vector_linear_geometry-service_road/fill</StyleName>
-    <StyleName>vector_linear_geometry-minor_road/casing</StyleName>
-    <StyleName>vector_linear_geometry-minor_road/fill</StyleName>
-    <StyleName>vector_linear_geometry-surface_ramp/casing</StyleName>
-    <StyleName>vector_linear_geometry-surface_ramp/fill</StyleName>
-    <StyleName>vector_linear_geometry-major_road4_casing</StyleName>
-    <StyleName>vector_linear_geometry-major_road2-3_casing</StyleName>
-    <StyleName>vector_linear_geometry-major_road1_casing</StyleName>
-    <StyleName>vector_linear_geometry-major_road4_fill</StyleName>
-    <StyleName>vector_linear_geometry-major_road2-3_fill</StyleName>
-    <StyleName>vector_linear_geometry-major_road1_fill</StyleName>
-    <StyleName>vector_linear_geometry-freeway_ramp/casing</StyleName>
-    <StyleName>vector_linear_geometry-freeway_ramp/fill</StyleName>
-    <StyleName>vector_linear_geometry-freeway/casing</StyleName>
-    <StyleName>vector_linear_geometry-freeway/fill</StyleName>
-    <StyleName>vector_linear_geometry-freeway/centerline</StyleName>
-    <StyleName>vector_linear_geometry-stairs</StyleName>
-    <StyleName>vector_linear_geometry-cyclepath</StyleName>
-    <StyleName>vector_linear_geometry-pedestrian</StyleName>
-    <StyleName>vector_linear_geometry-parking_aisle/casing</StyleName>
-    <StyleName>vector_linear_geometry-parking_aisle/fill</StyleName>
-    <StyleName>vector_linear_geometry-railroad/casing</StyleName>
-    <StyleName>vector_linear_geometry-railroad/fill</StyleName>
-    <StyleName>vector_linear_geometry-service_road/oneway</StyleName>
-    <StyleName>vector_linear_geometry-minor_road_casing</StyleName>
-    <StyleName>vector_linear_geometry-minor_road_fill</StyleName>
-    <StyleName>vector_linear_geometry-minor_road_fill/oneway</StyleName>
-    <StyleName>vector_linear_geometry-major_road4_fill/oneway</StyleName>
-    <StyleName>vector_linear_geometry-major_road2-3_fill/oneway</StyleName>
-    <StyleName>vector_linear_geometry-major_road1_fill/oneway</StyleName>  </Layer>
+    <StyleName>trans_linear-freeway</StyleName>
+    <StyleName>trans_linear-major_road</StyleName>
+    <StyleName>trans_linear-major_road2-3</StyleName>
+    <StyleName>trans_linear-major_road1</StyleName>
+    <StyleName>trans_linear-freeway_ramp</StyleName>
+    <StyleName>trans_linear-ferry_hwy</StyleName>
+    <StyleName>trans_linear-surface_ramp</StyleName>
+    <StyleName>trans_linear-river</StyleName>
+    <StyleName>trans_linear-railroad</StyleName>
+    <StyleName>trans_linear-service_road/casing</StyleName>
+    <StyleName>trans_linear-service_road/fill</StyleName>
+    <StyleName>trans_linear-minor_road/casing</StyleName>
+    <StyleName>trans_linear-minor_road/fill</StyleName>
+    <StyleName>trans_linear-surface_ramp/casing</StyleName>
+    <StyleName>trans_linear-surface_ramp/fill</StyleName>
+    <StyleName>trans_linear-major_road4_casing</StyleName>
+    <StyleName>trans_linear-major_road2-3_casing</StyleName>
+    <StyleName>trans_linear-major_road1_casing</StyleName>
+    <StyleName>trans_linear-major_road4_fill</StyleName>
+    <StyleName>trans_linear-major_road2-3_fill</StyleName>
+    <StyleName>trans_linear-major_road1_fill</StyleName>
+    <StyleName>trans_linear-freeway_ramp/casing</StyleName>
+    <StyleName>trans_linear-freeway_ramp/fill</StyleName>
+    <StyleName>trans_linear-freeway/casing</StyleName>
+    <StyleName>trans_linear-freeway/fill</StyleName>
+    <StyleName>trans_linear-freeway/centerline</StyleName>
+    <StyleName>trans_linear-stairs</StyleName>
+    <StyleName>trans_linear-cyclepath</StyleName>
+    <StyleName>trans_linear-pedestrian</StyleName>
+    <StyleName>trans_linear-parking_aisle/casing</StyleName>
+    <StyleName>trans_linear-parking_aisle/fill</StyleName>
+    <StyleName>trans_linear-railroad/casing</StyleName>
+    <StyleName>trans_linear-railroad/fill</StyleName>
+    <StyleName>trans_linear-service_road/oneway</StyleName>
+    <StyleName>trans_linear-minor_road_casing</StyleName>
+    <StyleName>trans_linear-minor_road_fill</StyleName>
+    <StyleName>trans_linear-minor_road_fill/oneway</StyleName>
+    <StyleName>trans_linear-major_road4_fill/oneway</StyleName>
+    <StyleName>trans_linear-major_road2-3_fill/oneway</StyleName>
+    <StyleName>trans_linear-major_road1_fill/oneway</StyleName>  </Layer>
 
 <Style name="vector_point_labels-booth_and_gate/gate" filter-mode="first">
   <Rule>

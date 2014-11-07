@@ -180,45 +180,16 @@ Layer:
       max_size: 512
       password: ''
       port: ''
-      table: natearth_roads_old
+      table: (SELECT the_geom, type FROM natearth_roads_old WHERE type='Major Highway') AS natearth_roads
       type: postgis
       user: ''
     description: ''
     fields: 
-      add: Number
-      continent: String
-      edited: String
-      expressway: Number
-      featurecla: String
-      gid: Number
-      ignore: Number
-      label: String
-      label2: String
-      labelrank: Number
-      length_km: Number
-      level: String
-      local: String
-      localalt: String
-      localtype: String
-      name: String
-      namealt: String
-      namealtt: String
-      ne_part: String
-      note: String
-      orig_fid: Number
-      prefix: String
-      question: Number
-      routeraw: String
-      rwdb_rd_id: Number
-      scalerank: Number
-      sov_a3: String
-      toll: Number
       type: String
-      uident: Number
     properties: 
       "buffer-size": 8
     srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
-  - id: vector_linear_geometry
+  - id: trans_linear
     Datasource: 
       dbname: ''
       extent: -20037508,-20037508,20037508,20037508
@@ -246,7 +217,7 @@ Layer:
             UNION ALL
             SELECT * FROM vector_linear_geometry_16 WHERE rclass != 15 AND z(!scale_denominator!) >= 16) AS r
           ORDER BY rclass DESC
-        ) AS vector_linear_geometry
+        ) AS trans_linear
       type: postgis
       user: ''
     description: ''
