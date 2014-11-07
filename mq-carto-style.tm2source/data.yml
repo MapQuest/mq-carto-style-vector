@@ -4,11 +4,11 @@ _prefs:
   inspector: false
   mapid: ''
   rev: ''
-  saveCenter: true
+  saveCenter: false
 attribution: ''
 center: 
-  - -75.9698
-  - 40.3002
+  - -75.6038
+  - 40.0799
   - 11
 description: ''
 Layer: 
