@@ -23,29 +23,39 @@
   }
 }
 
+/* Special style for places with "big" states at low zooms*/
+#states[zoom >= 4] {
+  [adm0_a3='USA'],[adm0_a3='CAN'],[adm0_a3='AUS'] {
+    fill/line-width: .5;
+    fill/line-color: #b8b38c;
+    fill/line-cap: round;
+    fill/line-join: round;
+    [zoom >= 5] {
+      fill/line-width: 0.75;
+    }
+  }
 
-#natearth_state_borders_10m {
-  [zoom=4] {
-    [iso='USA'],[iso='CAN'],[iso='AUS'] {
-      line-width:.5;line-color:#b8b38c;line-cap:round;line-join:round;
+/* Styling for all states */
+  [zoom >=6] {
+    casing/line-width: 3;
+    casing/line-color: #d1d4b4;
+    casing/line-cap: round;
+    casing/line-join: miter;
+    casing/line-opacity: .5;
+    fill/line-width: .75;
+    fill/line-color: #9e9a78;
+    fill/line-dasharray:5,5,10,5;
+    fill/line-cap: butt;
+    fill/line-join: round;
+    [zoom >= 7] {
+      casing/line-width: 4;
+      casing/line-color: #cccfb6;
+      fill/line-width: 1;
     }
-  }
-  [zoom=5] {
-    [iso='USA'],[iso='CAN'],[iso='AUS'] {
-      line-width:.75;line-color:#b8b38c;line-cap:round;line-join:round;
-    }
-  }
-  [zoom=6] {
-    ::casing {line-width:3;line-color:#d1d4b4;line-cap:round;line-join:miter;line-opacity:.5}
-    ::fill {line-width:.75;line-color:#9e9a78;line-dasharray:5,5,10,5;line-cap:butt;line-join:round;}
-  }
-  [zoom>=7] {
-    ::casing {line-width:4;line-color:#cccfb6;line-cap:round;line-join:miter;line-opacity:.5}
-    ::fill {line-width:1;line-color:#9e9a78;line-dasharray:5,5,10,5;line-cap:butt;line-join:round;}
   }
 }
 
-  #natearth_country_borders_10m {
+#natearth_country_borders_10m {
   [zoom=4] {
     ::casing {line-width:3;line-color:#bcd1b8;line-cap:round;line-join:miter;line-opacity:.5}
     ::fill {line-width:.5;line-color:#728069;line-dasharray:4,4,8,4;line-cap:butt;line-join:round;}

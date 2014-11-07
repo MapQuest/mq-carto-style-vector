@@ -7,9 +7,9 @@ _prefs:
   saveCenter: true
 attribution: ''
 center: 
-  - -75.1774
-  - 39.9549
-  - 15
+  - -76.3495
+  - 39.7262
+  - 8
 description: ''
 Layer: 
   - id: boundingbox
@@ -128,7 +128,7 @@ Layer:
     properties: 
       "buffer-size": 8
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
-  - id: natearth_state_borders_10m
+  - id: states
     Datasource: 
       dbname: ''
       extent: -180, -85.05112877980659, 180, 85.05112877980659
@@ -139,30 +139,13 @@ Layer:
       max_size: 512
       password: ''
       port: ''
-      table: natearth_state_borders_10m
+      table: (SELECT the_geom, name, adm0_a3 FROM natearth_state_borders_10m) AS states
       type: postgis
       user: ''
-    description: ''
+    description: Natural Earth sourced state boundaries
     fields: 
-      adm0_a3: String
-      adm0_name: String
-      featurecla: String
-      gid: Number
-      mapcolor13: Number
-      mapcolor9: Number
-      name: String
-      name_alt_l: String
-      name_alt_r: String
-      name_l: String
-      name_len_l: Number
-      name_len_r: Number
-      name_loc_l: String
-      name_loc_r: String
-      name_r: String
-      note: String
-      scalerank: Number
-      shape_leng: Number
-      sov_a3: String
+      adm0_a3: Three letter code of the parent country
+      name: State name
     properties: 
       "buffer-size": 8
     srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
