@@ -149,7 +149,7 @@ Layer:
     properties: 
       "buffer-size": 8
     srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
-  - id: natearth_country_borders_10m
+  - id: countries
     Datasource: 
       dbname: ''
       extent: -180, -85.05112877980659, 180, 85.05112877980659
@@ -160,27 +160,12 @@ Layer:
       max_size: 512
       password: ''
       port: ''
-      table: natearth_country_borders_10m
+      table: (SELECT the_geom, name FROM natearth_country_borders_10m) AS countries
       type: postgis
       user: ''
-    description: ''
+    description: Natural Earth sourced country boundaries
     fields: 
-      adm0_a3_l: String
-      adm0_a3_r: String
-      adm0_left: String
-      adm0_right: String
-      adm0_usa: Number
-      comment: String
-      featurecla: String
-      fid_ne_10m: Number
-      gid: Number
-      labelrank: Number
-      name: String
-      note_: String
-      scalerank: Number
-      sov_a3_l: String
-      sov_a3_r: String
-      type: String
+      name: Country name
     properties: 
       "buffer-size": 8
     srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs

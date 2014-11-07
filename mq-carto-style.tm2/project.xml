@@ -4,7 +4,7 @@
 
 <Parameters>
   <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
-  <Parameter name="center">-82.5073,39.1556,6</Parameter>
+  <Parameter name="center">-81.2439,41.7037,8</Parameter>
   <Parameter name="format">png8:m=h</Parameter>
   <Parameter name="maxzoom">19</Parameter>
   <Parameter name="minzoom">0</Parameter>
@@ -503,52 +503,34 @@
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     <StyleName>states</StyleName>  </Layer>
 
-<Style name="natearth_country_borders_10m-fill" filter-mode="first">
-  <Rule>
-    <MaxScaleDenominator>6500000</MaxScaleDenominator>
-    <LineSymbolizer stroke-width="1" stroke="#94a688" stroke-dasharray="6, 6, 12, 6" stroke-linecap="butt" stroke-linejoin="round" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>12500000</MaxScaleDenominator>
-    <MinScaleDenominator>6500000</MinScaleDenominator>
-    <LineSymbolizer stroke-width="1" stroke="#94a688" stroke-dasharray="6, 6, 12, 6" stroke-linecap="butt" stroke-linejoin="round" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>25000000</MaxScaleDenominator>
-    <MinScaleDenominator>12500000</MinScaleDenominator>
-    <LineSymbolizer stroke-width="1" stroke="#94a688" stroke-dasharray="4, 4, 10, 4" stroke-linecap="butt" stroke-linejoin="round" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000000</MaxScaleDenominator>
-    <MinScaleDenominator>25000000</MinScaleDenominator>
-    <LineSymbolizer stroke-width="0.5" stroke="#728069" stroke-dasharray="4, 4, 8, 4" stroke-linecap="butt" stroke-linejoin="round" />
-  </Rule>
-</Style>
-<Style name="natearth_country_borders_10m-casing" filter-mode="first">
+<Style name="countries" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>6500000</MaxScaleDenominator>
     <LineSymbolizer stroke-width="7" stroke="#c2ccc0" stroke-linecap="round" stroke-linejoin="miter" stroke-opacity="0.5" />
+    <LineSymbolizer stroke-dasharray="6, 6, 12, 6" stroke-width="1" stroke="#94a688" stroke-linecap="butt" stroke-linejoin="round" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500000</MaxScaleDenominator>
     <MinScaleDenominator>6500000</MinScaleDenominator>
     <LineSymbolizer stroke-width="5" stroke="#bed4ba" stroke-linecap="round" stroke-linejoin="miter" stroke-opacity="0.5" />
+    <LineSymbolizer stroke-dasharray="6, 6, 12, 6" stroke-width="1" stroke="#94a688" stroke-linecap="butt" stroke-linejoin="round" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>25000000</MaxScaleDenominator>
     <MinScaleDenominator>12500000</MinScaleDenominator>
     <LineSymbolizer stroke-width="4" stroke="#c6d9c3" stroke-linecap="round" stroke-linejoin="miter" stroke-opacity="0.5" />
+    <LineSymbolizer stroke-width="1" stroke="#94a688" stroke-dasharray="4, 4, 10, 4" stroke-linecap="butt" stroke-linejoin="round" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000000</MaxScaleDenominator>
     <MinScaleDenominator>25000000</MinScaleDenominator>
     <LineSymbolizer stroke-width="3" stroke="#bcd1b8" stroke-linecap="round" stroke-linejoin="miter" stroke-opacity="0.5" />
+    <LineSymbolizer stroke-width="0.5" stroke="#728069" stroke-dasharray="4, 4, 8, 4" stroke-linecap="butt" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Layer name="natearth_country_borders_10m"
+<Layer name="countries"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
-    <StyleName>natearth_country_borders_10m-casing</StyleName>
-    <StyleName>natearth_country_borders_10m-fill</StyleName>  </Layer>
+    <StyleName>countries</StyleName>  </Layer>
 
 <Style name="natearth_roads-freeway" filter-mode="first">
   <Rule>
