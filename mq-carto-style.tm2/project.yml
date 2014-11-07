@@ -15,7 +15,23 @@ center:
 description: ''
 format: "png8:m=h"
 interactivity_layer: ''
-layers: null
+metatile: 1
+layers:
+  - boundingbox
+  - natearth_ocean_10m
+  - natearth_lakes_10m
+  - vector_polygonal_geometry
+  - vector_linear_county
+  - states
+  - countries
+  - natearth_roads
+  - trans_linear
+  - highway_labels
+  - place_labels
+  - highway_overlay
+  - trans_linear_labels
+  - vector_point_labels2
+  - vector_point_labels3
 maxzoom: 19
 minzoom: 0
 name: MQ Carto Style
