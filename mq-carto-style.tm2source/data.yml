@@ -7,9 +7,9 @@ _prefs:
   saveCenter: true
 attribution: ''
 center: 
-  - -76.3495
-  - 39.7262
-  - 8
+  - -76.1167
+  - 40.0426
+  - 11
 description: ''
 Layer: 
   - id: boundingbox
@@ -201,7 +201,7 @@ Layer:
       password: ''
       port: ''
       table: |-
-        (SELECT the_geom, rclass, ramp, toll, restriction, oneway, brunnel, admin_level
+        (SELECT the_geom, rclass, ramp, toll, restriction, oneway, brunnel
           FROM (
             SELECT * FROM vector_linear_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8 -- rclass=15 does not appear here
             UNION ALL
@@ -222,7 +222,6 @@ Layer:
       user: ''
     description: ''
     fields: 
-      admin_level: Number
       brunnel: Number
       oneway: Boolean
       ramp: Boolean
@@ -232,7 +231,46 @@ Layer:
     properties: 
       "buffer-size": 16
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
-  - id: vector_point_labels
+  - id: highway_labels
+    Datasource: 
+      dbname: ''
+      extent: -20037508.34,-20037508.34,20037508.34,20037508.34
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: |-
+        (SELECT 
+            the_geom, class, name, length(name) AS name_len, display_class
+          FROM
+          (SELECT
+              placement_id, label_id, min_zoom, max_zoom, the_geom, class,
+              unnest(text_elements) AS name, display_class, feature_area
+            FROM
+            (SELECT
+                pl.*, (unnest(pr.labels)).* 
+              FROM vector_point_label_placements pl
+              INNER JOIN vector_point_label_properties pr ON pl.label_id = pr.label_id) x
+            WHERE (class BETWEEN 1 AND 591 OR class IN (1040, 1041, 1042))
+              AND z(!scale_denominator!) >= min_zoom
+              AND (z(!scale_denominator!) < max_zoom+1 OR max_zoom IS NULL OR max_zoom = 18)
+            ORDER BY display_class ASC, min_zoom DESC, class DESC) AS data0
+        ) AS highway_labels
+      type: postgis
+      user: ''
+    description: ''
+    fields: 
+      class: Number
+      display_class: Number
+      name: String
+      name_len: Number
+    properties: 
+      "buffer-size": 64
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: place_labels
     Datasource: 
       dbname: ''
       extent: -20037508,-20037508,20037508,20037508
@@ -256,11 +294,11 @@ Layer:
                 pl.*, (unnest(pr.labels)).* 
               FROM vector_point_label_placements pl
               INNER JOIN vector_point_label_properties pr ON pl.label_id = pr.label_id) x
-            WHERE class IN (1000, 1010, 1020, 1030, 1031, 1038) OR class BETWEEN 1 AND 591
+            WHERE class IN (1000, 1010, 1020, 1030, 1031, 1038) 
               AND z(!scale_denominator!) >= min_zoom
               AND (z(!scale_denominator!) < max_zoom+1 OR max_zoom IS NULL OR max_zoom = 18)
             ORDER BY display_class ASC, feature_area DESC, min_zoom DESC) AS data0
-        ) AS data
+        ) AS place_labels
       type: postgis
       user: ''
     description: ''
@@ -368,11 +406,14 @@ Layer:
                 pl.*, (unnest(pr.labels)).* 
               FROM vector_point_label_placements pl 
               INNER JOIN vector_point_label_properties pr ON pl.label_id = pr.label_id) x
-              WHERE z(!scale_denominator!) >= min_zoom 
+              WHERE class NOT IN (1000, 1010, 1020, 1030, 1031, 1038) 
+                AND class NOT BETWEEN 1 AND 591
+                AND class NOT IN (1040, 1041, 1042)
+                AND z(!scale_denominator!) >= min_zoom 
                 AND (z(!scale_denominator!) < max_zoom+1 OR max_zoom IS NULL OR max_zoom = 18)
             ORDER BY display_class ASC) 
           AS data0)
-        AS data
+        AS vector_point_labels2
       type: postgis
       user: ''
     description: ''
@@ -413,11 +454,14 @@ Layer:
                 pl.*, (unnest(pr.labels)).* 
               FROM vector_point_label_placements pl 
               INNER JOIN vector_point_label_properties pr ON pl.label_id = pr.label_id) x
-              WHERE z(!scale_denominator!) >= min_zoom 
+              WHERE class NOT IN (1000, 1010, 1020, 1030, 1031, 1038) 
+                AND class NOT BETWEEN 1 AND 591
+                AND class NOT IN (1040, 1041, 1042)
+                AND z(!scale_denominator!) >= min_zoom 
                 AND (z(!scale_denominator!) < max_zoom+1 OR max_zoom IS NULL OR max_zoom = 18)
             ORDER BY display_class ASC) 
-          AS data0)
-        AS data
+          AS p)
+        AS vector_point_labels3
       type: postgis
       user: ''
     description: ''

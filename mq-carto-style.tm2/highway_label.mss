@@ -1,4 +1,4 @@
-#vector_point_labels::hwy_shield[class >= 1][class <= 591][zoom >= 6] {
+#highway_labels[class >= 1][class <= 591][zoom >= 6] {
   /* General specifications for all shields*/
   /* Because some shields start at z6 and others at z7, zoom has to appear in the selectors frequently */
   [class=1], [class=2], // zoom >= 6 from above
@@ -307,85 +307,7 @@
   }
 }
 
-#vector_point_labels::admin2 {
-  /* — city labels — */
-  ::city_3_and_up[class=1020][display_class>=3] {
-    /* city point markers with labels */
-    [zoom>=7][zoom<=13] {
-      [zoom>=7][display_class=3] {
-        shield-name:"[name]";
-        shield-face-name: @book-fonts;
-        shield-fill:#666666;
-        shield-min-distance:25;
-        shield-file:url("markers/city3.svg");
-        shield-halo-radius:1;
-        shield-unlock-image:true;
-        shield-horizontal-alignment:right;
-        shield-text-dy:-6;shield-text-dx:3;
-        shield-size:@city_text_3_456789;
-        shield-halo-fill:@background_2-6;
-      }
-      [zoom=8][display_class<=4] {
-        shield-name:"[name]";
-        shield-face-name: @book-fonts;
-        shield-fill:#666666;
-        shield-min-distance:25;
-        shield-file:url("markers/city3.svg");
-        shield-halo-radius:1;
-        shield-unlock-image:true;
-        shield-horizontal-alignment:right;
-        shield-text-dy:-6;shield-text-dx:3;
-        shield-size:@city_text_3_456789;
-        shield-halo-fill:@background_7-8;
-      }
-      [zoom>=9][zoom<=13] {
-        shield-name:"[name]";
-        shield-avoid-edges:true;
-        shield-face-name: @book-fonts;
-        shield-fill:#333333;
-        shield-min-distance:25;
-        shield-file:url("markers/city3.svg");
-        shield-halo-radius:1;
-        shield-unlock-image:true;
-        shield-horizontal-alignment:right;
-        shield-text-dy:-5;shield-text-dx:3;
-        [zoom>=9][zoom<=12] {shield-halo-fill:@background_9-12;}
-        [zoom=13] {shield-halo-fill:@background_13-15;}
-        [display_class=3] {
-          [zoom>=7][zoom<=9] {shield-size:@city_text_3_456789;}
-          [zoom>=10][zoom<=11] {shield-size:@city_text_3_1011;}
-          [zoom>=12][zoom<=13] {shield-size:@city_text_3_1213;}
-        }
-        [display_class>3] {
-          shield-min-distance:35;
-          [zoom>=9][zoom<=11] {
-            shield-fill:#666666;
-            shield-size:@city_text_4_456789;
-          }
-          [zoom>=12][zoom<=13] {
-            shield-fill:#1a1a1a;
-            shield-size:@city_text_4_10111213;
-          }
-        }
-        [display_class>4] {shield-fill:#808080;shield-min-distance:50;}
-      }
-    }
-    /* city point labels only */
-    [zoom>=14] {
-      text-name:"[name]";
-      text-face-name: @book-fonts;
-      text-fill:#000000;
-      text-halo-radius:1;
-      text-wrap-width:20;
-      [zoom>=13][zoom<=15] {text-halo-fill:@background_13-15}
-      [zoom>=16] {text-halo-fill:@background_16-18}
-      [display_class=3] {text-size:@city_text_3_14}
-      [display_class>3] {text-fill:#1a1a1a;text-size:@city_text_4_14;}
-    }
-  }  
-}
-
-#vector_point_labels::exit_shields[zoom>=15][class=1040] {
+#highway_labels::exit_shields[zoom>=15][class=1040] {
   ::shield[class=1040] {[zoom>=13][zoom<=14] {marker-file:url("markers/exitPt.svg");marker-ignore-placement:true;}}
   ::number {
     shield-name:"[name]";
@@ -403,7 +325,7 @@
   }
 }
 
-#vector_point_labels::booth_and_gate {
+#highway_labels::booth_and_gate {
   ::tollbooth[class=1041] {[zoom>=16] {marker-file:url("markers/toll.svg");}}
   ::gate[class=1042] {[zoom>=17] {marker-file:url("markers/gate.svg");}}
 }
