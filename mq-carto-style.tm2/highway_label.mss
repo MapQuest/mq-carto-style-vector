@@ -1,99 +1,135 @@
-#vector_point_labels::hwy_shield[class>=1][class<=591][zoom>=6] {
-  [class>=1][class<=2] {
-    shield-name:"[name]";
+#vector_point_labels::hwy_shield[class >= 1][class <= 591][zoom >= 6] {
+  /* General specifications for all shields*/
+  /* Because some shields start at z6 and others at z7, zoom has to appear in the selectors frequently */
+  [class=1], [class=2], // zoom >= 6 from above
+  [zoom >= 7] {
+    shield-name: "[name]";
     shield-face-name: @bold-fonts;
-    shield-fill:#000000;
-    shield-size:11;
-    shield-text-dy:1;
-    shield-file:url("markers/poi.svg");
-    shield-min-padding:15;
-    [zoom>=6][zoom<=10] {shield-min-distance:150;}
-    [zoom=11] {shield-min-distance:200;}
-    [zoom=12] {shield-min-distance:200;}
-    [zoom=13] {shield-min-distance:200;}
-    [zoom=14] {shield-min-distance:200;}
-    [zoom=15] {shield-min-distance:250;}
-    [zoom=16] {shield-min-distance:250;}
-    [zoom=17] {shield-min-distance:350;}
-    [zoom=18] {shield-min-distance:350;}
-
-    /* US shields */
-    [class=1] {
-      shield-face-name: @bold-fonts;
-      shield-fill:#ffffff;
-      [name_len<=2] {shield-file:url("markers/rsInterstate.svg");}
-      [name_len>=3] {shield-file:url("markers/rsInterstateW.svg");}
+    shield-fill: #000000;
+    shield-size: 11;
+    shield-file: url("markers/poi.svg");
+    shield-min-padding: 15;
+    shield-min-distance: 200;
+    [zoom >= 11] {
+      shield-min-distance: 300;
     }
-    [class=2] {
-      shield-face-name: @bold-fonts;
-      [name_len<=2] {shield-file:url("markers/rsUS.svg");}
-      [name_len>=3] {shield-file:url("markers/rsUSW.svg");}
+    [zoom >= 15] {
+      shield-min-distance: 350;
+    }
+    [zoom >= 17] {
+      shield-min-distance: 400;
     }
   }
+  /* Class one and class two only */
+  [class=1], [class=2] {
+    shield-text-dy: 1;
+    shield-min-distance: 150;
+    [zoom >= 11] {
+      shield-min-distance: 200;
+    }
+    [zoom >= 15] {
+      shield-min-distance: 250;
+    }
+    [zoom >= 17] {
+      shield-min-distance: 350;
+    }
+  }
+  /* Custom shields */
+
+  /* Major US shields */
+  [class = 1] {
+    shield-fill: #ffffff;
+    shield-file: url("markers/rsInterstate.svg");
+    [name_len >= 3] {
+      shield-file: url("markers/rsInterstateW.svg");
+    }
+  }
+  [class = 2] {
+    shield-file: url("markers/rsUS.svg");
+    [name_len >= 3] {
+      shield-file: url("markers/rsUSW.svg");
+    }
+  }
+  /* The rest are z7 only */
+  /* Generics */
+  [zoom >= 7] {
+    [class = 3], [class = 22] {
+      shield-file: url("markers/rsRound.svg");
+      [name_len >= 3] {
+        shield-file: url("markers/rsRoundW.svg");
+      }
+    }
+    [class = 4], [class = 23] {
+      shield-file: url("markers/rsWhite.svg");
+      [name_len >= 3] {
+        shield-file: url("markers/rsWhite3.svg");
+      }
+      [name_len >= 4] {
+        shield-file: url("markers/rsWhite4.svg");
+      }
+      [name_len >= 5] {
+        shield-file: url("markers/rsWhite5.svg");
+      }
+      [name_len >= 6] {
+        shield-file: url("markers/rsWhite6.svg");
+      }
+    }
+
+    /* Canadian Shields */
+    [class = 20] {
+      shield-fill: #259425;
+      shield-halo-fill: #ffffff;
+      shield-halo-radius: 1;
+    }
+    [class=21][zoom >= 7] {
+      shield-fill: #ffffff;
+      shield-file: url("markers/rsQCA.svg");
+      [name_len >= 3] {
+        shield-file: url("markers/rsQCAW.svg");
+      }
+      [name_len >= 4] {
+        shield-file: url("markers/rsQCAW2.svg");
+      }
+    }
+
+    /* Mexican Shields */
+    [class = 40] {
+      shield-text-dy: -1;
+      shield-file: url("markers/rsMex.svg");
+      [name_len >= 3] {
+        shield-file: url("markers/rsMexW.svg");
+      }
+      [name_len >= 4] {
+        shield-file: url("markers/rsMexW2.svg");
+      }
+    }
+    /* No 41 here */
+    [class = 42] {
+      shield-text-dy: -1.5;
+      shield-file: url("markers/rsMexS.svg");
+      [name_len >= 3] {
+        shield-file: url("markers/rsMexSW.svg");
+      }
+    }
+    /* US State shields */
+    [class = 500] {
+      shield-text-dy: -1;
+      shield-file: url("markers/rsAL.svg");
+      [name_len >= 3] {
+        shield-file: url("markers/rsALW.svg");
+      }
+    }
+    [class = 537] {
+      shield-text-dy: 1;
+      shield-file: url("markers/rsPA.svg");
+      [name_len >= 3] {
+        shield-file: url("markers/rsPAW.svg");
+      }
+    }
+  }
+  /* Shields that still need refactoring */
   [class>=3][class<=591][zoom>=7] {
-    shield-name:"[name]";
-    shield-face-name: @bold-fonts;
-    shield-fill:#000000;
-    shield-size:11;
-    shield-file:url("markers/poi.svg");
-    shield-min-padding:15;
-    [class>=3][class<=591] {
-      [zoom>=7][zoom<=10] {shield-min-distance:200;}
-      [zoom=11] {shield-min-distance:300;}
-      [zoom=12] {shield-min-distance:300;}
-      [zoom=13] {shield-min-distance:300;}
-      [zoom=14] {shield-min-distance:300;}
-      [zoom=15] {shield-min-distance:350;}
-      [zoom=16] {shield-min-distance:350;}
-      [zoom=17] {shield-min-distance:400;}
-      [zoom=18] {shield-min-distance:400;}
-    }
-    /* US shields */
-    [class=3] {
-      [name_len<=2] {shield-file:url("markers/rsRound.svg");}
-      [name_len<=3] {shield-file:url("markers/rsRoundW.svg");}
-    }
-    [class=4] {
-      [name_len<=2] {shield-file:url("markers/rsWhite.svg");}
-      [name_len=3] {shield-file:url("markers/rsWhite3.svg");}
-      [name_len=4] {shield-file:url("markers/rsWhite4.svg");}
-      [name_len=5] {shield-file:url("markers/rsWhite5.svg");}
-      [name_len>=6] {shield-file:url("markers/rsWhite6.svg");}
-    }
-
-  /* Canada shields */
-    [class=20] {shield-file:url("markers/rsTCH.svg");shield-text-dy:0;shield-fill:#259425;shield-halo-fill:#ffffff;shield-halo-radius:1;}
-    [class=21] {
-      shield-fill:#ffffff;
-      [name_len<=2] {shield-file:url("markers/rsQCA.svg");}
-      [name_len=3] {shield-file:url("markers/rsQCAW.svg");}
-      [name_len>=4] {shield-file:url("markers/rsQCAW2.svg");}
-    }
-    [class=22] {
-      [name_len<=2] {shield-file:url("markers/rsRound.svg");}
-      [name_len>=3] {shield-file:url("markers/rsRound.svg");}
-    }
-    [class=23] {shield-file:url("markers/rsWhite3.svg");}
-
-    /* Mexico shields */
-    [class=40] {
-      shield-text-dy:-1;
-      [name_len<=2] {shield-file:url("markers/rsMex.svg");}
-      [name_len=3] {shield-file:url("markers/rsMexW.svg");}
-      [name_len>=4] {shield-file:url("markers/rsMexW2.svg");}
-    }
-    [class=42] {
-      shield-text-dy:-1.5;
-      [name_len<=2] {shield-file:url("markers/rsMexS.svg");}
-      [name_len>=3] {shield-file:url("markers/rsMexSW.svg");}
-    }
- 
     /* US state shields */
-    [class=500] {
-      shield-text-dy:-1;
-      [name_len<=2] {shield-file:url("markers/rsAL.svg");}
-      [name_len>=3] {shield-file:url("markers/rsALW.svg");}
-    }
     [class=501] {
       shield-text-dy:-1;shield-text-dx:2.5;
       [name_len<=2] {shield-file:url("markers/rsAK.svg");}
@@ -120,9 +156,10 @@
       [name_len>=3] {shield-file:url("markers/rsCOW.svg");}
     }
     [class=508] {
-      shield-text-dy:2;shield-text-dx:-1;}
+      shield-text-dy:2;shield-text-dx:-1;
       [name_len<=2] {shield-file:url("markers/rsFL.svg");}
       [name_len>=3] {shield-file:url("markers/rsFLW.svg");}
+    }
     [class=509] {
       shield-text-dy:1;shield-text-dx:-1;
       [name_len<=2] {shield-file:url("markers/rsGA.svg");}
@@ -204,11 +241,6 @@
     [class=536] {
       [name_len<=2] {shield-file:url("markers/rsOR.svg");}
       [name_len>=3] {shield-file:url("markers/rsORW.svg");}
-    }
-    [class=537] {
-      shield-text-dy:1;
-      [name_len<=2] {shield-file:url("markers/rsPA.svg");}
-      [name_len>=3] {shield-file:url("markers/rsPAW.svg");}
     }
     [class=539] {shield-file:url("markers/rsSC.svg");shield-text-dy:3;shield-text-dx:0;shield-fill:#004baa;}
     [class=540] {
