@@ -4,7 +4,7 @@
 
 <Parameters>
   <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
-  <Parameter name="center">-79.4092,40.4428,7</Parameter>
+  <Parameter name="center">-76.4401,40.5274,9</Parameter>
   <Parameter name="format">png8:m=h</Parameter>
   <Parameter name="maxzoom">19</Parameter>
   <Parameter name="minzoom">0</Parameter>
@@ -8683,18 +8683,15 @@
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
     <MinScaleDenominator>5000</MinScaleDenominator>
-    <Filter>([rclass] = 0) and ([ramp] != true)</Filter>
     <ShieldSymbolizer file="markers/transparent-15.png" spacing="10" face-name="Open Sans Bold" placement="line" opacity="0" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>5000</MaxScaleDenominator>
-    <Filter>([rclass] = 0) and ([ramp] != true)</Filter>
     <ShieldSymbolizer file="markers/transparent-25.png" spacing="15" face-name="Open Sans Bold" placement="line" opacity="0" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([rclass] = 0) and ([ramp] != true)</Filter>
     <ShieldSymbolizer face-name="Open Sans Bold" placement="line" opacity="0" file="markers/transparent-10.png" spacing="5" />
   </Rule>
 </Style>
@@ -8702,21 +8699,21 @@
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     <StyleName>highway_overlay</StyleName>  </Layer>
 
-<Style name="vector_linear_labels-surface_features/river" filter-mode="first">
+<Style name="trans_linear_labels-surface_features/river" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
     <Filter>([rclass] = 11)</Filter>
     <TextSymbolizer face-name="Open Sans Italic" placement="line" halo-radius="2" minimum-padding="20" minimum-distance="10" character-spacing="1" fill="#4a7bd4" size="13" halo-fill="#f2eddf" ><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
 </Style>
-<Style name="vector_linear_labels-surface_features/railroad" filter-mode="first">
+<Style name="trans_linear_labels-surface_features/railroad" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
     <Filter>([rclass] = 14)</Filter>
     <TextSymbolizer face-name="Open Sans Italic" placement="line" halo-radius="2" minimum-padding="20" minimum-distance="10" character-spacing="1" fill="#666666" size="13" halo-fill="#f2eddf" ><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
 </Style>
-<Style name="vector_linear_labels-surface_features/ferry" filter-mode="first">
+<Style name="trans_linear_labels-surface_features/ferry" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>100000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
@@ -8735,7 +8732,7 @@
     <TextSymbolizer size="10" face-name="Open Sans Italic" placement="line" minimum-padding="20" character-spacing="1" fill="#4a7bd4" ><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
 </Style>
-<Style name="vector_linear_labels-surface_features/service_road" filter-mode="first">
+<Style name="trans_linear_labels-surface_features/service_road" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
     <Filter>([rclass] = 6)</Filter>
@@ -8748,7 +8745,7 @@
     <TextSymbolizer size="11" halo-fill="#f2ecdc" face-name="Open Sans Regular" placement="line" halo-radius="2" minimum-padding="20" minimum-distance="10" character-spacing="1" fill="#666666" ><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
 </Style>
-<Style name="vector_linear_labels-surface_features/minor_road" filter-mode="first">
+<Style name="trans_linear_labels-surface_features/minor_road" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
     <Filter>([rclass] = 5)</Filter>
@@ -8767,7 +8764,7 @@
     <TextSymbolizer halo-fill="#f2ecdc" size="10" minimum-path-length="100" face-name="Open Sans Regular" placement="line" halo-radius="2" minimum-padding="20" minimum-distance="10" character-spacing="1" spacing="200" fill="#666666" ><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
 </Style>
-<Style name="vector_linear_labels-surface_features/major_road4" filter-mode="first">
+<Style name="trans_linear_labels-surface_features/major_road4" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
     <Filter>([rclass] = 4)</Filter>
@@ -8786,7 +8783,7 @@
     <TextSymbolizer halo-fill="#f2ecdc" size="10" minimum-path-length="300" face-name="Open Sans Regular" placement="line" halo-radius="2" minimum-padding="20" minimum-distance="10" character-spacing="1" spacing="200" fill="#666666" ><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
 </Style>
-<Style name="vector_linear_labels-surface_features/major_road3" filter-mode="first">
+<Style name="trans_linear_labels-surface_features/major_road3" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>100000</MaxScaleDenominator>
     <MinScaleDenominator>25000</MinScaleDenominator>
@@ -8811,7 +8808,7 @@
     <TextSymbolizer size="11" halo-fill="#f2ecdc" fill="#1a1a1a" face-name="Open Sans Regular" placement="line" halo-radius="2" minimum-padding="20" minimum-distance="10" character-spacing="1" spacing="200" ><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
 </Style>
-<Style name="vector_linear_labels-surface_features/major_road2" filter-mode="first">
+<Style name="trans_linear_labels-surface_features/major_road2" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>100000</MaxScaleDenominator>
     <MinScaleDenominator>25000</MinScaleDenominator>
@@ -8836,7 +8833,7 @@
     <TextSymbolizer size="11" halo-fill="#f2ecdc" fill="#1a1a1a" face-name="Open Sans Regular" placement="line" halo-radius="2" minimum-padding="20" minimum-distance="10" character-spacing="1" spacing="200" ><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
 </Style>
-<Style name="vector_linear_labels-surface_features/major_road1_text" filter-mode="first">
+<Style name="trans_linear_labels-surface_features/major_road1_text" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
@@ -8873,7 +8870,7 @@
     <TextSymbolizer size="13" fill="#000000" halo-fill="#f2eddf" face-name="Open Sans Regular" placement="line" halo-radius="2" minimum-padding="20" minimum-distance="10" character-spacing="1" spacing="200" ><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
 </Style>
-<Style name="vector_linear_labels-limited_access_hwy/lane_text" filter-mode="first">
+<Style name="trans_linear_labels-limited_access_hwy/lane_text" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
@@ -8910,7 +8907,7 @@
     <TextSymbolizer size="11" fill="#4d4d4d" halo-fill="#f5f4e1" face-name="Open Sans Regular" placement="line" halo-radius="2" minimum-padding="20" minimum-distance="10" character-spacing="1" text-transform="uppercase" spacing="200" ><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
 </Style>
-<Style name="vector_linear_labels-limited_access_hwy/freeway_text" filter-mode="first">
+<Style name="trans_linear_labels-limited_access_hwy/freeway_text" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
@@ -8947,19 +8944,19 @@
     <TextSymbolizer size="11" fill="#4d4d4d" halo-fill="#f5f4e1" face-name="Open Sans Regular" placement="line" halo-radius="2" minimum-padding="20" minimum-distance="10" character-spacing="1" text-transform="uppercase" spacing="200" ><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
 </Style>
-<Layer name="vector_linear_labels"
+<Layer name="trans_linear_labels"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
-    <StyleName>vector_linear_labels-limited_access_hwy/freeway_text</StyleName>
-    <StyleName>vector_linear_labels-limited_access_hwy/lane_text</StyleName>
-    <StyleName>vector_linear_labels-surface_features/major_road1_text</StyleName>
-    <StyleName>vector_linear_labels-surface_features/major_road2</StyleName>
-    <StyleName>vector_linear_labels-surface_features/major_road3</StyleName>
-    <StyleName>vector_linear_labels-surface_features/major_road4</StyleName>
-    <StyleName>vector_linear_labels-surface_features/minor_road</StyleName>
-    <StyleName>vector_linear_labels-surface_features/service_road</StyleName>
-    <StyleName>vector_linear_labels-surface_features/ferry</StyleName>
-    <StyleName>vector_linear_labels-surface_features/railroad</StyleName>
-    <StyleName>vector_linear_labels-surface_features/river</StyleName>  </Layer>
+    <StyleName>trans_linear_labels-limited_access_hwy/freeway_text</StyleName>
+    <StyleName>trans_linear_labels-limited_access_hwy/lane_text</StyleName>
+    <StyleName>trans_linear_labels-surface_features/major_road1_text</StyleName>
+    <StyleName>trans_linear_labels-surface_features/major_road2</StyleName>
+    <StyleName>trans_linear_labels-surface_features/major_road3</StyleName>
+    <StyleName>trans_linear_labels-surface_features/major_road4</StyleName>
+    <StyleName>trans_linear_labels-surface_features/minor_road</StyleName>
+    <StyleName>trans_linear_labels-surface_features/service_road</StyleName>
+    <StyleName>trans_linear_labels-surface_features/ferry</StyleName>
+    <StyleName>trans_linear_labels-surface_features/railroad</StyleName>
+    <StyleName>trans_linear_labels-surface_features/river</StyleName>  </Layer>
 
 <Style name="vector_point_labels2-point/POI3" filter-mode="first">
   <Rule>

@@ -1,4 +1,4 @@
-#vector_linear_labels::limited_access_hwy {
+#trans_linear_labels::limited_access_hwy {
   ::freeway_text[rclass=0] {
     [zoom>=12] {
       text-name:"[name]";
@@ -50,15 +50,16 @@
 }
 
 /* this layer prevents surface street text from crossing over highways */
-#highway_overlay [zoom>=11][rclass=0][ramp!=true] {
+/* restricted to [rclass=0][ramp!=true] in the SQL */
+#highway_overlay[zoom>=11] {
   shield-face-name: @bold-fonts;
   shield-placement: line;
-  shield-opacity:0;
-  shield-file:url("markers/transparent-10.png");
-  shield-spacing:5;
+  shield-opacity: 0;
+  shield-file: url("markers/transparent-10.png");
+  shield-spacing: 5;
   [zoom >= 14][zoom < 17] {
-    shield-file:url("markers/transparent-15.png");
-    shield-spacing:10;
+    shield-file: url("markers/transparent-15.png");
+    shield-spacing: 10;
   }
   [zoom >= 17] {
     shield-file:url("markers/transparent-25.png");
@@ -66,7 +67,7 @@
   }
 }
 
-#vector_linear_labels::surface_features {
+#trans_linear_labels::surface_features {
   ::major_road1_text[rclass=1][zoom>=11] {
     text-name:"[name]";
     text-face-name: @book-fonts;

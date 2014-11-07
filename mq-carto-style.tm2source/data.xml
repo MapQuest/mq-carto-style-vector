@@ -3,9 +3,9 @@
 <Map srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
 
 <Parameters>
-  <Parameter name="center">-76.1167,40.0426,11</Parameter>
+  <Parameter name="center">-75.9698,40.3002,11</Parameter>
   <Parameter name="format">pbf</Parameter>
-  <Parameter name="json"><![CDATA[{"vector_layers":[{"id":"boundingbox","description":"","fields":{"Id":"Number"}},{"id":"natearth_ocean_10m","description":"Low-zoom Natural Earth sourced oceans","fields":{}},{"id":"natearth_lakes_10m","description":"","fields":{}},{"id":"vector_polygonal_geometry","description":"","fields":{"id":"Number","rclass":"Number"}},{"id":"vector_linear_county","description":"","fields":{"id":"Number","rclass":"Number","ramp":"Boolean","toll":"Boolean","restriction":"Boolean","oneway":"Boolean","brunnel":"Number","admin_level":"Number"}},{"id":"states","description":"Natural Earth sourced state boundaries","fields":{"name":"State name","adm0_a3":"Three letter code of the parent country"}},{"id":"countries","description":"Natural Earth sourced country boundaries","fields":{"name":"Country name"}},{"id":"natearth_roads","description":"","fields":{"type":"String"}},{"id":"trans_linear","description":"","fields":{"rclass":"Number","ramp":"Boolean","toll":"Boolean","restriction":"Boolean","oneway":"Boolean","brunnel":"Number"}},{"id":"highway_labels","description":"","fields":{"class":"Number","name":"String","name_len":"Number","display_class":"Number"}},{"id":"place_labels","description":"","fields":{"class":"Number","name":"String","name_len":"Number","display_class":"Number"}},{"id":"highway_overlay","description":"Highway geometries, for the purpose of excluding other labels","fields":{"id":"Number","rclass":"Number","ramp":"Boolean","toll":"Boolean","restriction":"Boolean","oneway":"Boolean","brunnel":"Number","admin_level":"Number"}},{"id":"vector_linear_labels","description":"","fields":{"id":"Number","rclass":"Number","path_priority":"Number","name":"String"}},{"id":"vector_point_labels2","description":"","fields":{"placement_id":"Number","label_id":"Number","min_zoom":"Number","max_zoom":"Number","class":"Number","name":"String","name_len":"Number","display_class":"Number","feature_area":"Number"}},{"id":"vector_point_labels3","description":"","fields":{"placement_id":"Number","label_id":"Number","min_zoom":"Number","max_zoom":"Number","class":"Number","name":"String","name_len":"Number","display_class":"Number","feature_area":"Number"}}]}]]></Parameter>
+  <Parameter name="json"><![CDATA[{"vector_layers":[{"id":"boundingbox","description":"The entire world","fields":{"Id":"Number"}},{"id":"natearth_ocean_10m","description":"Low-zoom Natural Earth sourced oceans","fields":{}},{"id":"natearth_lakes_10m","description":"","fields":{}},{"id":"vector_polygonal_geometry","description":"Area features for background drawing","fields":{"rclass":"Number"}},{"id":"vector_linear_county","description":"","fields":{"rclass":"Number","admin_level":"Number"}},{"id":"states","description":"Natural Earth sourced state boundaries","fields":{"name":"State name","adm0_a3":"Three letter code of the parent country"}},{"id":"countries","description":"Natural Earth sourced country boundaries","fields":{"name":"Country name"}},{"id":"natearth_roads","description":"","fields":{"type":"String"}},{"id":"trans_linear","description":"","fields":{"rclass":"Number","ramp":"Boolean","toll":"Boolean","restriction":"Boolean","oneway":"Boolean","brunnel":"Number"}},{"id":"highway_labels","description":"","fields":{"class":"Number","name":"String","name_len":"Number","display_class":"Number"}},{"id":"place_labels","description":"","fields":{"class":"Number","name":"String","name_len":"Number","display_class":"Number"}},{"id":"highway_overlay","description":"Highway geometries, for the purpose of excluding other labels","fields":{}},{"id":"trans_linear_labels","description":"","fields":{"id":"Number","rclass":"Number","path_priority":"Number","name":"String"}},{"id":"vector_point_labels2","description":"","fields":{"placement_id":"Number","label_id":"Number","min_zoom":"Number","max_zoom":"Number","class":"Number","name":"String","name_len":"Number","display_class":"Number","feature_area":"Number"}},{"id":"vector_point_labels3","description":"","fields":{"placement_id":"Number","label_id":"Number","min_zoom":"Number","max_zoom":"Number","class":"Number","name":"String","name_len":"Number","display_class":"Number","feature_area":"Number"}}]}]]></Parameter>
   <Parameter name="maxzoom">16</Parameter>
   <Parameter name="minzoom">0</Parameter>
   <Parameter name="name"><![CDATA[MQ Carto Vector]]></Parameter>
@@ -76,7 +76,7 @@
        <Parameter name="max_size"><![CDATA[512]]></Parameter>
        <Parameter name="password"><![CDATA[]]></Parameter>
        <Parameter name="port"><![CDATA[]]></Parameter>
-       <Parameter name="table"><![CDATA[(SELECT the_geom, id, rclass FROM
+       <Parameter name="table"><![CDATA[(SELECT the_geom, rclass FROM
   (SELECT * FROM vector_polygonal_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8
   UNION ALL
   SELECT * FROM vector_polygonal_geometry_8 WHERE z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
@@ -107,13 +107,17 @@
        <Parameter name="max_size"><![CDATA[512]]></Parameter>
        <Parameter name="password"><![CDATA[]]></Parameter>
        <Parameter name="port"><![CDATA[]]></Parameter>
-       <Parameter name="table"><![CDATA[(SELECT * FROM vector_linear_geometry_8 WHERE rclass = 15 AND z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
+       <Parameter name="table"><![CDATA[(SELECT 
+  the_geom, rclass, admin_level
+  FROM (SELECT * FROM vector_linear_geometry_8 WHERE rclass = 15 AND z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
 UNION ALL
 SELECT * FROM vector_linear_geometry_10 WHERE rclass = 15 AND z(!scale_denominator!) >= 10 AND z(!scale_denominator!) < 12
 UNION ALL
 SELECT * FROM vector_linear_geometry_12 WHERE rclass = 15 AND z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
 UNION ALL
 SELECT * FROM vector_linear_geometry_16 WHERE rclass = 15 AND z(!scale_denominator!) >= 16
+) AS p
+
 ) AS vector_linear_county]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[]]></Parameter>
@@ -300,7 +304,7 @@ SELECT * FROM vector_linear_geometry_16 WHERE rclass = 15 AND z(!scale_denominat
        <Parameter name="max_size"><![CDATA[512]]></Parameter>
        <Parameter name="password"><![CDATA[]]></Parameter>
        <Parameter name="port"><![CDATA[]]></Parameter>
-       <Parameter name="table"><![CDATA[(SELECT * FROM 
+       <Parameter name="table"><![CDATA[(SELECT the_geom FROM 
  (SELECT * FROM vector_linear_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8 -- rclass=15 does not appear here
   UNION ALL
   SELECT * FROM vector_linear_geometry_8 WHERE z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
@@ -310,14 +314,14 @@ SELECT * FROM vector_linear_geometry_16 WHERE rclass = 15 AND z(!scale_denominat
   SELECT * FROM vector_linear_geometry_12 WHERE z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
   UNION ALL
   SELECT * FROM vector_linear_geometry_16 WHERE z(!scale_denominator!) >= 16) AS r
- WHERE rclass = 0
+ WHERE rclass = 0 AND ramp!=true
 ) AS highway_overlay]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[]]></Parameter>
     </Datasource>
   </Layer>
 
-<Layer name="vector_linear_labels"
+<Layer name="trans_linear_labels"
   buffer-size="64"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     
@@ -332,10 +336,10 @@ SELECT * FROM vector_linear_geometry_16 WHERE rclass = 15 AND z(!scale_denominat
        <Parameter name="password"><![CDATA[]]></Parameter>
        <Parameter name="port"><![CDATA[]]></Parameter>
        <Parameter name="table"><![CDATA[(SELECT * FROM vector_linear_labels 
-  WHERE (rclass IN (1, 2, 3, 12, 16) AND z(!scale_denominator!) >= 10) -- major roads
+  WHERE (rclass IN (0, 1, 2, 3, 12, 16) AND z(!scale_denominator!) >= 10) -- major roads
     OR (rclass IN (4, 5, 6, 14, 11) AND z(!scale_denominator!) >= 14) -- minor roads, rivers, ferries, railways
   ORDER BY path_priority DESC, rclass DESC
-) AS vector_linear_labels]]></Parameter>
+) AS trans_linear_labels]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[]]></Parameter>
     </Datasource>

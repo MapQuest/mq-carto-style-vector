@@ -7,8 +7,8 @@ _prefs:
   saveCenter: true
 attribution: ''
 center: 
-  - -76.1167
-  - 40.0426
+  - -75.9698
+  - 40.3002
   - 11
 description: ''
 Layer: 
@@ -16,7 +16,7 @@ Layer:
     Datasource: 
       file: /home/pnorman/mq-carto-style-vector/10m-900913-bounding-box.shp
       type: shape
-    description: ''
+    description: The entire world
     fields: 
       Id: Number
     properties: 
@@ -72,7 +72,7 @@ Layer:
       password: ''
       port: ''
       table: |-
-        (SELECT the_geom, id, rclass FROM
+        (SELECT the_geom, rclass FROM
           (SELECT * FROM vector_polygonal_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8
           UNION ALL
           SELECT * FROM vector_polygonal_geometry_8 WHERE z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
@@ -86,9 +86,8 @@ Layer:
         ) AS vector_polygonal_geometry
       type: postgis
       user: ''
-    description: ''
+    description: Area features for background drawing
     fields: 
-      id: Number
       rclass: Number
     properties: 
       "buffer-size": 8
@@ -105,26 +104,24 @@ Layer:
       password: ''
       port: ''
       table: |-
-        (SELECT * FROM vector_linear_geometry_8 WHERE rclass = 15 AND z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
+        (SELECT 
+          the_geom, rclass, admin_level
+          FROM (SELECT * FROM vector_linear_geometry_8 WHERE rclass = 15 AND z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
         UNION ALL
         SELECT * FROM vector_linear_geometry_10 WHERE rclass = 15 AND z(!scale_denominator!) >= 10 AND z(!scale_denominator!) < 12
         UNION ALL
         SELECT * FROM vector_linear_geometry_12 WHERE rclass = 15 AND z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
         UNION ALL
         SELECT * FROM vector_linear_geometry_16 WHERE rclass = 15 AND z(!scale_denominator!) >= 16
+        ) AS p
+        
         ) AS vector_linear_county
       type: postgis
       user: ''
     description: ''
     fields: 
-      id: Number
       admin_level: Number
-      brunnel: Number
-      oneway: Boolean
-      ramp: Boolean
       rclass: Number
-      restriction: Boolean
-      toll: Boolean
     properties: 
       "buffer-size": 8
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
@@ -321,7 +318,7 @@ Layer:
       password: ''
       port: ''
       table: |-
-        (SELECT * FROM 
+        (SELECT the_geom FROM 
          (SELECT * FROM vector_linear_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8 -- rclass=15 does not appear here
           UNION ALL
           SELECT * FROM vector_linear_geometry_8 WHERE z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
@@ -331,24 +328,16 @@ Layer:
           SELECT * FROM vector_linear_geometry_12 WHERE z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
           UNION ALL
           SELECT * FROM vector_linear_geometry_16 WHERE z(!scale_denominator!) >= 16) AS r
-         WHERE rclass = 0
+         WHERE rclass = 0 AND ramp!=true
         ) AS highway_overlay
       type: postgis
       user: ''
     description: Highway geometries, for the purpose of excluding other labels
-    fields: 
-      id: Number
-      admin_level: Number
-      brunnel: Number
-      oneway: Boolean
-      ramp: Boolean
-      rclass: Number
-      restriction: Boolean
-      toll: Boolean
+    fields: {}
     properties: 
       "buffer-size": 16
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
-  - id: vector_linear_labels
+  - id: trans_linear_labels
     Datasource: 
       dbname: ''
       extent: -20037508,-20037508,20037508,20037508
@@ -361,10 +350,10 @@ Layer:
       port: ''
       table: |-
         (SELECT * FROM vector_linear_labels 
-          WHERE (rclass IN (1, 2, 3, 12, 16) AND z(!scale_denominator!) >= 10) -- major roads
+          WHERE (rclass IN (0, 1, 2, 3, 12, 16) AND z(!scale_denominator!) >= 10) -- major roads
             OR (rclass IN (4, 5, 6, 14, 11) AND z(!scale_denominator!) >= 14) -- minor roads, rivers, ferries, railways
           ORDER BY path_priority DESC, rclass DESC
-        ) AS vector_linear_labels
+        ) AS trans_linear_labels
       type: postgis
       user: ''
     description: ''
