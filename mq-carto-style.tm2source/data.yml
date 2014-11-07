@@ -283,8 +283,7 @@ Layer:
       port: ''
       table: |-
         (SELECT 
-            placement_id, label_id, min_zoom, max_zoom, the_geom, class, name,
-            length(name) AS name_len, display_class, feature_area
+            the_geom, class, name, length(name) AS name_len, display_class
           FROM
           (SELECT
               placement_id, label_id, min_zoom, max_zoom, the_geom, class,
@@ -297,7 +296,7 @@ Layer:
             WHERE class IN (1000, 1010, 1020, 1030, 1031, 1038) 
               AND z(!scale_denominator!) >= min_zoom
               AND (z(!scale_denominator!) < max_zoom+1 OR max_zoom IS NULL OR max_zoom = 18)
-            ORDER BY display_class ASC, feature_area DESC, min_zoom DESC) AS data0
+            ORDER BY display_class ASC, class DESC, min_zoom DESC, feature_area DESC) AS data0
         ) AS place_labels
       type: postgis
       user: ''
@@ -305,13 +304,8 @@ Layer:
     fields: 
       class: Number
       display_class: Number
-      feature_area: Number
-      label_id: Number
-      max_zoom: Number
-      min_zoom: Number
       name: String
       name_len: Number
-      placement_id: Number
     properties: 
       "buffer-size": 64
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
