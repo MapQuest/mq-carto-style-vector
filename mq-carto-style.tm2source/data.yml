@@ -201,12 +201,12 @@ Layer:
       user: ''
     description: ''
     fields: 
-      brunnel: Number
-      oneway: Boolean
+      brunnel: Bridge or tunnel
+      oneway: If the feature is oneway
       ramp: Boolean
       rclass: Number
       restriction: Boolean
-      toll: Boolean
+      toll: If the feature is tolled
     properties: 
       "buffer-size": 16
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
@@ -262,7 +262,7 @@ Layer:
       port: ''
       table: |-
         (SELECT 
-            the_geom, class, name, length(name) AS name_len, display_class
+            the_geom, class, name, display_class
           FROM
           (SELECT
               placement_id, label_id, min_zoom, max_zoom, the_geom, class,
@@ -284,7 +284,6 @@ Layer:
       class: Number
       display_class: Number
       name: String
-      name_len: Number
     properties: 
       "buffer-size": 64
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
@@ -331,18 +330,16 @@ Layer:
       password: ''
       port: ''
       table: |-
-        (SELECT * FROM vector_linear_labels 
+        (SELECT the_geom, name, rclass FROM vector_linear_labels
           WHERE (rclass IN (0, 1, 2, 3, 12, 16) AND z(!scale_denominator!) >= 10) -- major roads
             OR (rclass IN (4, 5, 6, 14, 11) AND z(!scale_denominator!) >= 14) -- minor roads, rivers, ferries, railways
           ORDER BY path_priority DESC, rclass DESC
         ) AS trans_linear_labels
       type: postgis
       user: ''
-    description: ''
+    description: 'Labels for linear transportation features'
     fields: 
-      id: Number
       name: String
-      path_priority: Number
       rclass: Number
     properties: 
       "buffer-size": 64
@@ -360,8 +357,7 @@ Layer:
       port: ''
       table: |-
         (SELECT 
-            placement_id, label_id, min_zoom, max_zoom, the_geom, class, name,
-            length(name) AS name_len, display_class, feature_area 
+            the_geom, class, name, display_class
           FROM 
           (SELECT
               placement_id, label_id, min_zoom, max_zoom, the_geom, class,
@@ -385,13 +381,7 @@ Layer:
     fields: 
       class: Number
       display_class: Number
-      feature_area: Number
-      label_id: Number
-      max_zoom: Number
-      min_zoom: Number
       name: String
-      name_len: Number
-      placement_id: Number
     properties: 
       "buffer-size": 64
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
@@ -408,8 +398,7 @@ Layer:
       port: ''
       table: |-
         (SELECT 
-            placement_id, label_id, min_zoom, max_zoom, the_geom, class, name,
-            length(name) AS name_len, display_class, feature_area 
+            the_geom, class, name, display_class
           FROM 
           (SELECT
               placement_id, label_id, min_zoom, max_zoom, the_geom, class,
@@ -433,13 +422,7 @@ Layer:
     fields: 
       class: Number
       display_class: Number
-      feature_area: Number
-      label_id: Number
-      max_zoom: Number
-      min_zoom: Number
       name: String
-      name_len: Number
-      placement_id: Number
     properties: 
       "buffer-size": 64
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
