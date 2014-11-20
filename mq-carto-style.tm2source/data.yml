@@ -73,17 +73,18 @@ Layer:
       password: ''
       port: ''
       table: |-
-        (SELECT the_geom, rclass FROM
-          (SELECT * FROM vector_polygonal_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8
-          UNION ALL
-          SELECT * FROM vector_polygonal_geometry_8 WHERE z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
-          UNION ALL
-          SELECT * FROM vector_polygonal_geometry_10 WHERE z(!scale_denominator!) >= 10 AND z(!scale_denominator!) < 12
-          UNION ALL
-          SELECT * FROM vector_polygonal_geometry_12 WHERE z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
-          UNION ALL
-          SELECT * FROM vector_polygonal_geometry_16 WHERE z(!scale_denominator!) >= 16) AS d
-          WHERE rclass != 2
+        (SELECT the_geom, rclass
+          FROM
+            (SELECT * FROM vector_polygonal_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8
+            UNION ALL
+            SELECT * FROM vector_polygonal_geometry_8 WHERE z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
+            UNION ALL
+            SELECT * FROM vector_polygonal_geometry_10 WHERE z(!scale_denominator!) >= 10 AND z(!scale_denominator!) < 12
+            UNION ALL
+            SELECT * FROM vector_polygonal_geometry_12 WHERE z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
+            UNION ALL
+            SELECT * FROM vector_polygonal_geometry_16 WHERE z(!scale_denominator!) >= 16) AS d
+          WHERE rclass NOT IN (2, 10)
           ORDER BY area DESC
         ) AS vector_polygonal_geometry
       type: postgis
@@ -93,6 +94,35 @@ Layer:
       rclass: Number
     properties: 
       "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: buildings
+    Datasource:
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: |-
+        (SELECT the_geom
+          FROM
+            (SELECT * FROM vector_polygonal_geometry_12 WHERE z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
+            UNION ALL
+            SELECT * FROM vector_polygonal_geometry_16 WHERE z(!scale_denominator!) >= 16) AS t
+          WHERE rclass = 10
+          ORDER BY area DESC
+        ) AS vector_polygonal_geometry
+      type: postgis
+      user: ''
+    description: Buildings
+    fields:
+      admin_level: Number
+      rclass: Number
+    properties:
+      "buffer-size": 2
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
   - id: vector_linear_county
     Datasource: 
@@ -109,14 +139,13 @@ Layer:
         (SELECT 
           the_geom, rclass, admin_level
           FROM (SELECT * FROM vector_linear_geometry_8 WHERE rclass = 15 AND z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
-        UNION ALL
-        SELECT * FROM vector_linear_geometry_10 WHERE rclass = 15 AND z(!scale_denominator!) >= 10 AND z(!scale_denominator!) < 12
-        UNION ALL
-        SELECT * FROM vector_linear_geometry_12 WHERE rclass = 15 AND z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
-        UNION ALL
-        SELECT * FROM vector_linear_geometry_16 WHERE rclass = 15 AND z(!scale_denominator!) >= 16
-        ) AS p
-        
+            UNION ALL
+            SELECT * FROM vector_linear_geometry_10 WHERE rclass = 15 AND z(!scale_denominator!) >= 10 AND z(!scale_denominator!) < 12
+            UNION ALL
+            SELECT * FROM vector_linear_geometry_12 WHERE rclass = 15 AND z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
+            UNION ALL
+            SELECT * FROM vector_linear_geometry_16 WHERE rclass = 15 AND z(!scale_denominator!) >= 16
+            ) AS p
         ) AS vector_linear_county
       type: postgis
       user: ''

@@ -20,6 +20,7 @@ layers:
   - boundingbox
   - water
   - vector_polygonal_geometry
+  - buildings
   - vector_linear_county
   - states
   - countries

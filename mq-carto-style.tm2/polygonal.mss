@@ -2,6 +2,14 @@
   polygon-fill: @water;
 }
 
+
+/* buildings
+ * TODO: Test import had no buildings, still needs testing
+ */
+#buildings[zoom >= 14] {
+  polygon-fill: #e5dfd4;
+}
+
 #vector_polygonal_geometry[zoom >= 6] {
   /* Beaches */
   [rclass = 4] {
@@ -140,12 +148,7 @@
       polygon-fill: #fbf9f0;
     }
   }
-  /* buildings
-   * TODO: should these go in their own layer?
-   */
-  [rclass = 10][zoom >= 14] {
-    polygon-fill: #e5dfd4;
-  }
+
   /* National monuments */
   [rclass = 25][zoom >= 7] {
     polygon-fill: #d4ebb5;
