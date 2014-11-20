@@ -38,7 +38,8 @@ source: "tmsource:///home/pnorman/mq-carto-style-vector/mq-carto-style.tm2source
 styles: 
   - base.mss
   - polygonal.mss
-  - linear.mss
+  - admin.mss
+  - highway.mss
   - place_label.mss
   - highway_label.mss
   - linear_label.mss
