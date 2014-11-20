@@ -23,25 +23,44 @@ Layer:
     properties: 
       "buffer-size": 2
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
-  - id: lz_water
+  - id: water
     Datasource: 
       dbname: ''
-      extent: -180, -85.05112877980659, 180, 85.05112877980659
+      extent: -20037508,-20037508,20037508,20037508
       geometry_field: the_geom
-      geometry_table: ''
+      geometry_table: 'vector_polygonal_geometry_6'
       host: ''
       key_field: ''
       max_size: 512
       password: ''
       port: ''
-      table: (SELECT the_geom FROM natearth_ocean_10m UNION ALL SELECT the_geom FROM natearth_lakes_10m) AS lz_water
+      table: |-
+        (SELECT ST_Transform(the_geom, 3857) AS the_geom FROM natearth_ocean_10m
+          WHERE z(!scale_denominator!) < 6 AND the_geom && ST_Transform(!bbox!, 4326)
+        UNION ALL
+        SELECT ST_Transform(the_geom, 3857) AS the_geom FROM natearth_lakes_10m
+          WHERE z(!scale_denominator!) < 6 AND the_geom && ST_Transform(!bbox!, 4326)
+        UNION ALL
+        SELECT the_geom
+          FROM (SELECT * FROM vector_polygonal_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8
+            UNION ALL
+            SELECT * FROM vector_polygonal_geometry_8 WHERE z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
+            UNION ALL
+            SELECT * FROM vector_polygonal_geometry_10 WHERE z(!scale_denominator!) >= 10 AND z(!scale_denominator!) < 12
+            UNION ALL
+            SELECT * FROM vector_polygonal_geometry_12 WHERE z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
+            UNION ALL
+            SELECT * FROM vector_polygonal_geometry_16 WHERE z(!scale_denominator!) >= 16
+            ) AS t
+          WHERE rclass = 2
+        ) AS water
       type: postgis
       user: ''
-    description: Low-zoom Natural Earth water
+    description: Areas covered by water. Includes oceans.
     fields: {}
     properties: 
       "buffer-size": 2
-    srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
   - id: vector_polygonal_geometry
     Datasource: 
       dbname: ''
@@ -64,6 +83,7 @@ Layer:
           SELECT * FROM vector_polygonal_geometry_12 WHERE z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
           UNION ALL
           SELECT * FROM vector_polygonal_geometry_16 WHERE z(!scale_denominator!) >= 16) AS d
+          WHERE rclass != 2
           ORDER BY area DESC
         ) AS vector_polygonal_geometry
       type: postgis

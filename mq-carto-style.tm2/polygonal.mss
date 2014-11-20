@@ -1,4 +1,4 @@
-#lz_water[zoom >= 4][zoom < 6] {
+#water {
   polygon-fill: @water;
 }
 
@@ -139,10 +139,6 @@
     [zoom >= 16] {
       polygon-fill: #fbf9f0;
     }
-  }
-  /* water */
-  [rclass = 2] {
-    polygon-fill: @water;
   }
   /* buildings
    * TODO: should these go in their own layer?
