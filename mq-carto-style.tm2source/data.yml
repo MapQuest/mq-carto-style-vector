@@ -35,10 +35,12 @@ Layer:
       password: ''
       port: ''
       table: |-
-        (SELECT ST_Transform(the_geom, 3857) AS the_geom FROM natearth_ocean_10m
+        (SELECT ST_Transform(ST_Intersection(the_geom, ST_Transform(!bbox!, 4326)), 900913) AS the_geom -- horrible kludge to work in 900913 when nat earth is in 4326. stops attempts to project points outside mercator extents
+          FROM natearth_ocean_10m
           WHERE z(!scale_denominator!) < 6 AND the_geom && ST_Transform(!bbox!, 4326)
         UNION ALL
-        SELECT ST_Transform(the_geom, 3857) AS the_geom FROM natearth_lakes_10m
+        SELECT ST_Transform(ST_Intersection(the_geom, ST_Transform(!bbox!, 4326)), 900913) AS the_geom -- less necessary for lakes
+          FROM natearth_lakes_10m
           WHERE z(!scale_denominator!) < 6 AND the_geom && ST_Transform(!bbox!, 4326)
         UNION ALL
         SELECT the_geom
@@ -52,7 +54,7 @@ Layer:
             UNION ALL
             SELECT * FROM vector_polygonal_geometry_16 WHERE z(!scale_denominator!) >= 16
             ) AS t
-          WHERE rclass = 2
+          WHERE rclass = 2 AND the_geom && !bbox!
         ) AS water
       type: postgis
       user: ''
@@ -222,7 +224,7 @@ Layer:
       dbname: ''
       extent: -20037508,-20037508,20037508,20037508
       geometry_field: the_geom
-      geometry_table: ''
+      geometry_table: 'vector_linear_geometry_6'
       host: ''
       key_field: ''
       max_size: 512
@@ -230,8 +232,8 @@ Layer:
       port: ''
       table: |-
         (SELECT the_geom, rclass, ramp, toll, restriction, oneway, brunnel
-          FROM (
-            SELECT * FROM vector_linear_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8 -- rclass=15 does not appear here
+          FROM
+            (SELECT * FROM vector_linear_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8 -- rclass=15 does not appear here
             UNION ALL
             SELECT * FROM vector_linear_geometry_8 WHERE rclass IN (0, 1, 2) AND z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
             UNION ALL
@@ -242,7 +244,12 @@ Layer:
                 AND (rclass IN (0, 1, 2, 3, 4, 13) 
                   OR (rclass IN (6, 11, 14) AND z(!scale_denominator!) >= 12))
             UNION ALL
-            SELECT * FROM vector_linear_geometry_16 WHERE rclass != 15 AND z(!scale_denominator!) >= 16) AS r
+            SELECT * FROM vector_linear_geometry_16 WHERE rclass != 15 AND z(!scale_denominator!) >= 16) AS t
+          WHERE the_geom && !bbox!
+        UNION ALL
+        SELECT ST_Transform(ST_Intersection(the_geom, ST_Transform(!bbox!, 4326)), 900913) AS the_geom, -- kludge as above for projections
+            0, NULL, NULL, NULL, NULL, NULL
+          FROM natearth_roads_old WHERE z(!scale_denominator!) < 6 AND type='Major Highway' AND the_geom && ST_Transform(!bbox!,4326)
           ORDER BY rclass DESC
         ) AS trans_linear
       type: postgis

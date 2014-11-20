@@ -4,16 +4,6 @@
 /* -----                                                         ----- */
 /* ------------------------------------------------------------------- */
 
-/* Only major roads */
-#natearth_roads[zoom >= 4][zoom < 6] {
-  line-width: 0.4;
-  line-color: #bbc5d4;
-  [zoom >= 5] {
-    line-width: 0.5;
-    line-color: #a5b3c7;
-  }
-}
-
 /* ------------------------------------------------------------------- */
 /* -----                                                         ----- */
 /* -----                      LINEAR COLORS                      ----- */
@@ -22,7 +12,15 @@
 
 #trans_linear {
   ::freeway[rclass=0] {
-    [zoom>=6][zoom<=7] {
+    [zoom >= 4][zoom < 6] {
+      line-width: 0.4;
+      line-color: #bbc5d4;
+      [zoom >= 5] {
+        line-width: 0.5;
+        line-color: #a5b3c7;
+      }
+    }
+    [zoom>=4][zoom<=7] {
       [toll=false] {line-color:#85a3de;}
       [toll=true] {line-color:#4fbd65;}
       line-cap:round;line-join:round;
