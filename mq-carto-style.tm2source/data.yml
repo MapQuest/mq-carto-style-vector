@@ -199,26 +199,6 @@ Layer:
     properties: 
       "buffer-size": 8
     srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
-  - id: natearth_roads
-    Datasource: 
-      dbname: ''
-      extent: -180, -85.05112877980659, 180, 85.05112877980659
-      geometry_field: the_geom
-      geometry_table: ''
-      host: ''
-      key_field: ''
-      max_size: 512
-      password: ''
-      port: ''
-      table: (SELECT the_geom, type FROM natearth_roads_old WHERE type='Major Highway') AS natearth_roads
-      type: postgis
-      user: ''
-    description: ''
-    fields: 
-      type: String
-    properties: 
-      "buffer-size": 8
-    srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
   - id: trans_linear
     Datasource: 
       dbname: ''
@@ -250,7 +230,7 @@ Layer:
         SELECT ST_Transform(ST_Intersection(the_geom, ST_Transform(!bbox!, 4326)), 900913) AS the_geom, -- kludge as above for projections
             0, NULL, NULL, NULL, NULL, NULL
           FROM natearth_roads_old WHERE z(!scale_denominator!) < 6 AND type='Major Highway' AND the_geom && ST_Transform(!bbox!,4326)
-          ORDER BY rclass DESC
+          ORDER BY rclass
         ) AS trans_linear
       type: postgis
       user: ''

@@ -24,7 +24,6 @@ layers:
   - vector_linear_county
   - states
   - countries
-  - natearth_roads
   - trans_linear
   - highway_labels
   - place_labels

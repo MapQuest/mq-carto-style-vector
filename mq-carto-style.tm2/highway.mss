@@ -1,19 +1,203 @@
 #trans_linear {
-  ::freeway[rclass=0] {
-    [zoom >= 4][zoom < 6] {
-      line-width: 0.4;
-      line-color: #bbc5d4;
-      [zoom >= 5] {
-        line-width: 0.5;
-        line-color: #a5b3c7;
+  /* Freeways */
+  [rclass=0] {
+    ::casing[zoom >= 15] {
+      line-width: 7;
+      line-color: #7392d1;
+      line-cap: round;
+      line-join: round;
+      [brunnel = 2] {
+        line-dasharray: 8,8;
+        line-cap: butt
+      }
+      [zoom >= 16] {
+        line-width: 11;
+        line-color: #95add8;
+      }
+      [zoom >= 17] {
+        line-width: 13;
+      }
+      [zoom >= 18] {
+        line-width: 19;
+      }
+      [ramp = true] {
+        [zoom >= 15] {
+          line-width: 5;
+          line-color: #95add8;
+        }
+        [zoom >= 16] {
+          line-color: #b6c7e4; // FIXME: This is effectively no casing?
+        }
+        [zoom >= 17] {
+          line-width: 8;
+        }
+        [zoom >= 18] {
+          line-width: 11;
+        }
+      }
+      [toll = true] {
+        [zoom >= 15] {
+          line-color: #7fbd84;
+        }
+        [ramp = true] {
+          [zoom >= 15] {
+            line-color: #99cca4;
+          }
+        }
       }
     }
-    [zoom>=4][zoom<=7] {
-      [toll=false] {line-color:#85a3de;}
-      [toll=true] {line-color:#4fbd65;}
-      line-cap:round;line-join:round;
+    ::fill[zoom >= 4] {
+      line-width: 0.4;
+      line-color: #bbc5d4;
+      line-cap: round;
+      line-join: round;
+      [zoom >= 5] {
+        fill/line-width: 0.5;
+        fill/line-color: #a5b3c7;
+      }
+      [zoom >= 6] {
+        fill/line-width: 0.6;
+        fill/line-color: #85a3de;
+      }
+      [zoom >= 7] {
+        line-width: 0.75;
+      }
+      [zoom >= 8] {
+        line-width: 1.5;
+        line-color: #7e9cd9;
+      }
+      [zoom >= 9] {
+        line-width: 2;
+        line-color: #829eca;
+      }
+      [zoom >= 11] {
+        line-width: 3;
+      }
+      [zoom >= 12] {
+        line-color: #89a7d6;
+        [brunnel = 2] {
+          line-dasharray: 8,8;
+          line-cap: butt
+        }
+      }
+      [zoom >= 13] {
+        line-width: 4;
+      }
+      [zoom >= 14] {
+        line-color: #829eca;
+      }
+      [zoom >= 15] {
+        line-color: #9fb3d1;
+      }
+      [zoom >= 15] {
+        line-width: 5;
+        line-color: #b6c7e4;
+      }
+      [zoom >= 16] {
+        line-width: 8;
+      }
+      [zoom >= 17] {
+        line-width: 10;
+      }
+      [zoom >= 18] {
+        line-width: 16;
+      }
+      [ramp = true] {
+        /* TODO: this ends up adding rendering for ramps at z6 and z7, a change. Is this an issue? They may not be visible */
+        [zoom >= 8] {
+          line-width: 1;
+          line-color: #7392d1;
+        }
+        [zoom >= 10] {
+          line-color: #688abd;
+        }
+        [zoom >= 11] {
+          line-width: 1.5;
+        }
+        [zoom >= 12] {
+          line-width: 1;
+          line-color: #95add8;
+        }
+        [zoom >= 11] {
+          line-width: 2;
+        }
+        [zoom >= 15] {
+          line-width: 3;
+          line-color: #b6c7e4;
+        }
+        [zoom >= 16] {
+          line-width: 2; // FIXME: This seems wrong
+          line-color: #b6c7e4;
+        }
+        [zoom >= 17] {
+          line-width: 5;
+        }
+        [zoom >= 18] {
+          line-width: 8;
+        }
+      }
+      [toll = true] {
+        line-color: #4fbd65;
+        [zoom >= 8] {
+          line-color: #4fbd65;
+        }
+        [zoom >= 9] {
+          line-color: #6cbd7e;
+        }
+        [zoom >= 15] {
+          line-color: #a5d9b0;
+        }
+        [zoom >= 16] {
+          line-color: #b1dbba;
+        }
+        [ramp = true] {
+          [zoom >= 12] {
+            line-color: #99cca4; // check this
+          }
+          [zoom >= 12] {
+            line-color: #7fbd84;
+          }
+          [zoom >= 16] {
+            line-color: #add9b7;
+          }
+        }
+      }
+    }
+    ::centerline[zoom >= 12] {
+      line-width: 1;
+      line-color: #a8bad5;
+      line-cap: round;
+      line-join: round;
+      [brunnel = 2] {
+        line-dasharray: 8,8;
+        line-cap: butt
+      }
+      [zoom >= 15] {
+        line-color: #bdcce6;
+      }
+      [zoom >= 16] {
+        line-width: 2;
+        line-color: #cadcfa;
+      }
+      [zoom >= 17] {
+        line-color: #d1dbed;
+      }
+      [toll = true] {
+        [zoom >= 12] {
+          line-color: #aedcb7;
+        }
+        [zoom >= 15] {
+          line-color: #c4e2ca;
+        }
+        [zoom >= 17] {
+          line-color: #cfe8d4;
+        }
+      }
     }
   }
+}
+
+#trans_linear {
   ::major_road[rclass=1] {
     [zoom>=6][zoom<=7] {
       [zoom=6] {line-color:#ebcd96;}
@@ -35,26 +219,6 @@
       [zoom=9] {line-color:#face78;}
       line-cap:round;line-join:round;
       }
-  }
-  ::freeway_ramp[rclass=0][ramp=true] {      /* includes free and toll ramps */
-    [zoom>=8][zoom<=9] {
-      [toll=false] {line-color:#7392d1;}
-      [toll=true] {line-color:#4fbd65;}
-      line-cap:round;line-join:round;
-    }
-  }
-  ::freeway[rclass=0][ramp!=true] {
-    [zoom>=8][zoom<=9] {
-      [zoom=8] {
-        [toll=false] {line-color:#7e9cd9;}
-        [toll=true] {line-color:#4fbd65;}
-      }
-      [zoom=9] {
-        [toll=false] {line-color:#829eca;}
-        [toll=true] {line-color:#6cbd7e;}
-      }
-      line-cap:round;line-join:round;
-    }
   }
 
   ::ferry_hwy[rclass=13] {
@@ -80,20 +244,6 @@
   }
   ::major_road1[rclass=1] {
     [zoom>=10][zoom<=11] {line-color:#ffcc80;line-cap:round;line-join:round;}
-  }
-  ::freeway_ramp[rclass=0][ramp=true] {      /* includes free and toll ramps */
-    [zoom>=10][zoom<=11] {
-      [toll=false] {line-color:#688abd;}
-      [toll=true] {line-color:#4fbd65;}
-      line-cap:round;line-join:round;
-    }
-  }
-  ::freeway[rclass=0][ramp!=true] {
-    [zoom>=10][zoom<=11] {
-      [toll=false] {line-color:#829eca;}
-      [toll=true] {line-color:#6cbd7e;}
-      line-cap:round;line-join:round;
-    }
   }
 
   ::ferry_hwy[rclass=13] {
@@ -196,63 +346,6 @@
       [zoom=13] {line-color:#ffd68f;}
       [zoom=14] {line-color:#ffd182;}
       [zoom=15] {line-color:#f5d9a6;}
-      line-cap:round;line-join:round;
-    }
-  }
-  ::freeway_ramp[rclass=0][ramp=true] {      /* includes free and toll ramps */
-    ::casing {
-      [zoom=15] {
-        [toll=false] {line-color:#95add8;}
-        [toll=true] {line-color:#99cca4;}
-        line-cap:round;line-join:round;
-      }
-    }
-    ::fill[zoom>=12][zoom<=14] {
-      [toll=false] {line-color:#95add8;}
-      [toll=true] {line-color:#99cca4;}
-      line-cap:round;line-join:round;
-    }
-    ::fill[zoom=15] {
-      [toll=false] {line-color:#b6c7e4;}
-      [toll=true] {line-color:#7fbd84;}
-      line-cap:round;line-join:round;
-    }
-  }
-  ::freeway[rclass=0][ramp!=true] {
-    ::casing {
-      [zoom=15] {
-        [toll=false] {line-color:#7392d1;}
-        [toll=true] {line-color:#7fbd84;}
-        [brunnel=2] {line-dasharray:8,8;line-cap:butt;}
-        line-cap:round;line-join:round;
-      }
-    }
-    ::fill [zoom>=12][zoom<=15] { 
-      [zoom>=12][zoom<=13] {
-        [toll=false] {line-color:#89a7d6;}
-        [toll=true] {line-color:#6cbd7e;}
-      }
-      [zoom=14] {
-        [toll=false] {line-color:#829eca;}
-        [toll=true] {line-color:#6cbd7e;}
-      }
-      [zoom=15] {
-        [toll=false] {line-color:#9fb3d1;}
-        [toll=true] {line-color:#a5d9b0;}
-      }
-      [zoom>=14][zoom<=15][brunnel=2] {line-dasharray:8,8;line-cap:butt;}
-      line-cap:round;line-join:round;
-    }
-    ::centerline [zoom>=12][zoom<=15] {
-      [zoom>=12][zoom<=14] {
-        [toll=false] {line-color:#a8bad5;}
-        [toll=true] {line-color:#aedcb7;}
-      }
-      [zoom=15] {
-        [toll=false] {line-color:#bdcce6;}
-        [toll=true] {line-color:#c4e2ca;}
-      }
-      [zoom>=12][zoom<=15][brunnel=2] {line-dasharray:8,8;line-cap:butt;}
       line-cap:round;line-join:round;
     }
   }
@@ -391,54 +484,10 @@
       [zoom>=17] {line-pattern-file:url(markers/oneway_1_17-18.png);}
     }
   }
-  ::freeway_ramp[rclass=0][ramp=true] {                      /* includes free and toll ramps */
-    [zoom>=16] {line-cap:round;line-join:round;}
-    ::casing {
-      [zoom>=16] {
-        [toll=false] {line-color:#b6c7e4;}
-        [toll=true] {line-color:#99cca4;}
-      }
-    }
-    ::fill {
-      [zoom>=16] {
-        [toll=false] {line-color:#cdd8ec;}
-        [toll=true] {line-color:#add9b7;}
-      }
-    }
-  }
-  ::freeway[rclass=0][ramp!=true] {
-    [zoom>=16] {
-      ::casing {
-        [zoom>=16] {
-          [toll=false] {line-color:#95add8;}
-          [toll=true] {line-color:#7fbd84;}
-          [brunnel=2] {line-dasharray:8,8;line-cap:butt;}
-          line-cap:round;line-join:round;
-        }
-      }
-      ::fill {
-        [zoom>=16] {
-          [toll=false] {line-color:#b6c7e4;}
-          [toll=true] {line-color:#b1dbba;}
-          [brunnel=2] {line-dasharray:8,8;line-cap:butt;}
-          line-cap:round;line-join:round;
-        }
-      }
-      ::centerline {
-        [zoom=16] {
-          [toll=false] {line-color:#cadcfa;}
-          [toll=true] {line-color:#c4e2ca;}
-        }
-        [zoom>=17] {
-          [toll=false] {line-color:#d1dbed;}
-          [toll=true] {line-color:#cfe8d4;}
-        }
-        [brunnel=2] {line-dasharray:8,8;line-cap:butt;}
-        line-cap:round;line-join:round;
-      }
-    }
-  }
+
 }
+
+
 
 
 /* ------------------------------------------------------------------- */
@@ -452,10 +501,6 @@
     [zoom=6] {line-width:0.4;}
     [zoom=7] {line-width:0.75;}
   }
-  ::freeway[rclass=0] {
-    [zoom=6] {line-width:.5;}
-    [zoom=7] {line-width:.75;}
-  }
 
   ::major_road2-3[rclass>=2][rclass<=3][ramp!=true] {
     [zoom=8] {line-width:0.75;}
@@ -464,13 +509,6 @@
   ::major_road1[rclass=1][ramp!=true] {
     [zoom=8] {line-width:1;}
     [zoom=9] {line-width:1.5;}
-  }
-  ::freeway_ramp[rclass=0][ramp=true] {     /* includes free and toll ramps */
-    [zoom>=8][zoom<=9] {line-width:1;}
-  }
-  ::freeway[rclass=0][ramp!=true] {
-    [zoom=8] {line-width:1.5;}
-    [zoom=9] {line-width:2;}
   }
 
   ::surface_ramp[rclass!=0][ramp=true] {
@@ -482,14 +520,6 @@
   ::major_road1[rclass=1][ramp!=true] {
     [zoom=10] {line-width:1.5;}
     [zoom=11] {line-width:2.5;}
-  }
-  ::freeway_ramp[rclass=0][ramp=true] {        /* includes free and toll ramps */
-    [zoom=10] {line-width:1;}
-    [zoom=11] {line-width:1.5;}
-  }
-  ::freeway[rclass=0][ramp!=true] {
-    [zoom=10] {line-width:2;}
-    [zoom=11] {line-width:3;}
   }
 
   ::river[rclass=11] {
@@ -556,32 +586,6 @@
     [zoom=13] {line-width:3;}
     [zoom=14] {line-width:4;}
     [zoom=15] {line-width:3;}
-  }
-  ::freeway_ramp[rclass=0][ramp=true] {  /* includes free and toll ramps */
-    ::casing {
-      [zoom=15] {line-width:5;}
-    }
-    ::fill {
-      [zoom>=12][zoom<=13] {line-width:1;}
-      [zoom=14] {line-width:2;}
-      [zoom=15] {line-width:3;}
-    }
-  }
-  ::freeway[rclass=0][ramp!=true] {
-    ::casing {
-      [zoom=15] {line-width:7;}
-    }
-    ::fill {
-      [zoom=12] {line-width:3;}
-      [zoom>=13][zoom<=14] {line-width:4;}
-      [zoom=15] {line-width:5;}
-    }
-    ::centerline {
-      [zoom=12] {line-width:1;}
-      [zoom=13] {line-width:1;}
-      [zoom=14] {line-width:1;}
-      [zoom=15] {line-width:1;}
-    }
   }
 
   ::river[rclass=11] {
@@ -675,32 +679,5 @@
       [zoom=17] {line-width:8;}
       [zoom=18] {line-width:11;}
   }
-  ::freeway_ramp[rclass=0][ramp=true] {  /* includes free and toll ramps */
-    ::casing {
-      [zoom=16] {line-width:5;}
-      [zoom=17] {line-width:8;}
-      [zoom=18] {line-width:11;}
-    }
-    ::fill {
-      [zoom=16] {line-width:2;}
-      [zoom=17] {line-width:5;}
-      [zoom=18] {line-width:8;}
-    }
-  }
-  ::freeway[rclass=0][ramp!=true] {  /* includes free and toll ramps */
-    ::casing {
-      [zoom=16] {line-width:11;}
-      [zoom=17] {line-width:13;}
-      [zoom=18] {line-width:19;}
-    }
-    ::fill {
-      [zoom=16] {line-width:8;}
-      [zoom=17] {line-width:10;}
-      [zoom=18] {line-width:16;}
-    }
-    ::centerline {
-      [zoom=16] {line-width:2}
-      [zoom>=17] {line-width:2}
-    }
-  }
+
 }
