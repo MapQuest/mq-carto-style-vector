@@ -91,7 +91,6 @@
       }
       [zoom >= 15] {
         line-width: 5;
-        line-color: #b6c7e4;
       }
       [zoom >= 16] {
         line-width: 8;
