@@ -19,9 +19,9 @@ metatile: 1
 layers:
   - boundingbox
   - water
-  - vector_polygonal_geometry
+  - landmark_polygon
   - buildings
-  - vector_linear_county
+  - admin_lines
   - states
   - countries
   - trans_linear
@@ -37,13 +37,14 @@ name: MQ Carto Style
 source: "tmsource:///home/pnorman/mq-carto-style-vector/mq-carto-style.tm2source"
 styles: 
   - base.mss
+  - water.mss
   - polygonal.mss
-  - admin.mss
-  - highway.mss
-  - place_label.mss
-  - highway_label.mss
-  - linear_label.mss
-  - point_label2.mss
-  - linear_label2.mss
-  - point_label3.mss
+#  - admin.mss
+#  - highway.mss
+#  - place_label.mss
+#  - highway_label.mss
+#  - linear_label.mss
+#  - point_label2.mss
+#  - linear_label2.mss
+#  - point_label3.mss
 template: ''

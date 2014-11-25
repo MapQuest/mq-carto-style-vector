@@ -27,34 +27,18 @@ Layer:
     Datasource: 
       dbname: ''
       extent: -20037508,-20037508,20037508,20037508
-      geometry_field: the_geom
-      geometry_table: 'vector_polygonal_geometry_6'
+      geometry_field: geom
+      geometry_table: ''
       host: ''
       key_field: ''
       max_size: 512
       password: ''
       port: ''
       table: |-
-        (SELECT ST_Transform(ST_Intersection(the_geom, ST_Transform(!bbox!, 4326)), 900913) AS the_geom -- horrible kludge to work in 900913 when nat earth is in 4326. stops attempts to project points outside mercator extents
-          FROM natearth_ocean_10m
-          WHERE z(!scale_denominator!) < 6 AND the_geom && ST_Transform(!bbox!, 4326)
-        UNION ALL
-        SELECT ST_Transform(ST_Intersection(the_geom, ST_Transform(!bbox!, 4326)), 900913) AS the_geom -- less necessary for lakes
-          FROM natearth_lakes_10m
-          WHERE z(!scale_denominator!) < 6 AND the_geom && ST_Transform(!bbox!, 4326)
-        UNION ALL
-        SELECT the_geom
-          FROM (SELECT * FROM vector_polygonal_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8
-            UNION ALL
-            SELECT * FROM vector_polygonal_geometry_8 WHERE z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
-            UNION ALL
-            SELECT * FROM vector_polygonal_geometry_10 WHERE z(!scale_denominator!) >= 10 AND z(!scale_denominator!) < 12
-            UNION ALL
-            SELECT * FROM vector_polygonal_geometry_12 WHERE z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
-            UNION ALL
-            SELECT * FROM vector_polygonal_geometry_16 WHERE z(!scale_denominator!) >= 16
-            ) AS t
-          WHERE rclass = 2 AND the_geom && !bbox!
+        (SELECT
+            geom
+          FROM mq_water_polygon
+          WHERE ST_Area(geom)/NULLIF(!pixel_width!::float*!pixel_height!::float, 0) > 0.25
         ) AS water
       type: postgis
       user: ''
@@ -63,11 +47,11 @@ Layer:
     properties: 
       "buffer-size": 2
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
-  - id: vector_polygonal_geometry
+  - id: landmark_polygon
     Datasource: 
       dbname: ''
       extent: -20037508,-20037508,20037508,20037508
-      geometry_field: the_geom
+      geometry_field: geom
       geometry_table: ''
       host: ''
       key_field: ''
@@ -75,25 +59,17 @@ Layer:
       password: ''
       port: ''
       table: |-
-        (SELECT the_geom, rclass
-          FROM
-            (SELECT * FROM vector_polygonal_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8
-            UNION ALL
-            SELECT * FROM vector_polygonal_geometry_8 WHERE z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
-            UNION ALL
-            SELECT * FROM vector_polygonal_geometry_10 WHERE z(!scale_denominator!) >= 10 AND z(!scale_denominator!) < 12
-            UNION ALL
-            SELECT * FROM vector_polygonal_geometry_12 WHERE z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
-            UNION ALL
-            SELECT * FROM vector_polygonal_geometry_16 WHERE z(!scale_denominator!) >= 16) AS d
-          WHERE rclass NOT IN (2, 10)
-          ORDER BY area DESC
-        ) AS vector_polygonal_geometry
+        (SELECT
+            geom, landmark
+          FROM mq_landmark
+          WHERE ST_Area(geom)/NULLIF(!pixel_width!::float*!pixel_height!::float, 0) > 0.25 -- This also excludes ST_Points
+          ORDER BY zlevel ASC, area DESC
+        ) AS landmark_polygon
       type: postgis
       user: ''
     description: Area features for background drawing
     fields: 
-      rclass: Number
+      landmark: Landmark type
     properties: 
       "buffer-size": 8
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
@@ -101,7 +77,7 @@ Layer:
     Datasource:
       dbname: ''
       extent: -20037508,-20037508,20037508,20037508
-      geometry_field: the_geom
+      geometry_field: geom
       geometry_table: ''
       host: ''
       key_field: ''
@@ -109,28 +85,23 @@ Layer:
       password: ''
       port: ''
       table: |-
-        (SELECT the_geom
-          FROM
-            (SELECT * FROM vector_polygonal_geometry_12 WHERE z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
-            UNION ALL
-            SELECT * FROM vector_polygonal_geometry_16 WHERE z(!scale_denominator!) >= 16) AS t
-          WHERE rclass = 10
-          ORDER BY area DESC
-        ) AS vector_polygonal_geometry
+        (SELECT
+            geom
+          FROM mq_building
+          WHERE z(!scale_denominator!) >= 12
+        ) AS buildings
       type: postgis
       user: ''
     description: Buildings
     fields:
-      admin_level: Number
-      rclass: Number
     properties:
       "buffer-size": 2
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
-  - id: vector_linear_county
+  - id: admin_lines
     Datasource: 
       dbname: ''
       extent: -20037508,-20037508,20037508,20037508
-      geometry_field: the_geom
+      geometry_field: geom
       geometry_table: ''
       host: ''
       key_field: ''
@@ -139,117 +110,72 @@ Layer:
       port: ''
       table: |-
         (SELECT 
-          the_geom, rclass, admin_level
-          FROM (SELECT * FROM vector_linear_geometry_8 WHERE rclass = 15 AND z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
-            UNION ALL
-            SELECT * FROM vector_linear_geometry_10 WHERE rclass = 15 AND z(!scale_denominator!) >= 10 AND z(!scale_denominator!) < 12
-            UNION ALL
-            SELECT * FROM vector_linear_geometry_12 WHERE rclass = 15 AND z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
-            UNION ALL
-            SELECT * FROM vector_linear_geometry_16 WHERE rclass = 15 AND z(!scale_denominator!) >= 16
-            ) AS p
-        ) AS vector_linear_county
+            geom, admin
+          FROM mq_admin_line
+          WHERE z(!scale_denominator!) < 6 AND admin IN ('country','state')
+            OR (z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 12 AND admin IN ('country','state','county','township'))
+            OR z(!scale_denominator!) >= 12
+          ORDER BY admin DESC
+        ) AS admin_lines
       type: postgis
       user: ''
     description: ''
     fields: 
-      admin_level: Number
-      rclass: Number
+      admin: Number
     properties: 
       "buffer-size": 8
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
-  - id: states
-    Datasource: 
-      dbname: ''
-      extent: -180, -85.05112877980659, 180, 85.05112877980659
-      geometry_field: the_geom
-      geometry_table: ''
-      host: ''
-      key_field: ''
-      max_size: 512
-      password: ''
-      port: ''
-      table: (SELECT the_geom, name, adm0_a3 FROM natearth_state_borders_10m) AS states
-      type: postgis
-      user: ''
-    description: Natural Earth sourced state boundaries
-    fields: 
-      adm0_a3: Three letter code of the parent country
-      name: State name
-    properties: 
-      "buffer-size": 8
-    srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
-  - id: countries
-    Datasource: 
-      dbname: ''
-      extent: -180, -85.05112877980659, 180, 85.05112877980659
-      geometry_field: the_geom
-      geometry_table: ''
-      host: ''
-      key_field: ''
-      max_size: 512
-      password: ''
-      port: ''
-      table: (SELECT the_geom, name FROM natearth_country_borders_10m) AS countries
-      type: postgis
-      user: ''
-    description: Natural Earth sourced country boundaries
-    fields: 
-      name: Country name
-    properties: 
-      "buffer-size": 8
-    srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
   - id: trans_linear
     Datasource: 
       dbname: ''
       extent: -20037508,-20037508,20037508,20037508
-      geometry_field: the_geom
-      geometry_table: 'vector_linear_geometry_6'
+      geometry_field: geom
+      geometry_table: ''
       host: ''
       key_field: ''
       max_size: 512
       password: ''
       port: ''
       table: |-
-        (SELECT the_geom, rclass, ramp, toll, restriction, oneway, brunnel
-          FROM
-            (SELECT * FROM vector_linear_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8 -- rclass=15 does not appear here
-            UNION ALL
-            SELECT * FROM vector_linear_geometry_8 WHERE rclass IN (0, 1, 2) AND z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
-            UNION ALL
-            SELECT * FROM vector_linear_geometry_10 WHERE rclass IN (0, 1, 2, 3, 13) AND z(!scale_denominator!) >= 10 AND z(!scale_denominator!) < 12
-            UNION ALL
-            SELECT * FROM vector_linear_geometry_12 
-              WHERE (z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16) 
-                AND (rclass IN (0, 1, 2, 3, 4, 13) 
-                  OR (rclass IN (6, 11, 14) AND z(!scale_denominator!) >= 12))
-            UNION ALL
-            SELECT * FROM vector_linear_geometry_16 WHERE rclass != 15 AND z(!scale_denominator!) >= 16) AS t
-          WHERE the_geom && !bbox!
-        UNION ALL
-        SELECT ST_Transform(ST_Intersection(the_geom, ST_Transform(!bbox!, 4326)), 900913) AS the_geom, -- kludge as above for projections
-            0, NULL, NULL, NULL, NULL, NULL
-          FROM natearth_roads_old WHERE z(!scale_denominator!) < 6 AND type='Major Highway' AND the_geom && ST_Transform(!bbox!,4326)
-          ORDER BY rclass
+        (SELECT
+            geom, transportation::text, display_class, brunnel, NULL as ramp, NULL as toll
+          FROM mq_transportation
+          WHERE st_geometrytype(geom) = 'ST_LineString'
+            AND ((z(!scale_denominator!) >= 4
+                AND z(!scale_denominator!) < 8
+                AND transportation = 'road' AND display_class = 0)
+              OR (z(!scale_denominator!) >= 8
+                AND z(!scale_denominator!) < 10
+                AND transportation = 'road' AND display_class BETWEEN 0 AND 2)
+              OR (z(!scale_denominator!) >= 10
+                AND z(!scale_denominator!) < 12
+                AND ((transportation = 'road' AND display_class BETWEEN 0 AND 3)
+                  OR transportation = 'ferry'))
+              OR (z(!scale_denominator!) >= 12
+                AND z(!scale_denominator!) < 14
+                AND ((transportation = 'road' AND display_class BETWEEN 0 AND 4)
+                  OR transportation = 'ferry')
+                  OR transportation = 'rail')
+              OR (z(!scale_denominator!) >= 14
+                AND z(!scale_denominator!) < 16
+                AND transportation IN ('road', 'ferry', 'rail'))
+              OR z(!scale_denominator!) >= 16)
+          ORDER BY zlevel ASC,
+            transportation, -- probably needs a better ordering here
+            display_class DESC
         ) AS trans_linear
       type: postgis
       user: ''
     description: ''
     fields: 
-      brunnel: Bridge or tunnel
-      oneway: If the feature is oneway
-      ramp: Boolean
-      rclass: Number
-      restriction: Boolean
-      toll: If the feature is tolled
     properties: 
       "buffer-size": 16
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
   - id: highway_labels
     Datasource: 
       dbname: ''
-      extent: -20037508.34,-20037508.34,20037508.34,20037508.34
-      geometry_field: the_geom
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: geom
       geometry_table: ''
       host: ''
       key_field: ''
@@ -257,27 +183,57 @@ Layer:
       password: ''
       port: ''
       table: |-
-        (SELECT 
-            the_geom, class, name, length(name) AS name_len, display_class
-          FROM
-          (SELECT
-              placement_id, label_id, min_zoom, max_zoom, the_geom, class,
-              unnest(text_elements) AS name, display_class, feature_area
-            FROM
-            (SELECT
-                pl.*, (unnest(pr.labels)).* 
-              FROM vector_point_label_placements pl
-              INNER JOIN vector_point_label_properties pr ON pl.label_id = pr.label_id) x
-            WHERE (class BETWEEN 1 AND 591 OR class IN (1040, 1041, 1042))
-              AND z(!scale_denominator!) >= min_zoom
-              AND (z(!scale_denominator!) < max_zoom+1 OR max_zoom IS NULL OR max_zoom = 18)
-            ORDER BY display_class ASC, min_zoom DESC, class DESC) AS data0
-        ) AS highway_labels
+        (SELECT
+            geom,
+            -- This is a bit of a hack to split them out, because vector tiles can't handle arrays
+            -- Also, it ignores shield_priorities as that's very difficult to handle without 9.4
+            split_part(tags->'INT-shield', ',', 1) AS shield1,
+            split_part(tags->'INT-shield_banner', ',', 1) AS shield1_banner,
+            split_part(tags->'INT-shield_number', ',', 1) AS shield1_number,
+            length(split_part(tags->'INT-shield_number', ',', 1)) AS shield1_number_length,
+            split_part(tags->'INT-shield_prefix', ',', 1) AS shield1_prefix,
+            split_part(tags->'INT-shield', ',', 2) AS shield2,
+            split_part(tags->'INT-shield_banner', ',', 2) AS shield2_banner,
+            split_part(tags->'INT-shield_number', ',', 2) AS shield2_number,
+            length(split_part(tags->'INT-shield_number', ',', 2)) AS shield2_number_length,
+            split_part(tags->'INT-shield_prefix', ',', 2) AS shield2_prefix,
+            split_part(tags->'INT-shield', ',', 3) AS shield3,
+            split_part(tags->'INT-shield_banner', ',', 3) AS shield3_banner,
+            split_part(tags->'INT-shield_number', ',', 3) AS shield3_number,
+            length(split_part(tags->'INT-shield_number', ',', 3)) AS shield3_number_length,
+            split_part(tags->'INT-shield_prefix', ',', 3) AS shield3_prefix,
+            split_part(tags->'INT-shield', ',', 4) AS shield4,
+            split_part(tags->'INT-shield_banner', ',', 4) AS shield4_banner,
+            split_part(tags->'INT-shield_number', ',', 4) AS shield4_number,
+            length(split_part(tags->'INT-shield_number', ',', 4)) AS shield4_number_length,
+            split_part(tags->'INT-shield_prefix', ',', 4) AS shield4_prefix
+          FROM mq_transportation
+            WHERE shield_count > 0
+              AND ((z(!scale_denominator!) >= 4
+              AND z(!scale_denominator!) < 8
+              AND transportation = 'road' AND display_class = 0)
+            OR (z(!scale_denominator!) >= 8
+              AND z(!scale_denominator!) < 10
+              AND transportation = 'road' AND display_class BETWEEN 0 AND 2)
+            OR (z(!scale_denominator!) >= 10
+              AND z(!scale_denominator!) < 12
+              AND ((transportation = 'road' AND display_class BETWEEN 0 AND 3)
+                OR transportation = 'ferry'))
+            OR (z(!scale_denominator!) >= 12
+              AND z(!scale_denominator!) < 14
+              AND ((transportation = 'road' AND display_class BETWEEN 0 AND 4)
+                OR transportation = 'ferry')
+                OR transportation = 'rail')
+            OR (z(!scale_denominator!) >= 14
+              AND z(!scale_denominator!) < 16
+              AND transportation IN ('road', 'ferry', 'rail'))
+            OR z(!scale_denominator!) >= 16)
+          ORDER BY display_class DESC
+        ) AS trans_linear
       type: postgis
       user: ''
-    description: ''
+    description: 'Highway shields'
     fields: 
-      class: Number
       display_class: Number
       name: String
       name_len: Number
@@ -288,7 +244,7 @@ Layer:
     Datasource: 
       dbname: ''
       extent: -20037508,-20037508,20037508,20037508
-      geometry_field: the_geom
+      geometry_field: geom
       geometry_table: ''
       host: ''
       key_field: ''
@@ -296,21 +252,11 @@ Layer:
       password: ''
       port: ''
       table: |-
-        (SELECT 
-            the_geom, class, name, display_class
-          FROM
-          (SELECT
-              placement_id, label_id, min_zoom, max_zoom, the_geom, class,
-              unnest(text_elements) AS name, display_class, feature_area
-            FROM
-            (SELECT
-                pl.*, (unnest(pr.labels)).* 
-              FROM vector_point_label_placements pl
-              INNER JOIN vector_point_label_properties pr ON pl.label_id = pr.label_id) x
-            WHERE class IN (1000, 1010, 1020, 1030, 1031, 1038) 
-              AND z(!scale_denominator!) >= min_zoom
-              AND (z(!scale_denominator!) < max_zoom+1 OR max_zoom IS NULL OR max_zoom = 18)
-            ORDER BY display_class ASC, class DESC, min_zoom DESC, feature_area DESC) AS data0
+        (SELECT
+            geom, label AS name,  admin, display_class
+          FROM mq_admin_point
+          ORDER BY display_class ASC NULLS LAST,
+            population DESC NULLS LAST
         ) AS place_labels
       type: postgis
       user: ''
@@ -326,7 +272,7 @@ Layer:
     Datasource: 
       dbname: ''
       extent: -20037508,-20037508,20037508,20037508
-      geometry_field: the_geom
+      geometry_field: geom
       geometry_table: ''
       host: ''
       key_field: ''
@@ -334,17 +280,11 @@ Layer:
       password: ''
       port: ''
       table: |-
-        (SELECT the_geom FROM 
-         (SELECT * FROM vector_linear_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8 -- rclass=15 does not appear here
-          UNION ALL
-          SELECT * FROM vector_linear_geometry_8 WHERE z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
-          UNION ALL
-          SELECT * FROM vector_linear_geometry_10 WHERE z(!scale_denominator!) >= 10 AND z(!scale_denominator!) < 12
-          UNION ALL
-          SELECT * FROM vector_linear_geometry_12 WHERE z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16
-          UNION ALL
-          SELECT * FROM vector_linear_geometry_16 WHERE z(!scale_denominator!) >= 16) AS r
-         WHERE rclass = 0 AND ramp!=true
+        (SELECT
+            geom, display_class
+          FROM mq_transportation
+          WHERE transportation = 'road'
+            AND display_class = 0
         ) AS highway_overlay
       type: postgis
       user: ''
@@ -357,7 +297,7 @@ Layer:
     Datasource: 
       dbname: ''
       extent: -20037508,-20037508,20037508,20037508
-      geometry_field: the_geom
+      geometry_field: geom
       geometry_table: ''
       host: ''
       key_field: ''
@@ -365,10 +305,32 @@ Layer:
       password: ''
       port: ''
       table: |-
-        (SELECT the_geom, name, rclass FROM vector_linear_labels
-          WHERE (rclass IN (0, 1, 2, 3, 12, 16) AND z(!scale_denominator!) >= 10) -- major roads
-            OR (rclass IN (4, 5, 6, 14, 11) AND z(!scale_denominator!) >= 12) -- minor roads, rivers, ferries, railways
-          ORDER BY path_priority DESC, rclass DESC
+        (SELECT
+            geom, label AS name, transportation, display_class -- also needs toll
+          FROM mq_transportation
+          WHERE label IS NOT NULL
+              AND ((z(!scale_denominator!) >= 4
+              AND z(!scale_denominator!) < 8
+              AND transportation = 'road' AND display_class = 0)
+            OR (z(!scale_denominator!) >= 8
+              AND z(!scale_denominator!) < 10
+              AND transportation = 'road' AND display_class BETWEEN 0 AND 2)
+            OR (z(!scale_denominator!) >= 10
+              AND z(!scale_denominator!) < 12
+              AND ((transportation = 'road' AND display_class BETWEEN 0 AND 3)
+                OR transportation = 'ferry'))
+            OR (z(!scale_denominator!) >= 12
+              AND z(!scale_denominator!) < 14
+              AND ((transportation = 'road' AND display_class BETWEEN 0 AND 4)
+                OR transportation = 'ferry')
+                OR transportation = 'rail')
+            OR (z(!scale_denominator!) >= 14
+              AND z(!scale_denominator!) < 16
+              AND transportation IN ('road', 'ferry', 'rail'))
+            OR z(!scale_denominator!) >= 16)
+            ORDER BY zlevel ASC,
+            transportation, -- probably needs a better ordering here
+            display_class DESC
         ) AS trans_linear_labels
       type: postgis
       user: ''
@@ -379,88 +341,88 @@ Layer:
     properties: 
       "buffer-size": 64
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
-  - id: vector_point_labels2
-    Datasource: 
-      dbname: ''
-      extent: -20037508,-20037508,20037508,20037508
-      geometry_field: the_geom
-      geometry_table: ''
-      host: ''
-      key_field: ''
-      max_size: 512
-      password: ''
-      port: ''
-      table: |-
-        (SELECT 
-            the_geom, class, name, display_class
-          FROM 
-          (SELECT
-              placement_id, label_id, min_zoom, max_zoom, the_geom, class,
-              unnest(text_elements) AS name, display_class, feature_area
-            FROM 
-            (SELECT 
-                pl.*, (unnest(pr.labels)).* 
-              FROM vector_point_label_placements pl 
-              INNER JOIN vector_point_label_properties pr ON pl.label_id = pr.label_id) x
-              WHERE class NOT IN (1000, 1010, 1020, 1030, 1031, 1038) 
-                AND class NOT BETWEEN 1 AND 591
-                AND class NOT IN (1040, 1041, 1042)
-                AND z(!scale_denominator!) >= min_zoom 
-                AND (z(!scale_denominator!) < max_zoom+1 OR max_zoom IS NULL OR max_zoom = 18)
-            ORDER BY display_class ASC) 
-          AS data0)
-        AS vector_point_labels2
-      type: postgis
-      user: ''
-    description: ''
-    fields: 
-      class: Number
-      display_class: Number
-      name: String
-    properties: 
-      "buffer-size": 64
-    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
-  - id: vector_point_labels3
-    Datasource: 
-      dbname: ''
-      extent: -20037508,-20037508,20037508,20037508
-      geometry_field: the_geom
-      geometry_table: ''
-      host: ''
-      key_field: ''
-      max_size: 512
-      password: ''
-      port: ''
-      table: |-
-        (SELECT 
-            the_geom, class, name, display_class
-          FROM 
-          (SELECT
-              placement_id, label_id, min_zoom, max_zoom, the_geom, class,
-              unnest(text_elements) AS name, display_class, feature_area
-            FROM 
-            (SELECT 
-                pl.*, (unnest(pr.labels)).* 
-              FROM vector_point_label_placements pl 
-              INNER JOIN vector_point_label_properties pr ON pl.label_id = pr.label_id) x
-              WHERE class NOT IN (1000, 1010, 1020, 1030, 1031, 1038) 
-                AND class NOT BETWEEN 1 AND 591
-                AND class NOT IN (1040, 1041, 1042)
-                AND z(!scale_denominator!) >= min_zoom 
-                AND (z(!scale_denominator!) < max_zoom+1 OR max_zoom IS NULL OR max_zoom = 18)
-            ORDER BY display_class ASC) 
-          AS p)
-        AS vector_point_labels3
-      type: postgis
-      user: ''
-    description: ''
-    fields: 
-      class: Number
-      display_class: Number
-      name: String
-    properties: 
-      "buffer-size": 64
-    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+#  - id: vector_point_labels2
+#    Datasource: 
+#      dbname: ''
+#      extent: -20037508,-20037508,20037508,20037508
+#      geometry_field: the_geom
+#      geometry_table: ''
+#      host: ''
+#      key_field: ''
+#      max_size: 512
+#      password: ''
+#      port: ''
+#      table: |-
+#        (SELECT 
+#            the_geom, class, name, display_class
+#          FROM 
+#          (SELECT
+#              placement_id, label_id, min_zoom, max_zoom, the_geom, class,
+#              unnest(text_elements) AS name, display_class, feature_area
+#            FROM 
+#            (SELECT 
+#                pl.*, (unnest(pr.labels)).* 
+#              FROM vector_point_label_placements pl 
+#              INNER JOIN vector_point_label_properties pr ON pl.label_id = pr.label_id) x
+#              WHERE class NOT IN (1000, 1010, 1020, 1030, 1031, 1038) 
+#                AND class NOT BETWEEN 1 AND 591
+#                AND class NOT IN (1040, 1041, 1042)
+#                AND z(!scale_denominator!) >= min_zoom 
+#                AND (z(!scale_denominator!) < max_zoom+1 OR max_zoom IS NULL OR max_zoom = 18)
+#            ORDER BY display_class ASC) 
+#          AS data0)
+#        AS vector_point_labels2
+#      type: postgis
+#      user: ''
+#    description: ''
+#    fields: 
+#      class: Number
+#      display_class: Number
+#      name: String
+#    properties: 
+#      "buffer-size": 64
+#    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+#  - id: vector_point_labels3
+#    Datasource: 
+#      dbname: ''
+#      extent: -20037508,-20037508,20037508,20037508
+#      geometry_field: the_geom
+#      geometry_table: ''
+#      host: ''
+#      key_field: ''
+#      max_size: 512
+#      password: ''
+#      port: ''
+#      table: |-
+#        (SELECT 
+#            the_geom, class, name, display_class
+#          FROM 
+#          (SELECT
+#              placement_id, label_id, min_zoom, max_zoom, the_geom, class,
+#              unnest(text_elements) AS name, display_class, feature_area
+#            FROM 
+#            (SELECT 
+#                pl.*, (unnest(pr.labels)).* 
+#              FROM vector_point_label_placements pl 
+#              INNER JOIN vector_point_label_properties pr ON pl.label_id = pr.label_id) x
+#              WHERE class NOT IN (1000, 1010, 1020, 1030, 1031, 1038) 
+#                AND class NOT BETWEEN 1 AND 591
+#                AND class NOT IN (1040, 1041, 1042)
+#                AND z(!scale_denominator!) >= min_zoom 
+#                AND (z(!scale_denominator!) < max_zoom+1 OR max_zoom IS NULL OR max_zoom = 18)
+#            ORDER BY display_class ASC) 
+#          AS p)
+#        AS vector_point_labels3
+#      type: postgis
+#      user: ''
+#    description: ''
+#    fields: 
+#      class: Number
+#      display_class: Number
+#      name: String
+#    properties: 
+#      "buffer-size": 64
+#    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
 maxzoom: 16
 minzoom: 0
 name: MQ Carto Vector

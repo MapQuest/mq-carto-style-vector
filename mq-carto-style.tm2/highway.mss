@@ -1,6 +1,6 @@
 #trans_linear {
   /* Freeways */
-  [rclass = 0] {
+  [transportation = 'road'][display_class = 0] {
     ::casing[zoom >= 15] {
       line-width: 7;
       line-color: #7392d1;
