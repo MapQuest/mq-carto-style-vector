@@ -35,13 +35,13 @@ Layer:
       password: ''
       port: ''
       table: |-
-        (SELECT ST_Transform(ST_Intersection(the_geom, ST_Transform(!bbox!, 4326)), 900913) AS the_geom -- horrible kludge to work in 900913 when nat earth is in 4326. stops attempts to project points outside mercator extents
+        (SELECT ST_Transform(ST_Intersection(the_geom, ST_MakeEnvelope(-180,-85.05113,180,85.05113,4326)), 900913) AS the_geom -- horrible kludge to work in 900913 when nat earth is in 4326. stops attempts to project points outside mercator extents
           FROM natearth_ocean_10m
-          WHERE z(!scale_denominator!) < 6 AND the_geom && ST_Transform(!bbox!, 4326)
+          WHERE z(!scale_denominator!) < 6 AND the_geom && ST_Transform(ST_Intersection(!bbox!,ST_MakeEnvelope(-20037508,-20037508,20037508,20037508,900913)), 4326) -- kludge so that infinite bounds don't make proj cry
         UNION ALL
-        SELECT ST_Transform(ST_Intersection(the_geom, ST_Transform(!bbox!, 4326)), 900913) AS the_geom -- less necessary for lakes
+        SELECT ST_Transform(ST_Intersection(the_geom, ST_MakeEnvelope(-180,-85.05113,180,85.05113,4326)), 900913) AS the_geom -- less necessary for lakes
           FROM natearth_lakes_10m
-          WHERE z(!scale_denominator!) < 6 AND the_geom && ST_Transform(!bbox!, 4326)
+          WHERE z(!scale_denominator!) < 6 AND the_geom && ST_Transform(ST_Intersection(!bbox!,ST_MakeEnvelope(-20037508,-20037508,20037508,20037508,900913)), 4326) -- kludge so that infinite bounds don't make proj cry
         UNION ALL
         SELECT the_geom
           FROM (SELECT * FROM vector_polygonal_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8
