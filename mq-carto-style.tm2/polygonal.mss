@@ -1,8 +1,3 @@
-#water {
-  polygon-fill: @water;
-}
-
-
 /* buildings
  * TODO: Test import had no buildings, still needs testing
  */
