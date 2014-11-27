@@ -63,6 +63,34 @@ Layer:
     properties: 
       "buffer-size": 2
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: water_linear
+    Datasource: 
+      dbname: ''
+      extent: -20037508,-20037508,20037508,20037508
+      geometry_field: the_geom
+      geometry_table: ''
+      host: ''
+      key_field: ''
+      max_size: 512
+      password: ''
+      port: ''
+      table: |-
+        (SELECT the_geom 
+          FROM
+            (SELECT * FROM vector_linear_geometry_12
+              WHERE (z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16)
+            UNION ALL
+            SELECT * FROM vector_linear_geometry_16
+              WHERE z(!scale_denominator!) >= 16) AS t
+          WHERE rclass = 11
+        ) AS water_linear
+      type: postgis
+      user: ''
+    description: ''
+    fields: {}
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
   - id: vector_polygonal_geometry
     Datasource: 
       dbname: ''
@@ -222,13 +250,14 @@ Layer:
             SELECT * FROM vector_linear_geometry_12 
               WHERE (z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16) 
                 AND (rclass IN (0, 1, 2, 3, 4, 13) 
-                  OR (rclass IN (6, 11, 14) AND z(!scale_denominator!) >= 12))
+                  OR (rclass IN (6, 14) AND z(!scale_denominator!) >= 14))
             UNION ALL
-            SELECT * FROM vector_linear_geometry_16 WHERE rclass != 15 AND z(!scale_denominator!) >= 16) AS t
+            SELECT * FROM vector_linear_geometry_16 WHERE rclass NOT IN (11, 15) AND z(!scale_denominator!) >= 16) AS t
           WHERE the_geom && !bbox!
         UNION ALL
-        SELECT ST_Transform(ST_Intersection(the_geom, ST_Transform(ST_Intersection(ST_SetSRID(!bbox!,900913),ST_MakeEnvelope(-20037508,-20037508,20037508,20037508,900913)), 4326)), 900913) AS the_geom, -- kludge as above for projections
-            0, NULL, NULL, NULL, NULL, NULL
+        SELECT
+            ST_Transform(ST_Intersection(the_geom, ST_Transform(ST_Intersection(ST_SetSRID(!bbox!,900913),ST_MakeEnvelope(-20037508,-20037508,20037508,20037508,900913)), 4326)), 900913) AS the_geom, -- kludge as above for projections
+            0, NULL, NULL, NULL, NULL, NULL -- assign to rclass 0
           FROM natearth_roads_old WHERE z(!scale_denominator!) < 6 AND type='Major Highway' AND the_geom && ST_Transform(ST_Intersection(ST_SetSRID(!bbox!,900913),ST_MakeEnvelope(-20037508,-20037508,20037508,20037508,900913)),4326)
           ORDER BY rclass
         ) AS trans_linear

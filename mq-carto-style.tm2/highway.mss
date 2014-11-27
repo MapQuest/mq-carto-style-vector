@@ -507,6 +507,7 @@
   }
 }
 
+/* The below still needs refactoring */
 #trans_linear {
   ::ferry_hwy[rclass=13] {
     [zoom>=10][zoom<=11] {
@@ -530,13 +531,6 @@
         marker-height:1;marker-width:3;marker-spacing:8;}
       [zoom>=14][zoom<=15] {
         marker-height:2;marker-width:4;marker-spacing:10;}
-    }
-  }
-  ::river[rclass=11] {
-    [zoom>=14][zoom<=15] {
-      line-color: @water;
-      line-cap:round;
-      line-join:round;
     }
   }
   ::railroad[rclass=14] {
@@ -569,12 +563,6 @@
       marker-spacing:10;
       marker-line-width:0.0;
     }
-  }
-  ::river[rclass=11] {
-    [zoom>=16] {
-      line-color: @water;
-      line-cap:round;
-      line-join:round;}
   }
   ::stairs[rclass=9] {
     [zoom>=16] {line-color:#f4d18e;line-cap:round;line-join:round;}
@@ -638,9 +626,6 @@
 /* ------------------------------------------------------------------- */
 
 #trans_linear {
-  ::river[rclass=11] {
-    [zoom>=14][zoom<=15] {line-width:1.0;}
-  }
   ::railroad[rclass=14] {
     [zoom=13] {line-width:0.25;}
     [zoom=14] {line-width:0.5;}
@@ -657,9 +642,6 @@
     }
   }
 
-  ::river[rclass=11] {
-    [zoom>=16] {line-width:3;}
-  }
   ::stairs[rclass=9] {
     [zoom>=16] {line-width:1;}
   }

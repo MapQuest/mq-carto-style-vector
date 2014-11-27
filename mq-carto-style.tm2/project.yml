@@ -19,6 +19,7 @@ metatile: 1
 layers:
   - boundingbox
   - water
+  - water_linear
   - vector_polygonal_geometry
   - buildings
   - vector_linear_county
