@@ -41,10 +41,10 @@ styles:
   - water.mss
   - polygonal.mss
   - admin.mss
-  - highway.mss
+  - transportation.mss
   - place_label.mss
-  - highway_label.mss
-  - linear_label.mss
+  - highway_shield.mss
+  - transportation_label.mss
   - point_label2.mss
   - linear_label2.mss
   - point_label3.mss
