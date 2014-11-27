@@ -566,7 +566,7 @@
     ::fill[zoom >= 16] {
       line-color: #cccccc;
       line-cap: round;
-      line-join: round
+      line-join: round;
       line-width: 2;
     }
   }
