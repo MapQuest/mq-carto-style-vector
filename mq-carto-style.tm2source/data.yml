@@ -54,7 +54,7 @@ Layer:
             UNION ALL
             SELECT * FROM vector_polygonal_geometry_16 WHERE z(!scale_denominator!) >= 16
             ) AS t
-          WHERE rclass = 2 AND the_geom && !bbox!
+          WHERE rclass = 2 AND ST_Intersection(the_geom, !bbox!)
         ) AS water
       type: postgis
       user: ''
