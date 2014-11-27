@@ -194,6 +194,7 @@
       }
     }
   }
+  /* Major roads */
   [rclass = 1] {
     ::casing[zoom >= 15] {
       line-width: 6;
@@ -269,6 +270,7 @@
       }
     }
   }
+  /* Less major roads */
   [rclass = 2], [rclass = 3] {
     ::casing[zoom >= 15] {
       line-width: 4;
@@ -336,6 +338,7 @@
       }
     }
   }
+  /* Minor roads */
   [rclass = 4] {
     ::casing[zoom >= 15] {
       line-width: 4;
@@ -396,6 +399,7 @@
       }
     }
   }
+  /* residential roads */
   [rclass = 5] {
     ::casing[zoom >= 15] {
       line-width: 3;
@@ -445,6 +449,7 @@
       }
     }
   }
+  /* non-freeway ramps */
   [rclass = 1][ramp = true],
   [rclass = 2][ramp = true],
   [rclass = 3][ramp = true],
@@ -505,175 +510,156 @@
       }
     }
   }
-}
-
-/* The below still needs refactoring */
-#trans_linear {
-  ::ferry_hwy[rclass=13] {
-    [zoom>=10][zoom<=11] {
-      marker-type:ellipse;
-      marker-fill:#fff;
-      marker-height:1;
-      marker-width:2;
-      marker-placement:line;
-      marker-spacing:6;
-      marker-line-width:0.0;
-    }
-  }
-
-  ::ferry_hwy[rclass=13] {
-    [zoom>=12][zoom<=15] {
-      marker-type:ellipse;
-      marker-fill:#fff;
-      marker-placement:line;
-      marker-line-width:0.0;
-      [zoom>=12][zoom<=13] {
-        marker-height:1;marker-width:3;marker-spacing:8;}
-      [zoom>=14][zoom<=15] {
-        marker-height:2;marker-width:4;marker-spacing:10;}
-    }
-  }
-  ::railroad[rclass=14] {
-    [zoom>=13][zoom<=15] {
-      line-color:#ddd8ce;
-      line-dasharray:3,3;
-      line-cap:round;
-      line-join:round;}
-  }
-  ::service_road[rclass=6] {
-    ::casing {
-      [zoom=15] {line-color:#e6e6e6;line-cap:round;line-join:round;}
-    }
-    ::fill[zoom>=13][zoom<=15] {
-      [zoom>=13][zoom<=15] {
-        line-color:#fbfaf6;
-        [zoom>=14][restriction=true] {line-color:#d2d2d2}
+  /* Service roads */
+  [rclass = 6] {
+    ::casing[zoom >= 15] {
+      line-width: 3;
+      line-color: #e6e6e6;
+      line-cap: round;
+      line-join: round;
+      [zoom >= 16] {
+        line-width: 5;
+        line-color: #d6d6d6;
+        [restriction = true] {
+          line-color: #c9c9c9
+        }
       }
-      line-cap:round;line-join:round;
+      [zoom >= 18] {
+        line-width: 6;
+      }
     }
-  }
-
-  ::ferry_hwy[rclass=13] {
-    [zoom>=16] {
-      marker-type:ellipse;
-      marker-fill:#fff;
-      marker-height:2;
-      marker-width:4;
-      marker-placement:line;
-      marker-spacing:10;
-      marker-line-width:0.0;
-    }
-  }
-  ::stairs[rclass=9] {
-    [zoom>=16] {line-color:#f4d18e;line-cap:round;line-join:round;}
-  }
-  ::cyclepath[rclass=10] {
-    [zoom>=16] {line-color:#f4d18e;line-cap:round;line-join:round;}
-  }
-  ::pedestrian[rclass=8] {
-    [zoom>=16] {
-      marker-type:ellipse;
-      marker-fill:#cfa893;
-      marker-height:2;
-      marker-width:4;
-      marker-placement:line;
-      marker-spacing:10;
-      marker-line-width:0.0;
-    }
-  }
-  ::parking_aisle[rclass=7] {
-    ::casing {
-      [zoom>=16] {line-color:#cccccc;line-cap:round;line-join:round;}
-    }
-    ::fill {
-      [zoom>=16] {line-color:#e5e5e5;line-cap:round;line-join:round;}
-    }
-  }
-  ::railroad[rclass=14] {
-    ::casing[zoom>=16] {line-color:#ccc7be;line-cap:round;line-join:round;}
-    ::fill[zoom>=16] {
-      [zoom>=16] {
-        line-color:#ffffff;line-cap:butt;line-join:round;
-        [zoom=16] {line-dasharray:4,3}
-        [zoom=17] {line-dasharray:5,4}
-        [zoom=18] {line-dasharray:6,6}
+    ::fill[zoom >= 13] {
+      line-width: 0.5;
+      line-color: #fbfaf6;
+      line-cap: round;
+      line-join: round;
+      [zoom >= 14] {
+        line-width: 1;
+        [restriction = true] {
+          line-color: #d2d2d2;
+        }
+      }
+      [zoom >= 16] {
+        line-width: 2;
+        [oneway=true] {
+          line-pattern-file: url(markers/oneway_4-6_16.png);
+        }
+      }
+      [zoom >= 17] {
+        [oneway=true] {
+          line-pattern-file: url(markers/oneway_4-6_17-18.png);
+        }
+      }
+      [zoom >= 18] {
+        line-width: 3;
       }
     }
   }
-  ::service_road[rclass=6] {
-    ::casing[zoom>=16] {
-      line-color:#d6d6d6;line-cap:round;line-join:round;
-      [restriction=true] {line-color:#c9c9c9}
+  /* Parking isles */
+  [rclass = 7] {
+    ::casing[zoom >= 16] {
+      line-width: 5;
+      line-color: #cccccc;
+      line-cap: round;
+      line-join: round
     }
-    ::fill[zoom>=16] {
-      line-color:#ebebeb;line-cap:round;line-join:round;
-      [restriction=true] {line-color:#ebebeb}
-    }
-    ::oneway[zoom>=16][oneway=true][ramp!=true][rclass=6] {
-      [zoom=16] {line-pattern-file:url(markers/oneway_4-6_16.png);}
-      [zoom>=17] {line-pattern-file:url(markers/oneway_4-6_17-18.png);}
-    }
-  }
-}
-
-
-
-
-/* ------------------------------------------------------------------- */
-/* -----                                                         ----- */
-/* -----                      LINEAR WIDTHS                      ----- */
-/* -----                                                         ----- */
-/* ------------------------------------------------------------------- */
-
-#trans_linear {
-  ::railroad[rclass=14] {
-    [zoom=13] {line-width:0.25;}
-    [zoom=14] {line-width:0.5;}
-    [zoom=15] {line-width:1;}
-  }
-  ::service_road[rclass=6] {
-    ::casing {
-      [zoom=15] {line-width:3;}
-    }
-    ::fill {
-      [zoom=13] {line-width:0.5;}
-      [zoom=14] {line-width:1;}
-      [zoom=15] {line-width:1;}
+    ::fill[zoom >= 16] {
+      line-color: #cccccc;
+      line-cap: round;
+      line-join: round
+      line-width: 2;
     }
   }
-
-  ::stairs[rclass=9] {
-    [zoom>=16] {line-width:1;}
-  }
-  ::cyclepath[rclass=10] {
-    [zoom>=16] {line-width:1;}
-  }
-  ::railroad[rclass=14] {
-    ::casing {
-      [zoom=16] {line-width:2;}
-      [zoom=17] {line-width:4;}
-      [zoom=18] {line-width:5;}
+  /* Ferries */
+  [rclass = 13] {
+    ::fill[zoom >= 10] {
+      marker-type: ellipse;
+      marker-fill: #ffffff;
+      marker-height: 1;
+      marker-width: 2;
+      marker-placement: line;
+      marker-spacing: 6;
+      marker-line-width: 0.0;
+      [zoom >= 12] {
+        marker-width: 3;
+        marker-spacing: 8;
+      }
+      [zoom >= 14] {
+        marker-height: 2;
+        marker-width: 4;
+        marker-spacing: 10;
+      }
     }
-    ::fill {
-      [zoom=16] {line-width:1;}
-      [zoom=17] {line-width:2;}
-      [zoom=18] {line-width:3;}
+  }
+  /* Railways */
+  [rclass = 14] {
+    ::casing[zoom >= 16] {
+      line-width: 2;
+      line-color: #ccc7be;
+      line-cap: round;
+      line-join: round;
+      [zoom >= 17] {
+        line-width: 4;
+      }
+      [zoom >= 17] {
+        line-width: 5;
+      }
+    }
+    ::fill[zoom >= 13] {
+      line-width: 0.25;
+      line-color: #ddd8ce;
+      line-dasharray: 3,3;
+      line-cap: round;
+      line-join: round;
+      [zoom >= 14] {
+        line-width: 0.5;
+      }
+      [zoom >= 15] {
+        line-width: 1;
+      }
+      [zoom >= 16] {
+        line-color: #ffffff;
+        line-dasharray: 4,3;
+        line-cap: butt;
+      }
+      [zoom >= 17] {
+        line-width: 2;
+        line-dasharray: 5,4;
+      }
+      [zoom >= 18] {
+        line-width: 3;
+        line-dasharray: 6,6;
+      }
     }
   }
-  ::parking_aisle[rclass=7] {
-    ::casing {[zoom>=16] {line-width:5}}
-    ::fill {[zoom>=16] {line-width:2}}
-  }
-  ::service_road[rclass=6] {
-    ::casing {
-      [zoom=16] {line-width:5;}
-      [zoom=17] {line-width:5;}
-      [zoom=18] {line-width:6;}
+  /* Stairs */
+  [rlcass = 9] {
+    ::fill[zoom >= 16] {
+      line-width: 1;
+      line-color: #cccccc;
+      line-cap: round;
+      line-join: round;
     }
-    ::fill {
-      [zoom=16] {line-width:2;}
-      [zoom=17] {line-width:2;}
-      [zoom=18] {line-width:3;}
+  }
+  /* Cycle paths */
+  [rclass = 10] {
+    ::fill[zoom >= 16] {
+      line-width: 1;
+      line-color: #f4d18e;
+      line-cap: round;
+      line-join: round;
+    }
+  }
+  /* Pedestrian */
+  [rclass = 8] {
+    ::fill[zoom >= 16] {
+      marker-type: ellipse;
+      marker-fill: #cfa893;
+      marker-height: 2;
+      marker-width: 4;
+      marker-placement: line;
+      marker-spacing: 10;
+      marker-line-width: 0.0;
     }
   }
 }
