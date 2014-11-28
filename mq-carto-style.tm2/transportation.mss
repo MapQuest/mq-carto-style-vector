@@ -495,18 +495,18 @@
         line-color: #f0ddb6;
       }
       [zoom >= 16] {
-        line-width: 7;
+        line-width: 5;
         line-color: #f2ddb3;
         [restriction = true] {
           line-color: #c9c9c9;
         }
       }
       [zoom >= 17] {
-        line-width: 9;
+        line-width: 6;
         line-color: #f2d28d;
       }
       [zoom >= 18] {
-        line-width: 10;
+        line-width: 7;
       }
     }
   }
