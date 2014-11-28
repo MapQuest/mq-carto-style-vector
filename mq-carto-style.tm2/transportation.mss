@@ -284,7 +284,7 @@
       [zoom >= 17] {
         line-width: 10;
       }
-      [zoom >= 17] {
+      [zoom >= 18] {
         line-width: 14;
       }
     }

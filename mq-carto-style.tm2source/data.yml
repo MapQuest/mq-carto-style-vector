@@ -239,28 +239,37 @@ Layer:
       password: ''
       port: ''
       table: |-
-        (SELECT the_geom, rclass, ramp, toll, restriction, oneway, brunnel
-          FROM
-            (SELECT * FROM vector_linear_geometry_6 WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8 -- rclass=15 does not appear here
-            UNION ALL
-            SELECT * FROM vector_linear_geometry_8 WHERE rclass IN (0, 1, 2) AND z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
-            UNION ALL
-            SELECT * FROM vector_linear_geometry_10 WHERE rclass IN (0, 1, 2, 3, 13) AND z(!scale_denominator!) >= 10 AND z(!scale_denominator!) < 12
-            UNION ALL
-            SELECT * FROM vector_linear_geometry_12 
-              WHERE (z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16) 
-                AND (rclass IN (0, 1, 2, 3, 4, 13) 
-                  OR (rclass IN (6, 14) AND z(!scale_denominator!) >= 14))
-            UNION ALL
-            SELECT * FROM vector_linear_geometry_16 WHERE rclass NOT IN (11, 15) AND z(!scale_denominator!) >= 16) AS t
-          WHERE the_geom && !bbox!
-        UNION ALL
-        SELECT
-            ST_Transform(ST_Intersection(the_geom, ST_Transform(ST_Intersection(ST_SetSRID(!bbox!,900913),ST_MakeEnvelope(-20037508,-20037508,20037508,20037508,900913)), 4326)), 900913) AS the_geom, -- kludge as above for projections
-            0, NULL, NULL, NULL, NULL, NULL -- assign to rclass 0
-          FROM natearth_roads_old WHERE z(!scale_denominator!) < 6 AND type='Major Highway' AND the_geom && ST_Transform(ST_Intersection(ST_SetSRID(!bbox!,900913),ST_MakeEnvelope(-20037508,-20037508,20037508,20037508,900913)),4326)
-          ORDER BY rclass
-        ) AS trans_linear
+        (SELECT *
+          FROM (SELECT the_geom, rclass, ramp, toll, restriction, oneway, COALESCE(brunnel,0) AS brunnel
+            FROM
+              (SELECT * FROM vector_linear_geometry_6
+                WHERE z(!scale_denominator!) >= 6 AND z(!scale_denominator!) < 8 -- rclass=15 does not appear here
+              UNION ALL
+              SELECT * FROM vector_linear_geometry_8
+                WHERE rclass IN (0, 1, 2) AND z(!scale_denominator!) >= 8 AND z(!scale_denominator!) < 10
+              UNION ALL
+              SELECT * FROM vector_linear_geometry_10
+                WHERE rclass IN (0, 1, 2, 3, 13) AND z(!scale_denominator!) >= 10 AND z(!scale_denominator!) < 12
+              UNION ALL
+              SELECT * FROM vector_linear_geometry_12 
+                WHERE (z(!scale_denominator!) >= 12 AND z(!scale_denominator!) < 16) 
+                  AND (rclass IN (0, 1, 2, 3, 4, 13) 
+                    OR (rclass IN (6, 14) AND z(!scale_denominator!) >= 14))
+              UNION ALL
+              SELECT * FROM vector_linear_geometry_16 WHERE rclass NOT IN (11, 15) AND z(!scale_denominator!) >= 16) AS t
+            WHERE the_geom && !bbox!
+          UNION ALL
+          SELECT
+              ST_Transform(ST_Intersection(the_geom, ST_Transform(ST_Intersection(ST_SetSRID(!bbox!,900913),ST_MakeEnvelope(-20037508,-20037508,20037508,20037508,900913)), 4326)), 900913) AS the_geom, -- kludge as above for projections
+              0, NULL, NULL, NULL, NULL, NULL -- assign to rclass 0
+            FROM natearth_roads_old
+            WHERE z(!scale_denominator!) < 6
+              AND type='Major Highway'
+              AND the_geom && ST_Transform(ST_Intersection(ST_SetSRID(!bbox!,900913),ST_MakeEnvelope(-20037508,-20037508,20037508,20037508,900913)),4326)
+          ) AS unordered
+          ORDER BY rclass DESC,
+            oneway DESC NULLS LAST -- make sure oneway arrows don't appear on connecting roads
+        ) trans_linear
       type: postgis
       user: ''
     description: ''
