@@ -1,6 +1,8 @@
 #trans_linear {
+  /* display_class not null implies transportation in ('road', 'ramp') */
   /* Freeways */
-  [rclass = 0] {
+  [transportation = 'road'][display_class = 0],
+  [transportation = 'ramp'][display_class = 0] {
     ::casing[zoom >= 15] {
       line-width: 7;
       line-color: #7392d1;
@@ -20,7 +22,7 @@
       [zoom >= 18] {
         line-width: 19;
       }
-      [ramp = true] {
+      [transportation = 'ramp'] {
         [zoom >= 15] {
           line-width: 5;
           line-color: #95add8;
@@ -39,7 +41,7 @@
         [zoom >= 15] {
           line-color: #7fbd84;
         }
-        [ramp = true] {
+        [transportation = 'ramp'] {
           [zoom >= 15] {
             line-color: #99cca4;
           }
@@ -101,7 +103,7 @@
       [zoom >= 18] {
         line-width: 16;
       }
-      [ramp = true] {
+      [transportation = 'ramp'] {
         /* TODO: this ends up adding rendering for ramps at z6 and z7, a change. Is this an issue? They may not be visible */
         [zoom >= 8] {
           line-width: 1;
@@ -149,7 +151,7 @@
         [zoom >= 16] {
           line-color: #b1dbba;
         }
-        [ramp = true] {
+        [transportation = 'ramp'] {
           [zoom >= 12] {
             line-color: #99cca4; // check this
           }
@@ -195,7 +197,7 @@
     }
   }
   /* Major roads */
-  [rclass = 1] {
+  [transportation = 'road'][display_class = 1] {
     ::casing[zoom >= 15] {
       line-width: 6;
       line-color: #f2cd88;
@@ -271,7 +273,7 @@
     }
   }
   /* Less major roads */
-  [rclass = 2], [rclass = 3] {
+  [transportation = 'road'][display_class = 2], [transportation = 'road'][display_class = 3] {
     ::casing[zoom >= 15] {
       line-width: 4;
       line-color: #e3d58f;
@@ -339,7 +341,7 @@
     }
   }
   /* Minor roads */
-  [rclass = 4] {
+  [transportation = 'road'][display_class = 4] {
     ::casing[zoom >= 15] {
       line-width: 4;
       line-color: #e6e6e6;
@@ -400,7 +402,7 @@
     }
   }
   /* residential roads */
-  [rclass = 5] {
+  [transportation = 'road'][display_class = 5] {
     ::casing[zoom >= 15] {
       line-width: 3;
       line-color: #e6e6e6;
@@ -450,11 +452,7 @@
     }
   }
   /* non-freeway ramps */
-  [rclass = 1][ramp = true],
-  [rclass = 2][ramp = true],
-  [rclass = 3][ramp = true],
-  [rclass = 4][ramp = true],
-  [rclass = 5][ramp = true] {
+  [transportation = 'ramp'][display_class != 0] {
     ::casing[zoom >= 15] {
       line-width: 4;
       line-color: #ebce96;
@@ -511,7 +509,7 @@
     }
   }
   /* Service roads */
-  [rclass = 6] {
+  [transportation = 'road'][display_class = 6] {
     ::casing[zoom >= 15] {
       line-width: 3;
       line-color: #e6e6e6;
@@ -556,7 +554,7 @@
     }
   }
   /* Parking isles */
-  [rclass = 7] {
+  [transportation = 'road'][display_class = 7] {
     ::casing[zoom >= 16] {
       line-width: 5;
       line-color: #cccccc;
@@ -592,7 +590,7 @@
     }
   }
   /* Railways */
-  [rclass = 14] {
+  [transportation = 'rail'] {
     ::casing[zoom >= 16] {
       line-width: 2;
       line-color: #ccc7be;
@@ -633,7 +631,7 @@
     }
   }
   /* Stairs */
-  [rlcass = 9] {
+  [transportation = 'stair'] {
     ::fill[zoom >= 16] {
       line-width: 1;
       line-color: #cccccc;
@@ -642,7 +640,7 @@
     }
   }
   /* Cycle paths */
-  [rclass = 10] {
+  [transportation = 'track'] {
     ::fill[zoom >= 16] {
       line-width: 1;
       line-color: #f4d18e;
@@ -651,7 +649,7 @@
     }
   }
   /* Pedestrian */
-  [rclass = 8] {
+  [transportation = 'path'] {
     ::fill[zoom >= 16] {
       marker-type: ellipse;
       marker-fill: #cfa893;

@@ -32,7 +32,7 @@
 
 #place_labels::admin {
   /*----- city labels - display_class 0 ——*/
-  ::national_capital_0[class=1000][display_class=0] {
+  ::national_capital_0[admin='country_capital'][display_class=0] {
     /* national capital markers with labels */
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
@@ -69,7 +69,7 @@
       text-size:@city_text_0_14;
     }
   }
-  ::state_capital_0[class=1010][display_class=0] {
+  ::state_capital_0[admin='state_capital'][display_class=0] {
     /* state capital point markers with labels */
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
@@ -105,7 +105,7 @@
       text-size:@city_text_0_14;
     }
   }
-  ::city_0[class=1020][display_class=0] {
+  ::city_0[admin='city'][display_class=0] {
     /* city point markers with labels */
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
@@ -206,7 +206,7 @@
   }
 
   /*----- city labels - display_class 1 or 2 ——*/
-  ::national_capital_1-2[class=1000][display_class>=1][display_class<=2] {
+  ::national_capital_1-2[admin='country_capital'][display_class>=1][display_class<=2] {
     /* national capital markers with labels */
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
@@ -252,7 +252,7 @@
       [display_class=2] {text-fill:#4d4d4d;text-size:@city_text_2_14}
     }
   }
-  ::state_capital_1-2[class=1010][display_class>=1][display_class<=2] {
+  ::state_capital_1-2[admin='state_capital'][display_class>=1][display_class<=2] {
     /* state capital point markers with labels */
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
@@ -297,7 +297,7 @@
       [display_class=2] {text-fill:#4d4d4d;text-size:@city_text_2_14}
     }
   }
-  ::city_1-2[class=1020][display_class>=1][display_class<=2] {
+  ::city_1-2[admin='city'][display_class>=1][display_class<=2] {
     /* city point markers with labels */
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
@@ -346,7 +346,7 @@
     }
   }
   /*----- city capitals - display_class 3+ ——*/
-  ::national_capital_3[class=1000][display_class>=3] {
+  ::national_capital_3[admin='country_capital'][display_class>=3] {
     /* national capital markers with labels */
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
@@ -389,7 +389,7 @@
       [display_class>4] {text-fill:#808080;}
     }
   }
-  ::state_capital_3[class=1010][display_class>=3] {
+  ::state_capital_3[admin='state_capital'][display_class>=3] {
     /* state capital point markers with labels */
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
@@ -435,7 +435,7 @@
 
 #place_labels::admin2 {
   /* — city labels — */
-  ::city_3_and_up[class=1020][display_class>=3] {
+  ::city_3_and_up[admin='city'][display_class>=3] {
     /* city point markers with labels */
     [zoom>=7][zoom<=13] {
       [zoom>=7][display_class=3] {

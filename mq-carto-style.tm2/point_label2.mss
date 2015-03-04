@@ -1,5 +1,5 @@
 #vector_point_labels2::point {
-  ::airport[class=1070][zoom>=9] {
+  ::airport[landmark = 'airport'][zoom>=9] {
     ::icon {
       [display_class=0] {
         [zoom>=9] {marker-file:url("markers/airport.svg");}
@@ -27,6 +27,7 @@
       [zoom>=16] {text-halo-fill:@background_16-18}
     }
   }
+  /* needs moving layers 
   ::neighborhood[class=1025][zoom>=13] {
     text-name:"[name]";
     text-face-name: @book-fonts;
@@ -40,7 +41,8 @@
     [zoom>=13][zoom<=15] {text-halo-fill:@background_13-15}
     [zoom>=16] {text-halo-fill:@background_16-18}
   }
-  ::national_park[class=1061][zoom>=7] {
+  */
+  ::national_park[landmark = 'national_park'][zoom>=7] {
     text-name:"''";
     text-face-name: @oblique-fonts;
     [zoom=7][display_class=0] {text-name:"[name]";text-size:11;}
@@ -65,7 +67,7 @@
     [zoom>=16] {text-halo-fill:@background_16-18}
 */
   }
-  ::national_forest[class=1055][zoom>=7] {
+  ::national_forest[landmark = 'national_forest'][zoom>=7] {
     text-name:"[name]";
     text-face-name: @oblique-fonts;
     [zoom=7][display_class>=0][display_class<=1] {text-name:"[name]";text-size:11;}
@@ -90,6 +92,7 @@
     [zoom>=16] {text-halo-fill:@background_16-18}
 */
   }
+  /* needs moving layers 
   ::water[class=1050],[class=1051],[class=1052],[class=1054] {
     text-name:"''";
     text-face-name: @oblique-fonts;
@@ -138,15 +141,8 @@
     text-fill:#2b5377;
     text-min-distance:10;
     text-wrap-width:20;
-/*  text halo has been removed for all water features
-    text-halo-radius:2;
-    [zoom>=2][zoom<=6] {text-halo-fill:@background_2-6}
-    [zoom>=7][zoom<=8] {text-halo-fill:@background_7-8}
-    [zoom>=9][zoom<=12] {text-halo-fill:@background_9-12}
-    [zoom>=13][zoom<=15] {text-halo-fill:@background_13-15}
-    [zoom>=16] {text-halo-fill:@background_16-18}
-*/
   }
+  */
   ::POI1[class=1057],[class=1056],[class=1062],[class=1085],[class=1075],[class=1097] {
     text-name:"''";
     text-face-name: @oblique-fonts;
@@ -197,16 +193,8 @@
     [class=1085] {text-fill:#82592a}
     [class=1075] {text-fill:#4d4d4d}
     [class=1097] {text-fill:#006837}
-/*  text halo has been removed for all park, reservation and military features
-    text-halo-radius:2;
-    [zoom>=2][zoom<=6] {text-halo-fill:@background_2-6}
-    [zoom>=7][zoom<=8] {text-halo-fill:@background_7-8}
-    [zoom>=9][zoom<=12] {text-halo-fill:@background_9-12}
-    [zoom>=13][zoom<=15] {text-halo-fill:@background_13-15}
-    [zoom>=16] {text-halo-fill:@background_16-18}
-*/
   }
-  ::golf_course[class=1073][zoom>=13] {
+  ::golf_course[landmark = 'golf'][zoom>=13] {
     ::icon {marker-file:url("markers/golf.svg");}
     ::text[zoom>=15] {
       text-name:"[name]";
@@ -220,7 +208,7 @@
       [zoom>=16] {text-halo-fill:@background_16-18}
     }
   }
-  ::hospital[class=1074][zoom>=14] {
+  ::hospital[landmark = 'hospital'][zoom>=14] {
     ::icon {marker-file:url("markers/hospital.svg");}
     ::text[zoom>=16] {
       text-name:"[name]";

@@ -19,12 +19,9 @@ metatile: 1
 layers:
   - boundingbox
   - water
-  - water_linear
-  - vector_polygonal_geometry
+  - landmark_polygon
   - buildings
-  - vector_linear_county
-  - states
-  - countries
+  - admin_lines
   - trans_linear
   - highway_labels
   - place_labels
@@ -35,15 +32,15 @@ layers:
 maxzoom: 19
 minzoom: 0
 name: MQ Carto Style
-source: "tmsource:///home/pnorman/mq-carto-style-vector/mq-carto-style.tm2source"
+source: "http://mq-nms-render-vector-stg-la01.ihost.aol.com:8080/tiles/tile.json"
 styles: 
   - base.mss
   - water.mss
   - polygonal.mss
   - admin.mss
   - transportation.mss
-  - place_label.mss
   - highway_shield.mss
+  - place_label.mss
   - transportation_label.mss
   - point_label2.mss
   - linear_label2.mss

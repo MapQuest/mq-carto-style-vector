@@ -1,5 +1,5 @@
 #trans_linear_labels::limited_access_hwy {
-  ::freeway_text[rclass=0] {
+  ::freeway_text[display_class=0] {
     [zoom>=12] {
       text-name:"[name]";
       text-face-name: @book-fonts;
@@ -23,6 +23,9 @@
       [zoom>=17] {text-size:14;text-fill:#000000;text-halo-fill:@background_16-18;}
     }
   }
+  /*
+   * We don't have any lane text in the TT data, so can't test its styling
+   * 
   ::lane_text[rclass=16] {
     [zoom>=12] {
       text-name:"[name]";
@@ -46,11 +49,11 @@
       [zoom=16] {text-size:13;text-fill:#000000;text-halo-fill:@background_16-18;}
       [zoom>=17] {text-size:14;text-fill:#000000;text-halo-fill:@background_16-18;}
     }
-  }
+  }*/
 }
 
 /* this layer prevents surface street text from crossing over highways */
-/* restricted to [rclass=0][ramp!=true] in the SQL */
+/* restricted to display_class 0 roads in the SQL */
 #highway_overlay[zoom>=11] {
   shield-face-name: @bold-fonts;
   shield-placement: line;
@@ -68,7 +71,7 @@
 }
 
 #trans_linear_labels::surface_features {
-  ::major_road1_text[rclass=1][zoom>=11] {
+  ::major_road1_text[display_class=1][zoom>=11] {
     text-name:"[name]";
     text-face-name: @book-fonts;
     text-placement:line;
@@ -88,7 +91,7 @@
     [zoom=16] {text-size:13;text-fill:#000000;text-halo-fill:@background_16-18;}
     [zoom>=17] {text-size:14;text-fill:#000000;text-halo-fill:@background_16-18;}
   }
-  ::major_road2[rclass=2][zoom>=12] {
+  ::major_road2[display_class=2][zoom>=12] {
     text-name:"[name]";
     text-face-name: @book-fonts;
     text-placement:line;
@@ -103,7 +106,7 @@
       [zoom>=16] {text-size:13;text-halo-fill:@background_16-18;}
     }
   }
-  ::major_road3[rclass=3][zoom>=12] {
+  ::major_road3[display_class=3][zoom>=12] {
     text-name:"[name]";
     text-face-name: @book-fonts;
     text-placement:line;
@@ -121,7 +124,7 @@
       [zoom>=16] {text-size:13;text-halo-fill:@background_16-18;}
     }
   }
-  ::major_road4[rclass=4][zoom>=14] {
+  ::major_road4[display_class=4][zoom>=14] {
     text-name:"[name]";
     text-face-name: @book-fonts;
     text-placement:line;
@@ -135,7 +138,7 @@
     [zoom=15] {text-halo-fill:@background_13-15;text-size:11;text-min-path-length:150}
     [zoom>=16] {text-size:13;text-halo-fill:@background_16-18;}
   }
-  ::minor_road[rclass=5][zoom>=14] {
+  ::minor_road[display_class=5][zoom>=14] {
     text-name:"[name]";
     text-face-name: @book-fonts;
     text-placement:line;
@@ -148,7 +151,7 @@
     [zoom=15] {text-halo-fill:@background_13-15;text-size:11;text-min-path-length:100}
     [zoom>=16] {text-size:13;text-halo-fill:@background_16-18;}
   }
-  ::service_road[rclass=6][zoom>=15] {
+  ::service_road[display_class=6][zoom>=15] {
     text-name:"[name]";
     text-face-name: @book-fonts;
     text-placement:line;
@@ -157,7 +160,7 @@
     [zoom=15] {text-size:11;text-halo-fill:@background_13-15;}
     [zoom>=16] {text-size:13;text-halo-fill:@background_16-18;}
   }
-  ::ferry[rclass=13][zoom>=12] {
+  ::ferry[transportation = 'ferry'][zoom>=12] {
     text-name:"[name]";
     text-face-name: @oblique-fonts;
     text-placement:line;
@@ -168,7 +171,7 @@
     [zoom>=13][zoom<=15] {text-size:11;}
     [zoom>=16] {text-size:13;}
   }
-  ::railroad[rclass=14][zoom>=16] {
+  ::railroad[transportation = 'rail'][zoom>=16] {
     text-name:"[name]";
     text-face-name: @oblique-fonts;
     text-placement:line;
@@ -180,6 +183,8 @@
     text-size:13;
     text-halo-fill:@background_16-18;
   }
+  /*
+   * Needs moving to water layer
   ::river[rclass=11][zoom>=16] {
     text-name:"[name]";
     text-face-name: @oblique-fonts;
@@ -192,4 +197,5 @@
     text-size:13;
     text-halo-fill:@background_16-18;
   }
+  */
 }
