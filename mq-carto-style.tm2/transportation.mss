@@ -1,217 +1,34 @@
-#trans_linear {
+#trans_linear [display_class > 0] 
+{
+    // ugly defaults, so you know if you missed something
+    casing/line-color: #07b90c;
+    //casing/line-width: 20;
+    line-color: #fa00d3;
+    //line-width: 9; 
+   line-cap: butt;
+   casing/line-join: miter;
+   casing/line-width: 0;
+   line-width: 0;
+  
+
   /* display_class not null implies transportation in ('road', 'ramp') */
-  /* Freeways */
-  [transportation = 'road'][display_class = 0],
-  [transportation = 'ramp'][display_class = 0] {
-    ::casing[zoom >= 15] {
-      line-width: 7;
-      line-color: #7392d1;
-      line-cap: round;
-      line-join: round;
-      [brunnel = 2] {
-        line-dasharray: 8,8;
-        line-cap: butt
-      }
-      [zoom >= 16] {
-        line-width: 11;
-        line-color: #95add8;
-      }
-      [zoom >= 17] {
-        line-width: 13;
-      }
-      [zoom >= 18] {
-        line-width: 19;
-      }
-      [transportation = 'ramp'] {
-        [zoom >= 15] {
-          line-width: 5;
-          line-color: #95add8;
-        }
-        [zoom >= 16] {
-          line-color: #b6c7e4; // FIXME: This is effectively no casing?
-        }
-        [zoom >= 17] {
-          line-width: 8;
-        }
-        [zoom >= 18] {
-          line-width: 11;
-        }
-      }
-      [toll = true] {
-        [zoom >= 15] {
-          line-color: #7fbd84;
-        }
-        [transportation = 'ramp'] {
-          [zoom >= 15] {
-            line-color: #99cca4;
-          }
-        }
-      }
-    }
-    ::fill[zoom >= 4] {
-      line-width: 0.4;
-      line-color: #bbc5d4;
-      line-cap: round;
-      line-join: round;
-      [zoom >= 5] {
-        line-width: 0.5;
-        line-color: #a5b3c7;
-      }
-      [zoom >= 6] {
-        line-width: 0.6;
-        line-color: #85a3de;
-      }
-      [zoom >= 7] {
-        line-width: 0.75;
-      }
-      [zoom >= 8] {
-        line-width: 1.5;
-        line-color: #7e9cd9;
-      }
-      [zoom >= 9] {
-        line-width: 2;
-        line-color: #829eca;
-      }
-      [zoom >= 11] {
-        line-width: 3;
-      }
-      [zoom >= 12] {
-        line-color: #89a7d6;
-        [brunnel = 2] {
-          line-dasharray: 8,8;
-          line-cap: butt
-        }
-      }
-      [zoom >= 13] {
-        line-width: 4;
-      }
-      [zoom >= 14] {
-        line-color: #829eca;
-      }
-      [zoom >= 15] {
-        line-color: #9fb3d1;
-      }
-      [zoom >= 15] {
-        line-width: 5;
-      }
-      [zoom >= 16] {
-        line-width: 8;
-      }
-      [zoom >= 17] {
-        line-width: 10;
-      }
-      [zoom >= 18] {
-        line-width: 16;
-      }
-      [transportation = 'ramp'] {
-        /* TODO: this ends up adding rendering for ramps at z6 and z7, a change. Is this an issue? They may not be visible */
-        [zoom >= 8] {
-          line-width: 1;
-          line-color: #7392d1;
-        }
-        [zoom >= 10] {
-          line-color: #688abd;
-        }
-        [zoom >= 11] {
-          line-width: 1.5;
-        }
-        [zoom >= 12] {
-          line-width: 1;
-          line-color: #95add8;
-        }
-        [zoom >= 11] {
-          line-width: 2;
-        }
-        [zoom >= 15] {
-          line-width: 3;
-          line-color: #b6c7e4;
-        }
-        [zoom >= 16] {
-          line-width: 2; // FIXME: This seems wrong
-          line-color: #b6c7e4;
-        }
-        [zoom >= 17] {
-          line-width: 5;
-        }
-        [zoom >= 18] {
-          line-width: 8;
-        }
-      }
-      [toll = true] {
-        line-color: #4fbd65;
-        [zoom >= 8] {
-          line-color: #4fbd65;
-        }
-        [zoom >= 9] {
-          line-color: #6cbd7e;
-        }
-        [zoom >= 15] {
-          line-color: #a5d9b0;
-        }
-        [zoom >= 16] {
-          line-color: #b1dbba;
-        }
-        [transportation = 'ramp'] {
-          [zoom >= 12] {
-            line-color: #99cca4; // check this
-          }
-          [zoom >= 12] {
-            line-color: #7fbd84;
-          }
-          [zoom >= 16] {
-            line-color: #add9b7;
-          }
-        }
-      }
-    }
-    ::centerline[zoom >= 12] {
-      line-width: 1;
-      line-color: #a8bad5;
-      line-cap: round;
-      line-join: round;
-      [brunnel = 2] {
-        line-dasharray: 8,8;
-        line-cap: butt
-      }
-      [zoom >= 15] {
-        line-color: #bdcce6;
-      }
-      [zoom >= 16] {
-        line-width: 2;
-        line-color: #cadcfa;
-      }
-      [zoom >= 17] {
-        line-color: #d1dbed;
-      }
-      [toll = true] {
-        [zoom >= 12] {
-          line-color: #aedcb7;
-        }
-        [zoom >= 15] {
-          line-color: #c4e2ca;
-        }
-        [zoom >= 17] {
-          line-color: #cfe8d4;
-        }
-      }
-    }
-  }
   /* Major roads */
-  [transportation = 'road'][display_class = 1] {
-    ::casing[zoom >= 15] {
-      line-width: 6;
-      line-color: #f2cd88;
-      line-cap: round;
-      line-join: round;
+  [transportation = 'road'][display_class = 1]{  
+     [zoom >= 15] {
+      line-width: 4;
+      casing/line-width: 6;
+      casing/line-color: #f2cd88;
+      casing/line-cap: round;
+      casing/line-join: round;
       [zoom >= 16] {
-        line-width: 9;
-        line-color: #f2c97c;
+        casing/line-width: 9;
+        casing/line-color: #f2c97c;
       }
       [zoom >= 17] {
-        line-width: 11;
+        casing/line-width: 11;
       }
       [zoom >= 18] {
-        line-width: 14;
+        casing/line-width: 14;
       }
     }
     ::fill[zoom >= 6] {
@@ -273,21 +90,22 @@
     }
   }
   /* Less major roads */
-  [transportation = 'road'][display_class = 2], [transportation = 'road'][display_class = 3] {
-    ::casing[zoom >= 15] {
-      line-width: 4;
+  [transportation = 'road'][display_class = 2], 
+  [transportation = 'road'][display_class = 3] {
+    [zoom >= 15] {
+      casing/line-width: 4;
+      casing/line-color: #e3d58f;
       line-color: #e3d58f;
-      line-cap: round;
-      line-join: round;
+      casing/line-cap: round;
+      casing/line-join: round;
       [zoom >= 16] {
-        line-width: 8;
-        line-color: #e3dd86;
+        casing/line-width: 8;
       }
       [zoom >= 17] {
-        line-width: 10;
+        casing/line-width: 10;
       }
       [zoom >= 18] {
-        line-width: 14;
+        casing/line-width: 14;
       }
     }
     ::fill[zoom >= 8] {
@@ -342,30 +160,31 @@
   }
   /* Minor roads */
   [transportation = 'road'][display_class = 4] {
-    ::casing[zoom >= 15] {
-      line-width: 4;
-      line-color: #e6e6e6;
-      line-cap: round;
-      line-join: round;
+    [zoom >= 15] {
+      casing/line-width: 4;
+      casing/line-color: #e6e6e6;
+      //line-color: #e6e6e6;
+      casing/line-cap: round;
+      casing/line-join: miter;
       [zoom >= 16] {
-        line-width: 7;
-        line-color: #dbdbdb;
+        casing/line-width: 7;
+        casing/line-color: #dbdbdb;
       }
       [zoom >= 17] {
-        line-width: 9;
+        casing/line-width: 9;
       }
       [zoom >= 18] {
-        line-width: 14;
+        casing/line-width: 14;
       }
       [restriction=true] {
-        line-color: #c9c9c9;
+        casing/line-color: #c9c9c9;
         [zoom >= 16] {
-          line-color: #969696;
+          casing/line-color: #969696;
         }
       }
     }
     ::fill[zoom >= 12] {
-      line-width: 0.5;
+      line-width: 0.3;
       line-color: #dedacb;
       line-cap: round;
       line-join: round;
@@ -403,19 +222,19 @@
   }
   /* residential roads */
   [transportation = 'road'][display_class = 5] {
-    ::casing[zoom >= 15] {
-      line-width: 3;
-      line-color: #e6e6e6;
-      line-cap: round;
-      line-join: round;
+    [zoom >= 15] {
+      casing/line-width: 3;
+      casing/line-color: #e6e6e6;
+      casing/line-cap: round;
+      casing/line-join: round;
       [restriction = true] {
-        line-color: #c9c9c9;
+        casing/line-color: #c9c9c9;
       }
       [zoom >= 17] {
-        line-width: 8;
+        casing/line-width: 8;
       }
       [zoom >= 18] {
-        line-width: 11;
+        casing/line-width: 11;
       }
     }
     ::fill[zoom >= 12] {
@@ -453,55 +272,52 @@
   }
   /* non-freeway ramps */
   [transportation = 'ramp'][display_class != 0] {
-    ::casing[zoom >= 15] {
-      line-width: 4;
-      line-color: #ebce96;
-      line-cap: round;
-      line-join: round;
+    [zoom >= 15] {
+      casing/line-width: 4;
+      casing/line-color: #ebce96;
+      casing/line-cap: round;
+      casing/line-join: round;
       [zoom >= 16] {
-        line-width: 7;
-        line-color: #f2ce80;
+        casing/line-width: 7;
+        casing/line-color: #f1bb46;
         [restriction = true] {
-          line-color: #ebebeb;
+          casing/line-color: #ebebeb;
         }
       }
       [zoom >= 17] {
-        line-width: 9;
+        casing/line-width: 9;
       }
       [zoom >= 18] {
-        line-width: 10;
+        casing/line-width: 10;
       }
     }
     ::fill[zoom >= 10] {
       line-width: 0.5;
-      line-color: #ebdaa0;
+      line-color: #f8ce3e;
       line-cap: round;
       line-join: round;
       [zoom >= 12] {
         line-width: 1;
-        line-color: #ebdaa0;
+        line-color: #f1cb4b;
       }
       [zoom >= 13] {
         line-width: 2;
-        line-color: #e8cc99;
+        line-color: #ffeecb;
       }
       [zoom >= 14] {
         line-width: 3;
       }
       [zoom >= 15] {
         line-width: 2;
-        line-color: #f0ddb6;
       }
       [zoom >= 16] {
         line-width: 5;
-        line-color: #f2ddb3;
         [restriction = true] {
           line-color: #c9c9c9;
         }
       }
       [zoom >= 17] {
         line-width: 6;
-        line-color: #f2d28d;
       }
       [zoom >= 18] {
         line-width: 7;
@@ -555,14 +371,14 @@
   }
   /* Parking isles */
   [transportation = 'road'][display_class = 7] {
-    ::casing[zoom >= 16] {
-      line-width: 5;
-      line-color: #cccccc;
-      line-cap: round;
-      line-join: round
+    [zoom >= 16] {
+      casing/line-width: 5;
+      casing/line-color: #cccccc;
+      casing/line-cap: round;
+      casing/line-join: round
     }
     ::fill[zoom >= 16] {
-      line-color: #cccccc;
+      line-color: #dbd6d6;
       line-cap: round;
       line-join: round;
       line-width: 2;

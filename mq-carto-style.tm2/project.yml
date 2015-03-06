@@ -15,8 +15,7 @@ center:
 description: ''
 format: "png8:m=h"
 interactivity_layer: ''
-metatile: 1
-layers:
+layers: 
   - boundingbox
   - water
   - landmark_polygon
@@ -39,6 +38,7 @@ styles:
   - polygonal.mss
   - admin.mss
   - transportation.mss
+  - roads_class_0.mss
   - highway_shield.mss
   - place_label.mss
   - transportation_label.mss

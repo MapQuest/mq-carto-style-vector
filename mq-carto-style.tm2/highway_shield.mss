@@ -18,22 +18,22 @@
       shield-min-distance: 350;
     }
     [zoom >= 17] {
-      shield-min-distance: 400;
+      shield-min-distance: 900;
     }
   }
   /* Class one and class two only */
   [shield1 = 'rs_us_interstate'],
   [shield1 = 'rs_us_hwy'] {
-    shield-text-dy: 1;
+    shield-dy: -1;
     shield-min-distance: 150;
     [zoom >= 11] {
-      shield-min-distance: 200;
+      shield-min-distance: 100;
     }
     [zoom >= 15] {
       shield-min-distance: 250;
     }
     [zoom >= 17] {
-      shield-min-distance: 350;
+      shield-min-distance: 300;
     }
   }
   /* Custom shields */
@@ -52,9 +52,28 @@
       shield-file: url("markers/shields/[shield1]W.svg");
     }
   }
-  /* The rest are z7 only */
-  /* Generics */
+  
+ [shield1='rs_co_hwy'] {
+    shield-file:url("markers/shields/rsCO.svg");
+    [shield1_number_length>=3] { // use wide shield
+      shield-file:url("markers/shields/rsCOW.svg") ; 
+    }
+    //shield-name:[shield1_number];
+    shield-face-name: @bold-fonts;
+    shield-dy:-5;
+    shield-min-distance: 200;
+    [shield1_number_length>=3] {}
+
+  }
+  
+  // everything below is broken (pre Common Table Schema)
+  
+  /*
+  // The rest are z7 only
+  // Generics 
   [zoom >= 7] {
+    // These class fields no longer work with Common Table Schema
+    // use [shield1] instead
     [class = 3], [class = 22] {
       shield-file: url("markers/shields/rsRound.svg");
       [name_len >= 3] {
@@ -77,7 +96,7 @@
       }
     }
 
-    /* Canadian Shields */
+    // Canadian Shields 
     [class = 20] {
       shield-fill: #259425;
       shield-halo-fill: #ffffff;
@@ -94,7 +113,7 @@
       }
     }
 
-    /* Mexican Shields */
+    // Mexican Shields
     [class = 40] {
       shield-text-dy: -1;
       shield-file: url("markers/shields/rsMex.svg");
@@ -105,7 +124,7 @@
         shield-file: url("markers/shields/rsMexW2.svg");
       }
     }
-    /* No 41 here */
+    // No 41 here
     [class = 42] {
       shield-text-dy: -1.5;
       shield-file: url("markers/shields/rsMexS.svg");
@@ -113,7 +132,7 @@
         shield-file: url("markers/shields/rsMexSW.svg");
       }
     }
-    /* US State shields */
+    // US State shields
     [class = 500] {
       shield-text-dy: -1;
       shield-file: url("markers/shields/rsAL.svg");
@@ -129,9 +148,9 @@
       }
     }
   }
-  /* Shields that still need refactoring */
-  [class>=3][class<=591][zoom>=7] {
-    /* US state shields */
+  // Shields that still need refactoring
+  [zoom>=7] {
+    // US state shields
     [class=501] {
       shield-text-dy:-1;shield-text-dx:2.5;
       [name_len<=2] {shield-file:url("markers/shields/rsAK.svg");}
@@ -152,7 +171,7 @@
       [name_len<=2] {shield-file:url("markers/shields/rsCA.svg");}
       [name_len>=3] {shield-file:url("markers/shields/rsCAW.svg");}
     }
-    [class=505] {
+    [shield1='rs_co_hwy'] {
       shield-text-dy:4;
       [name_len<=2] {shield-file:url("markers/shields/rsCO.svg");}
       [name_len>=3] {shield-file:url("markers/shields/rsCOW.svg");}
@@ -274,14 +293,14 @@
       [name_len>=3] {shield-file:url("markers/shields/rsWYW.svg");}
     }
     [class=550] {shield-file:url("markers/shields/rsDC.svg");shield-text-dy:4;shield-halo-fill:#ffffff;shield-halo-radius:1;}
-    /* generic state shields */
+    // generic state shields
     [class=506],[class=507],[class=512],[class=513],[class=514],[class=516],[class=518],[class=520],[class=523],
       [class=525],[class=529],[class=538],[class=542],[class=547] {
       [name_len<=2] {shield-file:url("markers/shields/rsRec.svg");}
       [name_len>=3] {shield-file:url("markers/shields/rsRecW.svg");}
     }
   
-    /* Canadian provincial shields */
+    // Canadian provincial shields
     [class=577] {shield-file:url("markers/shields/rsABCN1.svg");shield-text-dy:-1;shield-fill:white;shield-halo-fill:black;shield-halo-radius:1;}
     [class=560] {shield-file:url("markers/shields/rsABW.svg");shield-text-dy:-1;}
     [class=580] {shield-file:url("markers/shields/rsABSW.svg");}
@@ -307,7 +326,9 @@
     [class=578] {shield-file:url("markers/shields/rsYH_ca.svg");shield-halo-fill:white;shield-halo-radius:1;}
     [class=573] {shield-file:url("markers/shields/rsYT.svg");}
   }
+  */
 }
+
 
 #highway_labels::exit_shields[zoom>=15][class=1040] {
   ::shield[class=1040] {[zoom>=13][zoom<=14] {marker-file:url("markers/exitPt.svg");marker-ignore-placement:true;}}
@@ -331,3 +352,4 @@
   ::tollbooth[class=1041] {[zoom>=16] {marker-file:url("markers/toll.svg");}}
   ::gate[class=1042] {[zoom>=17] {marker-file:url("markers/gate.svg");}}
 }
+

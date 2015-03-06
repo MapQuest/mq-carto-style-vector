@@ -1,7 +1,8 @@
+/*
 #trans_linear_labels::limited_access_hwy {
   ::freeway_text[display_class=0] {
     [zoom>=12] {
-      text-name:"[name]";
+      text-name:[name];
       text-face-name: @book-fonts;
       text-placement:line;
       text-halo-radius:2;
@@ -23,9 +24,10 @@
       [zoom>=17] {text-size:14;text-fill:#000000;text-halo-fill:@background_16-18;}
     }
   }
-  /*
-   * We don't have any lane text in the TT data, so can't test its styling
-   * 
+  /////////
+  // We don't have any lane text in the TT data, so can't test its styling 
+  /////////
+  
   ::lane_text[rclass=16] {
     [zoom>=12] {
       text-name:"[name]";
@@ -49,11 +51,11 @@
       [zoom=16] {text-size:13;text-fill:#000000;text-halo-fill:@background_16-18;}
       [zoom>=17] {text-size:14;text-fill:#000000;text-halo-fill:@background_16-18;}
     }
-  }*/
+  }
 }
 
-/* this layer prevents surface street text from crossing over highways */
-/* restricted to display_class 0 roads in the SQL */
+// this layer prevents surface street text from crossing over highways 
+// restricted to display_class 0 roads in the SQL 
 #highway_overlay[zoom>=11] {
   shield-face-name: @bold-fonts;
   shield-placement: line;
@@ -183,8 +185,8 @@
     text-size:13;
     text-halo-fill:@background_16-18;
   }
-  /*
-   * Needs moving to water layer
+  //
+  // Needs moving to water layer
   ::river[rclass=11][zoom>=16] {
     text-name:"[name]";
     text-face-name: @oblique-fonts;
@@ -197,5 +199,5 @@
     text-size:13;
     text-halo-fill:@background_16-18;
   }
-  */
 }
+*/

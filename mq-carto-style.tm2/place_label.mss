@@ -1,39 +1,98 @@
-/* zoom 14+ */
+#place_labels {
+  marker-width:5;
+  marker-fill:#e208fa;
+  marker-line-width:2;
+  marker-line-color:rgba(0, 4, 22, 0.99);
+
+  [zoom < 14 ]{
+    [display_class=1] {
+      marker-width:12;
+      marker-fill:#f8e70d;
+    }
+    [display_class=2] {marker-width:10;}
+    [display_class>=3] {marker-width:0;}
+  }
+
+  [zoom >= 14 ]{
+    [display_class=0] {
+      marker-width:15;
+      marker-fill:#ff0c01;
+    }
+    [display_class=1] {
+      marker-width:12;
+      marker-fill:#f8e70d;
+    }
+    [display_class=2] {marker-width:10;}
+    [display_class=3] {marker-width:7;}
+    [display_class>3] {marker-width:0;}
+  }
+  
+  [zoom>5][display_class=0] {
+        [display_class=0] {
+      marker-width:15;
+      marker-fill:#ff0c01;
+    }
+     line-width: 5;
+      text-name: [name];
+      text-fill:#050d4f;
+      text-face-name: 'Open Sans Regular';
+      text-dx: 10;
+      text-size:22;
+    }
+  
+    [zoom>=15],
+    [zoom<=14][zoom>=12][display_class < 3]{
+      line-width: 5;
+      text-name: [name];
+      text-fill:#4032be;
+      text-face-name: 'Open Sans Regular';
+      text-dx: 10;
+      [display_class=0] {text-size:22;}
+      [display_class=1] {text-size:18;}
+      [display_class=2] {text-size:15;}
+      [display_class=3] {text-size:13;}
+      [display_class>3] {text-size:11;}
+    }
+}
+
+/* pre common table schema, broken
+// zoom 14+ 
 @city_text_0_14:22;
 @city_text_1_14:21;
 @city_text_2_14:20;
 @city_text_3_14:17;
 @city_text_4_14:13;
-/* zoom 12-13 */
+// zoom 12-13
 @city_text_0_1213:20;
 @city_text_1_1213:18;
 @city_text_2_1213:17;
 @city_text_3_1213:12;
 @city_text_4_10111213:12;
-/* zoom 10-11 */
+// zoom 10-11
 @city_text_0_1011:17;
 @city_text_1_1011:14;
 @city_text_2_1011:13;
 @city_text_3_1011:12;
-/* zoom ~8-9 */
+// zoom ~8-9
 @city_text_0_789:16;
 @city_text_1_89:13;
 @city_text_2_89:12;
 @city_text_3_456789:11;
 @city_text_4_456789:11;
-/* zoom ~6-7 */
+// zoom ~6-7 
 @city_text_0_6:15;
 @city_text_1_67:11;
 @city_text_2_67:11;
-/* zoom 4-5 */
+// zoom 4-5 
 @city_text_0_45:14;
 @city_text_1_45:11;
 @city_text_2_45:11;
 
+
 #place_labels::admin {
-  /*----- city labels - display_class 0 ——*/
+  //----- city labels - display_class 0 
   ::national_capital_0[admin='country_capital'][display_class=0] {
-    /* national capital markers with labels */
+    // national capital markers with labels
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
       shield-face-name: @book-fonts;
@@ -55,7 +114,7 @@
       [zoom>=10][zoom<=11] {shield-size:@city_text_0_1011}
       [zoom>=12][zoom<=13] {shield-size:@city_text_0_1213}
     }
-    /* national capital point labels only */
+    // national capital point labels only 
     [zoom>=14] {
       text-name:"[name]";
       text-face-name: @semibold-fonts;
@@ -70,7 +129,7 @@
     }
   }
   ::state_capital_0[admin='state_capital'][display_class=0] {
-    /* state capital point markers with labels */
+    // state capital point markers with labels 
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
       shield-face-name: @book-fonts;
@@ -91,7 +150,7 @@
       [zoom>=10][zoom<=11] {shield-size:@city_text_0_1011}
       [zoom>=12][zoom<=13] {shield-size:@city_text_0_1213}
     }
-    /* state capital point labels only */
+    // state capital point labels only
     [zoom>=14] {
       text-name:"[name]";
       text-face-name: @semibold-fonts;
@@ -106,7 +165,7 @@
     }
   }
   ::city_0[admin='city'][display_class=0] {
-    /* city point markers with labels */
+    // city point markers with labels
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
       shield-face-name: @book-fonts;
@@ -128,7 +187,7 @@
       [zoom>=12][zoom<=13] {shield-size:@city_text_0_1213}
       [zoom=13] {shield-text-transform:uppercase;}
     }
-    /* city point labels only */
+    // city point labels only
     [zoom>=14] {
       text-name:"[name]";
       text-face-name: @book-fonts;
@@ -141,7 +200,7 @@
       text-size:@city_text_0_14;
     }
   }
-  /*-----country labels——*/
+  //-----country labels——
   ::country_labels[class=1030][zoom>=4][zoom<=9] {
     text-name:"[name]";
     text-face-name: @bold-fonts;
@@ -176,7 +235,7 @@
     }
   }
 
-  /*-----county labels——*/
+  //-----county labels—-
   ::county_labels[class=1038][zoom=9] {
     text-name:"[name]";
     text-face-name: @semibold-fonts;
@@ -189,7 +248,7 @@
     text-character-spacing:2;
   }
 
-  /*-----state labels——*/
+  //-----state labels——
   ::state_labels[class=1031][zoom>=5][zoom<=9] {
     text-name:"[name]";
     text-face-name: @semibold-fonts;
@@ -205,9 +264,9 @@
     [zoom>=8][zoom<=9] {text-character-spacing:2;}
   }
 
-  /*----- city labels - display_class 1 or 2 ——*/
+  //----- city labels - display_class 1 or 2 ——
   ::national_capital_1-2[admin='country_capital'][display_class>=1][display_class<=2] {
-    /* national capital markers with labels */
+    // national capital markers with labels 
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
       shield-face-name: @book-fonts;
@@ -239,7 +298,7 @@
         [zoom>=12][zoom<=13] {shield-size:@city_text_2_1213;}
       }
     }
-    /* national capital point labels only */
+    // national capital point labels only 
     [zoom>=14] {
       text-name:"[name]";
       text-face-name: @book-fonts;
@@ -253,7 +312,7 @@
     }
   }
   ::state_capital_1-2[admin='state_capital'][display_class>=1][display_class<=2] {
-    /* state capital point markers with labels */
+    // state capital point markers with labels
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
       shield-face-name: @book-fonts;
@@ -284,7 +343,7 @@
         [zoom>=12][zoom<=13] {shield-size:@city_text_2_1213;}
       }
     }
-    /* state capital point labels only */
+    // state capital point labels only 
     [zoom>=14] {
       text-name:"[name]";
       text-face-name: @book-fonts;
@@ -298,7 +357,7 @@
     }
   }
   ::city_1-2[admin='city'][display_class>=1][display_class<=2] {
-    /* city point markers with labels */
+    // city point markers with labels
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
       shield-face-name: @book-fonts;
@@ -332,7 +391,7 @@
         [zoom>=12][zoom<=13] {shield-size:@city_text_2_1213;}
       }
     }
-    /* city point labels only */
+    // city point labels only 
     [zoom>=14] {
       text-name:"[name]";
       text-face-name: @book-fonts;
@@ -345,9 +404,9 @@
       [display_class=2] {text-fill:#1a1a1a;text-size:@city_text_2_14}
     }
   }
-  /*----- city capitals - display_class 3+ ——*/
+  //----- city capitals - display_class 3+ ——
   ::national_capital_3[admin='country_capital'][display_class>=3] {
-    /* national capital markers with labels */
+    // national capital markers with labels 
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
       shield-face-name: @book-fonts;
@@ -375,7 +434,7 @@
         [zoom>=10][zoom<=13] {shield-size:@city_text_4_10111213;}
       }
     }
-    /* national capital point labels only */
+    // national capital point labels only 
     [zoom>=14] {
       text-name:"[name]";
       text-face-name: @book-fonts;
@@ -390,7 +449,7 @@
     }
   }
   ::state_capital_3[admin='state_capital'][display_class>=3] {
-    /* state capital point markers with labels */
+    // state capital point markers with labels 
     [zoom>=4][zoom<=13] {
       shield-name:"[name]";
       shield-face-name: @book-fonts;
@@ -417,7 +476,7 @@
         [zoom>=10][zoom<=13] {shield-size:@city_text_4_10111213;}
       }
     }
-    /* state capital point labels only */
+    // state capital point labels only 
     [zoom>=14] {
       text-name:"[name]";
       text-face-name: @book-fonts;
@@ -434,9 +493,9 @@
 }
 
 #place_labels::admin2 {
-  /* — city labels — */
+  // — city labels — 
   ::city_3_and_up[admin='city'][display_class>=3] {
-    /* city point markers with labels */
+    // city point markers with labels 
     [zoom>=7][zoom<=13] {
       [zoom>=7][display_class=3] {
         shield-name:"[name]";
@@ -496,7 +555,7 @@
         [display_class>4] {shield-fill:#808080;shield-min-distance:50;}
       }
     }
-    /* city point labels only */
+    // city point labels only 
     [zoom>=14] {
       text-name:"[name]";
       text-face-name: @book-fonts;
@@ -510,4 +569,5 @@
     }
   }  
 }
+*/
 

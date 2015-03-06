@@ -3,7 +3,8 @@
 @bold-fonts: "Open Sans Bold";
 @oblique-fonts: "Open Sans Italic";
 
-@water: #b9c6d1;
+//@water: #b9c6d1;
+@water: #e4d0e1;
 @background_2-6: #f0f5df;
 @background_7-8: #f4f5df;
 @background_9-12: #f5f4e1;
