@@ -37,7 +37,7 @@ name: MQ Carto Style
 source: "tmsource:///home/pnorman/mq-carto-style-vector/mq-carto-style.tm2source"
 styles: 
   - base.mss
-  - water.mss
+#  - water.mss
   - polygonal.mss
 #  - admin.mss
 #  - highway.mss
