@@ -15,7 +15,7 @@ description: test descr
 Layer: 
   - id: boundingbox
     Datasource: 
-      file: /home/pnorman/mq-carto-style-vector/10m-900913-bounding-box.shp
+      file: data/10m-900913-bounding-box.shp
       type: shape
     description: The entire world
     fields: 
