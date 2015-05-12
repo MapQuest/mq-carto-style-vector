@@ -28,8 +28,8 @@ layers:
   - trans_linear_labels
   - vector_point_labels2
   - vector_point_labels3
-maxzoom: 19
-minzoom: 0
+maxzoom: 16
+minzoom: 5
 name: MQ Carto Style
 source: "http://mq-nms-render-vector-stg-la01.ihost.aol.com:8080/tiles/tile.json"
 styles: 
